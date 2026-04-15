@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { MapPin, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-import profileImg from "@/assets/profile.jpg";
+import profileImg from "@/assets/profile.png";
 import ScrollReveal from "./ScrollReveal";
 
 const Hero = () => {

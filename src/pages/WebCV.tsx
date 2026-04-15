@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { MapPin, Mail, ExternalLink, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
-import profileImg from "@/assets/profile.jpg";
+import profileImg from "@/assets/profile.png";
 
 const education = [
   { title: "Matric — Computer Science", institution: "BISE Faisalabad", year: "2020" },
