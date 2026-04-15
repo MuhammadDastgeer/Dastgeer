@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Github, Linkedin, Mail } from "lucide-react";
+import { MapPin, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import profileImg from "@/assets/profile.jpg";
 import ScrollReveal from "./ScrollReveal";

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, MapPin, Github, Linkedin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const Contact = () => {
