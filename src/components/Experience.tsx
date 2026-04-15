@@ -3,28 +3,32 @@ import ScrollReveal from "./ScrollReveal";
 
 const experience = [
   {
-    title: "ML Specialist / AI Engineer",
-    company: "CodaAlpha",
-    period: "2025 – Present",
-    desc: "Building production-grade ML models and deploying AI solutions for real-world business problems.",
-  },
-  {
-    title: "ML Specialist",
-    company: "Arch Technologies",
-    period: "2025 – Present",
-    desc: "Developing machine learning pipelines and agentic AI systems for enterprise clients.",
-  },
-  {
-    title: "ML Engineer",
+    title: "Machine Learning Engineer",
     company: "Codveda Technologies",
-    period: "2025 – Present",
-    desc: "Working on deep learning models, computer vision tasks, and NLP applications.",
+    period: "Apr 2025 – Present",
+    location: "Pakistan (Part-Time/Contract)",
+    desc: "Designed and deployed end-to-end ML pipelines, built deep learning models using PyTorch and TensorFlow, and led LLM integration projects with RAG pipelines and Agentic workflows.",
+  },
+  {
+    title: "Machine Learning Specialist",
+    company: "Arch Technologies",
+    period: "Apr 2025 – Present",
+    location: "Pakistan (Part-Time/Contract)",
+    desc: "Developed ML models for predictive modeling with F1 scores above 0.88. Performed data preprocessing, feature engineering, and model evaluation.",
+  },
+  {
+    title: "Machine Learning Specialist",
+    company: "CodaAlpha",
+    period: "Mar 2025 – Present",
+    location: "Pakistan (Freelance/Contract)",
+    desc: "Built ML models for structured data prediction and deployed models to staging environments with live inference monitoring.",
   },
   {
     title: "Computer Operator",
     company: "Johar Centre Pir Mahal",
-    period: "2022",
-    desc: "First professional role — managing data entry, system operations, and technical support.",
+    period: "2022 – 2023",
+    location: "Pir Mahal, Pakistan",
+    desc: "Managed data entry, document processing, office automation, and client-facing administrative tasks.",
   },
 ];
 
@@ -53,7 +57,8 @@ const Experience = () => {
                       <h3 className="font-heading font-bold text-foreground">{item.title}</h3>
                       <span className="text-xs font-medium px-3 py-1 rounded-full bg-primary/10 text-primary">{item.period}</span>
                     </div>
-                    <p className="text-sm highlight-text font-semibold mb-2">{item.company}</p>
+                    <p className="text-sm highlight-text font-semibold">{item.company}</p>
+                    <p className="text-xs text-muted-foreground mb-2">{item.location}</p>
                     <p className="text-sm text-muted-foreground">{item.desc}</p>
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { MapPin, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-import profileImg from "@/assets/profile.jpg";
+import profileImg from "@/assets/profile.png";
 import ScrollReveal from "./ScrollReveal";
 
 const Hero = () => {
@@ -33,7 +33,7 @@ const Hero = () => {
 
             <ScrollReveal delay={0.3}>
               <p className="text-muted-foreground leading-relaxed mb-6 max-w-lg">
-                Muhammad Dastgeer is an AI Engineer specializing in Machine Learning, Deep Learning, and Agentic AI systems. Based in Pir Mahal, Punjab, Pakistan, he has delivered 50+ real-world AI projects across Computer Vision, NLP, and Generative AI.
+                Kaggle Grandmaster and AI/ML Engineer with deep hands-on expertise across the complete AI/ML spectrum — from classical machine learning to cutting-edge Generative AI and Agentic systems. Proficient in Python, PyTorch, TensorFlow, and the full data science pipeline.
               </p>
             </ScrollReveal>
 
