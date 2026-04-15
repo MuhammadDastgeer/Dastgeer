@@ -1,48 +1,7 @@
 import { Link } from "react-router-dom";
-import { MapPin, Mail, ExternalLink, ArrowLeft } from "lucide-react";
+import { MapPin, Mail, ExternalLink, ArrowLeft, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import profileImg from "@/assets/profile.png";
-
-const education = [
-  { title: "Matric — Computer Science", institution: "BISE Faisalabad", year: "2020" },
-  { title: "Intermediate — ICS", institution: "BISE Faisalabad", year: "2022" },
-  { title: "Data Science", institution: "Codanics", year: "2023" },
-];
-
-const experience = [
-  { title: "ML Specialist / AI Engineer", company: "CodaAlpha", period: "2025 – Present" },
-  { title: "ML Specialist", company: "Arch Technologies", period: "2025 – Present" },
-  { title: "ML Engineer", company: "Codveda Technologies", period: "2025 – Present" },
-  { title: "Computer Operator", company: "Johar Centre Pir Mahal", period: "2022" },
-];
-
-const skills = [
-  "Python", "Machine Learning", "Deep Learning", "TensorFlow", "PyTorch", "Keras",
-  "scikit-learn", "NLP", "Computer Vision", "LangChain", "OpenAI", "Generative AI",
-  "Pandas", "NumPy", "Data Visualization", "Plotly", "Tableau",
-  "LangGraph", "CrewAI", "n8n", "Make.com", "FastAPI",
-];
-
-const certs = [
-  "Six-Month AI & Data Science Mentorship — Codanics",
-  "Python ka Chilla for Data Science — Codanics",
-  "Tableau for Data Analytics — Codanics",
-  "Machine Learning — InnoVista Learn Easy",
-  "Python Course — InnoVista Learn Easy",
-  "MCP (Model Context Protocol) — Hugging Face",
-  "Machine Learning Explainability — Kaggle",
-  "Deep Learning — Kaggle",
-  "Computer Vision — Kaggle",
-  "SQL, Python, Data Visualization, Data Cleaning — Kaggle",
-  "🏆 Kaggle Grandmaster",
-];
-
-const projects = [
-  { title: "AI Assistant", link: "https://ai-with-dastgeer.vercel.app/" },
-  { title: "Real Estate Platform", link: "https://real-estate-two-silk.vercel.app/" },
-  { title: "Token Optimization Engine", link: null },
-  { title: "Full-Stack AI Platform", link: null },
-];
 
 const WebCV = () => {
   return (
@@ -54,83 +13,180 @@ const WebCV = () => {
           </Link>
 
           <div className="bg-card border border-border rounded-2xl p-8 shadow-sm mb-6">
+            {/* Header */}
             <div className="flex flex-col md:flex-row items-center gap-6 mb-6">
               <img src={profileImg} alt="Muhammad Dastgeer" className="w-24 h-24 rounded-full object-cover border-4 border-primary/20" />
               <div className="text-center md:text-left">
-                <h1 className="font-heading text-3xl font-bold text-foreground">Muhammad Dastgeer</h1>
-                <p className="text-primary font-semibold">AI Engineer & Machine Learning Specialist</p>
-                <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-2 text-sm text-muted-foreground">
-                  <span className="flex items-center gap-1"><MapPin size={14} /> Pir Mahal, Punjab, Pakistan</span>
-                  <span className="flex items-center gap-1"><Mail size={14} /> dastgeerjutt8888@gmail.com</span>
+                <h1 className="font-heading text-3xl font-bold text-foreground">MUHAMMAD DASTGEER</h1>
+                <p className="text-primary font-semibold text-sm">Kaggle Grandmaster • AI/ML Engineer • Generative AI Specialist • Data Scientist</p>
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-2 text-xs text-muted-foreground">
+                  <span className="flex items-center gap-1"><Phone size={12} /> +92 318 2460719</span>
+                  <span className="flex items-center gap-1"><Mail size={12} /> dastgeerjutt8888@gmail.com</span>
+                  <span className="flex items-center gap-1"><MapPin size={12} /> Pir Mahal, Punjab, Pakistan</span>
                 </div>
-                <div className="flex flex-wrap gap-2 mt-2">
+                <div className="flex flex-wrap gap-3 mt-2">
+                  <a href="https://linkedin.com/in/muhammad-dastgeer" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">LinkedIn</a>
                   <a href="https://github.com/MuhammadDastgeer" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">GitHub</a>
-                  <a href="https://www.linkedin.com/in/muhammad-dastgeer/" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">LinkedIn</a>
                   <a href="https://www.kaggle.com/dastgeerjutt" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">Kaggle</a>
                 </div>
               </div>
             </div>
 
-            <div className="border-t border-border pt-4 mb-6">
+            {/* Professional Summary */}
+            <Section title="Professional Summary">
               <p className="text-muted-foreground text-sm leading-relaxed">
-                Dedicated AI Engineer specializing in Machine Learning, Deep Learning, Computer Vision, NLP, and Generative AI & LLMs. Built 30+ AI agents and delivered 20+ ML projects. Kaggle Grandmaster with expertise in Agentic AI systems, Data Analysis, and AI Automation.
+                Kaggle Grandmaster and AI/ML Engineer with deep hands-on expertise across the complete AI/ML spectrum — from classical machine learning to cutting-edge Generative AI and Agentic systems. Proficient in Python, PyTorch, TensorFlow, and the full data science pipeline. Passionate about building intelligent, scalable AI systems and automating complex real-world workflows. Currently contributing to multiple ML engineering roles, continuously advancing expertise in LLMs, Computer Vision, NLP, and Autonomous AI Agents.
               </p>
-            </div>
-
-            <Section title="Professional Experience">
-              {experience.map((exp, i) => (
-                <div key={i} className="mb-3 last:mb-0">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h4 className="font-semibold text-foreground text-sm">{exp.title}</h4>
-                      <p className="text-xs text-primary">{exp.company}</p>
-                    </div>
-                    <span className="text-xs text-muted-foreground whitespace-nowrap">{exp.period}</span>
-                  </div>
-                </div>
-              ))}
             </Section>
 
-            <Section title="Education">
-              {education.map((edu, i) => (
-                <div key={i} className="mb-2 last:mb-0 flex justify-between">
-                  <div>
-                    <h4 className="font-semibold text-foreground text-sm">{edu.title}</h4>
-                    <p className="text-xs text-muted-foreground">{edu.institution}</p>
+            {/* Core Competencies */}
+            <Section title="Core AI/ML Competencies">
+              <div className="space-y-2">
+                {[
+                  { area: "Programming & Math", skills: "Python (Advanced), Mathematics & Statistics for AI, Linear Algebra, Calculus, Probability" },
+                  { area: "Data & Analysis", skills: "Data Analysis, Data Processing & Visualization, Pandas, NumPy, Matplotlib, Seaborn, Plotly" },
+                  { area: "Machine Learning", skills: "Supervised & Unsupervised Learning, Feature Engineering, Model Evaluation, Scikit-learn, XGBoost, LightGBM" },
+                  { area: "Deep Learning", skills: "Neural Networks, CNNs, RNNs, Transformers, PyTorch, TensorFlow/Keras, Transfer Learning, Fine-tuning" },
+                  { area: "Generative AI", skills: "LLMs, RAG Systems, Prompt Engineering, LangChain, LlamaIndex, Groq API, Gemini API, Anthropic Claude API" },
+                  { area: "Agentic AI", skills: "Multi-Agent Systems, LangGraph, CrewAI, AutoGen, MCP Servers, Autonomous Workflows" },
+                  { area: "AI Automation", skills: "n8n Workflows, FastAPI, Flask, Celery, Redis, Webhooks, API Integrations, CI/CD for ML" },
+                  { area: "MLOps", skills: "Model Deployment, Monitoring, A/B Testing, MLflow, Weights & Biases, Docker" },
+                  { area: "NLP", skills: "Text Classification, NER, Sentiment Analysis, BERT, Seq2Seq, Summarization, Hugging Face" },
+                  { area: "Computer Vision", skills: "Image Classification, YOLO Object Detection, Segmentation, OCR, Video Processing, OpenCV" },
+                  { area: "Time Series", skills: "ARIMA, Prophet, LSTM Forecasting, Anomaly Detection, Trend Analysis" },
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-2 text-sm">
+                    <span className="font-semibold text-foreground min-w-[140px] flex-shrink-0">{item.area}</span>
+                    <span className="text-muted-foreground">{item.skills}</span>
                   </div>
-                  <span className="text-xs text-muted-foreground">{edu.year}</span>
-                </div>
-              ))}
-            </Section>
-
-            <Section title="Technical Skills">
-              <div className="flex flex-wrap gap-2">
-                {skills.map((s) => (
-                  <span key={s} className="px-2 py-1 text-xs border border-border rounded-md bg-secondary text-foreground">{s}</span>
                 ))}
               </div>
             </Section>
 
-            <Section title="Certifications">
-              <ul className="space-y-1">
-                {certs.map((c, i) => (
-                  <li key={i} className="text-sm text-muted-foreground">• {c}</li>
-                ))}
-              </ul>
+            {/* Professional Experience */}
+            <Section title="Professional Experience">
+              <ExperienceItem
+                title="Machine Learning Engineer"
+                company="Codveda Technologies"
+                period="Apr 2025 – Present"
+                location="Pakistan (Part-Time/Contract)"
+                bullets={[
+                  "Designed and deployed end-to-end ML pipelines for real-world data analysis and prediction tasks, reducing manual processing time by ~40%.",
+                  "Built and optimized deep learning models using PyTorch and TensorFlow achieving production-grade performance across classification and regression tasks.",
+                  "Led LLM integration projects incorporating RAG pipelines, prompt engineering, and Agentic workflows for client-facing AI applications.",
+                  "Conducted model evaluation, A/B testing, and performance monitoring for deployed AI systems.",
+                ]}
+              />
+              <ExperienceItem
+                title="Machine Learning Specialist"
+                company="Arch Technologies"
+                period="Apr 2025 – Present"
+                location="Pakistan (Part-Time/Contract)"
+                bullets={[
+                  "Developed and tested ML models for predictive modeling tasks with cross-validation F1 scores consistently above 0.88.",
+                  "Performed comprehensive data preprocessing, feature engineering, and model training workflows on structured datasets.",
+                  "Evaluated model performance using precision/recall metrics and business KPIs aligned with client requirements.",
+                ]}
+              />
+              <ExperienceItem
+                title="Machine Learning Specialist"
+                company="CodaAlpha"
+                period="Mar 2025 – Present"
+                location="Pakistan (Freelance/Contract)"
+                bullets={[
+                  "Built ML models for structured data prediction with hands-on preprocessing and performance evaluation pipelines.",
+                  "Deployed models to staging environments and monitored live inference pipelines for reliability and drift detection.",
+                ]}
+              />
+              <ExperienceItem
+                title="Computer Operator"
+                company="Johar Centre Pir Mahal"
+                period="2022 – 2023"
+                location="Pir Mahal, Pakistan"
+                bullets={[
+                  "Managed data entry, document processing, and office automation using MS Office suite.",
+                  "Handled client-facing administrative tasks and maintained accurate digital records.",
+                ]}
+              />
             </Section>
 
+            {/* Education */}
+            <Section title="Education">
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <div>
+                    <h4 className="font-semibold text-foreground text-sm">Intermediate (ICS) — Computer Science</h4>
+                    <p className="text-xs text-muted-foreground">BISE Faisalabad</p>
+                  </div>
+                  <span className="text-xs text-muted-foreground">2022</span>
+                </div>
+                <div className="flex justify-between">
+                  <div>
+                    <h4 className="font-semibold text-foreground text-sm">Matric — Computer Science</h4>
+                    <p className="text-xs text-muted-foreground">BISE Faisalabad</p>
+                  </div>
+                  <span className="text-xs text-muted-foreground">2020</span>
+                </div>
+              </div>
+            </Section>
+
+            {/* Certifications */}
+            <Section title="Certifications & Training">
+              <div className="grid md:grid-cols-2 gap-1">
+                {[
+                  "Six-Month AI & Data Science Mentorship — Codanics",
+                  "Python ka Chilla for Data Science — Codanics",
+                  "Tableau for Data Analytics — Codanics",
+                  "Machine Learning — InnoVista Learn Easy",
+                  "Python Course — InnoVista Learn Easy",
+                  "MCP (Model Context Protocol) — Hugging Face",
+                  "Machine Learning Explainability — Kaggle",
+                  "Deep Learning — Kaggle",
+                  "Computer Vision — Kaggle",
+                  "SQL, Python, Data Visualization, Data Cleaning — Kaggle",
+                  "🏆 Kaggle Grandmaster — Top competitive rank globally",
+                ].map((c, i) => (
+                  <p key={i} className="text-sm text-muted-foreground">• {c}</p>
+                ))}
+              </div>
+            </Section>
+
+            {/* Projects */}
             <Section title="Projects">
-              {projects.map((p, i) => (
+              {[
+                { title: "AI Assistant", link: "https://ai-with-dastgeer.vercel.app/", github: "https://github.com/MuhammadDastgeer/Chatbot-app-google.git" },
+                { title: "Real Estate Platform", link: "https://real-estate-two-silk.vercel.app/", github: "https://github.com/MuhammadDastgeer/Real_Estate_Project.git" },
+                { title: "Token Optimization Engine", link: null, github: null },
+                { title: "Full-Stack AI Platform", link: null, github: null },
+              ].map((p, i) => (
                 <div key={i} className="flex items-center justify-between mb-2">
                   <span className="text-sm font-medium text-foreground">{p.title}</span>
-                  {p.link && (
-                    <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-1 text-xs">
-                      Visit <ExternalLink size={12} />
-                    </a>
-                  )}
+                  <div className="flex gap-3">
+                    {p.link && (
+                      <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-1 text-xs">
+                        Live <ExternalLink size={12} />
+                      </a>
+                    )}
+                    {p.github && (
+                      <a href={p.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:underline text-xs">
+                        GitHub
+                      </a>
+                    )}
+                  </div>
                 </div>
               ))}
             </Section>
+
+            {/* Languages */}
+            <Section title="Languages">
+              <div className="flex gap-4 text-sm">
+                <span className="text-foreground"><strong>English</strong> (Professional)</span>
+                <span className="text-foreground"><strong>Urdu</strong> (Native)</span>
+                <span className="text-foreground"><strong>Punjabi</strong> (Native)</span>
+              </div>
+            </Section>
+
+            <p className="text-xs text-muted-foreground text-center mt-4">References available upon request.</p>
           </div>
         </motion.div>
       </div>
@@ -142,6 +198,23 @@ const Section = ({ title, children }) => (
   <div className="mb-6">
     <h3 className="font-heading text-lg font-bold text-foreground mb-3 pb-1 border-b border-border">{title}</h3>
     {children}
+  </div>
+);
+
+const ExperienceItem = ({ title, company, period, location, bullets }) => (
+  <div className="mb-4 last:mb-0">
+    <div className="flex flex-wrap items-start justify-between gap-1 mb-1">
+      <div>
+        <h4 className="font-semibold text-foreground text-sm">{title}</h4>
+        <p className="text-xs text-primary">{company} • <span className="text-muted-foreground">{location}</span></p>
+      </div>
+      <span className="text-xs text-muted-foreground italic">{period}</span>
+    </div>
+    <ul className="space-y-1 ml-4">
+      {bullets.map((b, i) => (
+        <li key={i} className="text-xs text-muted-foreground list-disc">{b}</li>
+      ))}
+    </ul>
   </div>
 );
 
