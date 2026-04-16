@@ -75,18 +75,6 @@ const Projects = () => {
                       </a>
                     )}
                   </div>
-                  </div>
-                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.desc}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tools.map((t) => (
-                      <span key={t} className="px-2 py-1 text-xs border border-border rounded-md text-muted-foreground bg-secondary hover-badge">{t}</span>
-                    ))}
-                  </div>
-                  {project.github && (
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-block mt-3 text-xs text-primary hover:underline">
-                      View on GitHub →
-                    </a>
-                  )}
                 </div>
               </div>
             </ScrollReveal>
