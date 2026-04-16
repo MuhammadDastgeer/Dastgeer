@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const projects = [
@@ -56,13 +56,25 @@ const Projects = () => {
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-heading text-xl font-bold text-foreground">{project.title}</h3>
-                    <div className="flex gap-2">
-                      {project.link && (
-                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                          <ExternalLink size={18} />
-                        </a>
-                      )}
-                    </div>
+                  </div>
+                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.desc}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tools.map((t) => (
+                      <span key={t} className="px-2 py-1 text-xs border border-border rounded-md text-muted-foreground bg-secondary hover-badge">{t}</span>
+                    ))}
+                  </div>
+                  <div className="flex gap-3">
+                    {project.link && (
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg gradient-purple-bg text-primary-foreground hover:opacity-90 transition-opacity">
+                        <ExternalLink size={14} /> Live Demo
+                      </a>
+                    )}
+                    {project.github && (
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg border border-border text-foreground hover:bg-secondary transition-colors">
+                        <Github size={14} /> GitHub
+                      </a>
+                    )}
+                  </div>
                   </div>
                   <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.desc}</p>
                   <div className="flex flex-wrap gap-2">
