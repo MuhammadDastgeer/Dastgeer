@@ -47,7 +47,7 @@ const Experience = () => {
         <div className="max-w-3xl mx-auto space-y-4">
           {experience.map((item, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
-              <div className="bg-card border border-border rounded-xl p-6 hover:shadow-md transition-shadow">
+              <div className="bg-card border border-border rounded-xl p-6 hover-card-lift">
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-xl gradient-purple-bg flex-shrink-0">
                     <Briefcase className="w-5 h-5 text-primary-foreground" />

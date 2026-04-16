@@ -51,7 +51,7 @@ const Projects = () => {
         <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {projects.map((project, i) => (
             <ScrollReveal key={project.title} delay={i * 0.1}>
-              <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
+              <div className="bg-card border border-border rounded-xl overflow-hidden hover-card-lift group">
                 <div className="h-1.5 rounded-t-xl" style={{ background: project.gradient }} />
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
@@ -67,7 +67,7 @@ const Projects = () => {
                   <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.desc}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.tools.map((t) => (
-                      <span key={t} className="px-2 py-1 text-xs border border-border rounded-md text-muted-foreground bg-secondary">{t}</span>
+                      <span key={t} className="px-2 py-1 text-xs border border-border rounded-md text-muted-foreground bg-secondary hover-badge">{t}</span>
                     ))}
                   </div>
                   {project.github && (

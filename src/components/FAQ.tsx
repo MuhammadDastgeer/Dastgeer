@@ -30,7 +30,7 @@ const FAQ = () => {
           <div className="md:col-span-2 space-y-3">
             {faqs.map((faq, i) => (
               <ScrollReveal key={i} delay={i * 0.05}>
-                <div className="bg-card border border-border rounded-xl overflow-hidden">
+                <div className="bg-card border border-border rounded-xl overflow-hidden hover-card-lift">
                   <button
                     onClick={() => setOpenIndex(openIndex === i ? null : i)}
                     className="w-full flex items-center gap-3 p-4 text-left"

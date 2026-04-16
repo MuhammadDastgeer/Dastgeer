@@ -71,14 +71,14 @@ const Skills = () => {
         <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {skills.map((skill, i) => (
             <ScrollReveal key={skill.title} delay={i * 0.05}>
-              <div className="rounded-xl p-5 border border-border hover:shadow-md transition-shadow" style={{ backgroundColor: skill.bg }}>
+              <div className="rounded-xl p-5 border border-border hover-card-lift" style={{ backgroundColor: skill.bg }}>
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">{skill.emoji}</span>
                   <h3 className="font-heading font-bold text-foreground">{skill.title}</h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {skill.tools.map((t) => (
-                    <span key={t} className="px-2 py-1 text-xs rounded-md bg-card border border-border text-primary font-medium">{t}</span>
+                    <span key={t} className="px-2 py-1 text-xs rounded-md bg-card border border-border text-primary font-medium hover-badge">{t}</span>
                   ))}
                 </div>
               </div>
