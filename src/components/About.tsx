@@ -16,7 +16,7 @@ const About = () => {
           <ScrollReveal direction="left">
             <div className="relative flex justify-center">
               <div className="relative">
-                <div className="w-48 h-56 md:w-56 md:h-64 rounded-2xl overflow-hidden shadow-xl">
+                <div className="w-64 h-72 md:w-80 md:h-96 rounded-2xl overflow-hidden shadow-xl">
                   <img src={profileImg} alt="Muhammad Dastgeer" className="w-full h-full object-cover" loading="lazy" width={512} height={512} />
                 </div>
                 <motion.div
