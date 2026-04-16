@@ -1,10 +1,32 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import profileImg from "@/assets/profile.png";
 import ScrollReveal from "./ScrollReveal";
 
+const roles = [
+  "Deep Learning",
+  "Machine Learning",
+  "Generative AI",
+  "Computer Vision",
+  "NLP Expert",
+  "Agentic AI",
+  "Data Scientist",
+  "AI Automation",
+  "Kaggle Grandmaster",
+];
+
 const Hero = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="home" className="min-h-screen flex items-center pt-16 bg-background">
       <div className="container mx-auto px-4 md:px-8">
@@ -25,7 +47,20 @@ const Hero = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={0.2}>
-              <h2 className="font-heading text-xl font-bold text-foreground mb-2">Deep Learning</h2>
+              <h2 className="font-heading text-xl font-bold text-foreground mb-2 h-8 overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={roles[roleIndex]}
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -30, opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="inline-block highlight-text"
+                  >
+                    {roles[roleIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </h2>
               <p className="flex items-center gap-1 text-muted-foreground text-sm mb-4">
                 <MapPin size={14} /> Pir Mahal, Punjab, Pakistan
               </p>
