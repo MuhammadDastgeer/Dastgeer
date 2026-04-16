@@ -67,7 +67,7 @@ const About = () => {
             <ScrollReveal delay={0.4}>
               <div className="flex flex-wrap gap-2">
                 {skills.map((skill) => (
-                  <span key={skill} className="px-3 py-1.5 border border-border rounded-full text-sm text-foreground bg-card">
+                  <span key={skill} className="px-3 py-1.5 border border-border rounded-full text-sm text-foreground bg-card hover-badge cursor-default">
                     {skill}
                   </span>
                 ))}

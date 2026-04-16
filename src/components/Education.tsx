@@ -22,7 +22,7 @@ const Education = () => {
         <div className="max-w-2xl mx-auto space-y-4">
           {education.map((item, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
-              <div className="bg-card border border-border rounded-xl p-5 flex items-center gap-4 hover:shadow-md transition-shadow">
+              <div className="bg-card border border-border rounded-xl p-5 flex items-center gap-4 hover-card-lift">
                 <div className="p-3 rounded-xl bg-blue-accent/10">
                   <GraduationCap className="w-6 h-6 text-blue-accent" />
                 </div>

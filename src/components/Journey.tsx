@@ -42,7 +42,7 @@ const Journey = () => {
                     style={{ borderColor: item.color }}
                   />
                 </div>
-                <div className="bg-card border border-border rounded-lg p-4 flex-1">
+                <div className="bg-card border border-border rounded-lg p-4 flex-1 hover-card-lift">
                   <p className="text-sm text-foreground">{item.text}</p>
                 </div>
               </div>

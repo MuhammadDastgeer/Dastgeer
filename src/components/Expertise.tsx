@@ -66,10 +66,10 @@ const Expertise = () => {
         <div className="grid md:grid-cols-3 gap-6">
           {expertise.map((item, i) => (
             <ScrollReveal key={item.title} delay={i * 0.1}>
-              <div className="bg-card rounded-xl p-6 border border-border hover:shadow-lg transition-shadow group">
+              <div className="bg-card rounded-xl p-6 border border-border hover-card-lift group cursor-default">
                 <div className="h-1 rounded-full mb-4" style={{ background: item.color }} />
                 <div className="flex items-center justify-between mb-4">
-                  <div className="p-2 rounded-lg bg-secondary">{item.icon}</div>
+                  <div className="p-2 rounded-lg bg-secondary hover-icon-glow">{item.icon}</div>
                   <div className="text-right">
                     <span className="text-xl font-bold" style={{ color: item.color }}>{item.stat}</span>
                     <p className="text-xs text-muted-foreground">{item.statLabel}</p>
@@ -79,7 +79,7 @@ const Expertise = () => {
                 <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{item.desc}</p>
                 <div className="flex flex-wrap gap-2">
                   {item.tools.map((t) => (
-                    <span key={t} className="px-2 py-1 text-xs border border-border rounded-md text-muted-foreground bg-secondary">{t}</span>
+                    <span key={t} className="px-2 py-1 text-xs border border-border rounded-md text-muted-foreground bg-secondary hover-badge">{t}</span>
                   ))}
                 </div>
               </div>

@@ -29,7 +29,7 @@ const Certifications = () => {
         <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {certs.map((cert, i) => (
             <ScrollReveal key={i} delay={i * 0.05}>
-              <div className="rounded-xl p-4 border border-border flex items-center gap-3 hover:shadow-md transition-shadow" style={{ backgroundColor: cert.color }}>
+              <div className="rounded-xl p-4 border border-border flex items-center gap-3 hover-card-lift" style={{ backgroundColor: cert.color }}>
                 <div className="p-2 rounded-lg bg-primary/10">
                   <Award className="w-5 h-5 text-primary" />
                 </div>
