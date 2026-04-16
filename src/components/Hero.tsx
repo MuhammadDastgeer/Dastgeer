@@ -45,7 +45,7 @@ const Hero = () => {
                 <Link to="/web-cv" className="border border-primary text-primary px-6 py-3 rounded-lg font-semibold text-sm hover:bg-primary/5 transition-colors flex items-center gap-2">
                   🌐 Web CV
                 </Link>
-                <a href="#" className="border border-border text-foreground px-6 py-3 rounded-lg font-semibold text-sm hover:bg-secondary transition-colors flex items-center gap-2">
+                <a href="/Muhammad_Dastgeer_CV.pdf" download className="border border-border text-foreground px-6 py-3 rounded-lg font-semibold text-sm hover:bg-secondary transition-colors flex items-center gap-2">
                   ↓ Download CV
                 </a>
               </div>
@@ -64,7 +64,7 @@ const Hero = () => {
           <ScrollReveal direction="right" delay={0.2}>
             <div className="relative flex justify-center">
               <div className="relative">
-                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-card shadow-2xl">
+                <div className="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-card shadow-2xl">
                   <img src={profileImg} alt="Muhammad Dastgeer" className="w-full h-full object-cover" width={512} height={512} />
                 </div>
 
