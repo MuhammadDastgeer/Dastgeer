@@ -15,7 +15,7 @@ const projects = [
     desc: "A full-stack real estate platform with property listings, search, and modern UI for buying, selling, and renting properties.",
     tools: ["Next.js", "React", "Vercel", "REST APIs"],
     gradient: "linear-gradient(135deg, hsl(186,94%,42%), hsl(217,91%,60%))",
-    link: "https://real-estate-two-silk.vercel.app/",
+    link: "https://drive.google.com/file/d/15bDLE7-kCGwcjmnMEu2uUaTG5IABZ8yF/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Real_Estate_Project.git",
   },
   {
@@ -66,7 +66,7 @@ const Projects = () => {
                   <div className="flex gap-3">
                     {project.link && (
                       <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg gradient-purple-bg text-primary-foreground hover:opacity-90 transition-opacity">
-                        <ExternalLink size={14} /> Live Demo
+                        <ExternalLink size={14} /> Demo Video
                       </a>
                     )}
                     {project.github && (
