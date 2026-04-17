@@ -1,5 +1,12 @@
 import { ExternalLink } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import codaImg from "@/assets/project-coda.jpg";
+import explainerImg from "@/assets/project-explainer.jpg";
+import travelImg from "@/assets/project-travel.jpg";
+import doctorImg from "@/assets/project-doctor.jpg";
+import supportImg from "@/assets/project-support.jpg";
+import blogImg from "@/assets/project-blog.jpg";
+import realestateImg from "@/assets/project-realestate.jpg";
 
 const projects = [
   {
@@ -7,6 +14,7 @@ const projects = [
     desc: "An intelligent AI code agent that helps developers write, debug, and understand code using advanced LLM workflows.",
     tools: ["LangChain", "LangGraph", "OpenAI", "Streamlit"],
     gradient: "linear-gradient(135deg, hsl(25,95%,53%), hsl(265,89%,50%))",
+    image: codaImg,
     link: "https://drive.google.com/file/d/1H6R29Poe0mZWGJ7y80UaWpyKaOuWf1Y3/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/CODA-Ai-APP.git",
   },
@@ -15,6 +23,7 @@ const projects = [
     desc: "AI-powered app that explains complex code snippets in plain language, making programming easier for learners and devs.",
     tools: ["LangChain", "OpenAI", "Groq", "Streamlit"],
     gradient: "linear-gradient(135deg, hsl(186,94%,42%), hsl(217,91%,60%))",
+    image: explainerImg,
     link: "https://drive.google.com/file/d/1umKkniooMV_BEOx_yiSuDAkNWVcYx_4f/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/code-explainer-app.git",
   },
@@ -23,6 +32,7 @@ const projects = [
     desc: "Smart travel planning assistant that builds personalized itineraries, suggests destinations, and handles travel queries.",
     tools: ["LangGraph", "Gemini", "LangSmith", "Streamlit"],
     gradient: "linear-gradient(135deg, hsl(142,71%,45%), hsl(186,94%,42%))",
+    image: travelImg,
     link: "https://drive.google.com/file/d/1-jy0OY3TPaeg28Oxp3c5wj8KzglnG-W2/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/travel_agent_app.git",
   },
@@ -31,6 +41,7 @@ const projects = [
     desc: "Healthcare chatbot that provides preliminary medical guidance, symptom analysis, and health-related Q&A.",
     tools: ["LangChain", "OpenAI", "MCP", "Streamlit"],
     gradient: "linear-gradient(135deg, hsl(0,84%,60%), hsl(25,95%,53%))",
+    image: doctorImg,
     link: "https://drive.google.com/file/d/1o0-y7ON2jY8rlAw66NQUTcV7W-r8Wgg4/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Health_Care_app.git",
   },
@@ -39,6 +50,7 @@ const projects = [
     desc: "Automated customer support chatbot that handles user queries, resolves issues, and escalates complex cases intelligently.",
     tools: ["LangChain", "Groq", "LangSmith", "Streamlit"],
     gradient: "linear-gradient(135deg, hsl(265,89%,50%), hsl(217,91%,60%))",
+    image: supportImg,
     link: "https://drive.google.com/file/d/1gQx-K7kRTdJXdcLhaP2Yux0dWA4-lgnu/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Customer_Support_chatbot_app.git",
   },
@@ -47,6 +59,7 @@ const projects = [
     desc: "Autonomous AI agent that writes complete blog posts on any topic with research, structuring, and SEO optimization.",
     tools: ["LangGraph", "Gemini", "OpenAI", "Streamlit"],
     gradient: "linear-gradient(135deg, hsl(186,94%,42%), hsl(142,71%,45%))",
+    image: blogImg,
     link: "https://drive.google.com/file/d/1yX4gcXZRLH7CjhIm957cNRONaxvl_ihk/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Writes-Blogs-Automatically-Agent.git",
   },
@@ -55,6 +68,7 @@ const projects = [
     desc: "A full-stack real estate platform with property listings, search, and modern UI for buying, selling, and renting properties.",
     tools: ["Next.js", "React", "Vercel", "REST APIs"],
     gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(265,89%,50%))",
+    image: realestateImg,
     link: "https://drive.google.com/file/d/15bDLE7-kCGwcjmnMEu2uUaTG5IABZ8yF/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Real_Estate_Project.git",
   },
@@ -76,7 +90,18 @@ const Projects = () => {
           {projects.map((project, i) => (
             <ScrollReveal key={project.title} delay={i * 0.1}>
               <div className="bg-card border border-border rounded-xl overflow-hidden hover-card-lift group">
-                <div className="h-1.5 rounded-t-xl" style={{ background: project.gradient }} />
+                <div className="h-1.5" style={{ background: project.gradient }} />
+                <div className="relative overflow-hidden aspect-[16/9] bg-secondary">
+                  <img
+                    src={project.image}
+                    alt={`${project.title} thumbnail`}
+                    loading="lazy"
+                    width={800}
+                    height={450}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
+                </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-heading text-xl font-bold text-foreground">{project.title}</h3>
