@@ -154,10 +154,13 @@ const WebCV = () => {
             {/* Projects */}
             <Section title="Projects">
               {[
-                { title: "AI Assistant", link: "https://ai-with-dastgeer.vercel.app/", github: "https://github.com/MuhammadDastgeer/Chatbot-app-google.git" },
-                { title: "Real Estate Platform", link: "https://real-estate-two-silk.vercel.app/", github: "https://github.com/MuhammadDastgeer/Real_Estate_Project.git" },
-                { title: "Token Optimization Engine", link: null, github: null },
-                { title: "Full-Stack AI Platform", link: null, github: null },
+                { title: "CODA-Ai: AI Code Agent", link: "https://drive.google.com/file/d/1H6R29Poe0mZWGJ7y80UaWpyKaOuWf1Y3/view?usp=sharing", github: "https://github.com/MuhammadDastgeer/CODA-Ai-APP.git" },
+                { title: "Code Explainer App", link: "https://drive.google.com/file/d/1umKkniooMV_BEOx_yiSuDAkNWVcYx_4f/view?usp=sharing", github: "https://github.com/MuhammadDastgeer/code-explainer-app.git" },
+                { title: "AI Travel Agent", link: "https://drive.google.com/file/d/1-jy0OY3TPaeg28Oxp3c5wj8KzglnG-W2/view?usp=sharing", github: "https://github.com/MuhammadDastgeer/travel_agent_app.git" },
+                { title: "Doctor AI - Healthcare Chatbot", link: "https://drive.google.com/file/d/1o0-y7ON2jY8rlAw66NQUTcV7W-r8Wgg4/view?usp=sharing", github: "https://github.com/MuhammadDastgeer/Health_Care_app.git" },
+                { title: "Customer Support Chatbot", link: "https://drive.google.com/file/d/1gQx-K7kRTdJXdcLhaP2Yux0dWA4-lgnu/view?usp=sharing", github: "https://github.com/MuhammadDastgeer/Customer_Support_chatbot_app.git" },
+                { title: "Auto Blog Writer Agent", link: "https://drive.google.com/file/d/1yX4gcXZRLH7CjhIm957cNRONaxvl_ihk/view?usp=sharing", github: "https://github.com/MuhammadDastgeer/Writes-Blogs-Automatically-Agent.git" },
+                { title: "Real Estate Platform", link: "https://drive.google.com/file/d/15bDLE7-kCGwcjmnMEu2uUaTG5IABZ8yF/view?usp=sharing", github: "https://github.com/MuhammadDastgeer/Real_Estate_Project.git" },
               ].map((p, i) => (
                 <div key={i} className="flex items-center justify-between mb-2">
                   <span className="text-sm font-medium text-foreground">{p.title}</span>
