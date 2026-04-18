@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import codaImg from "@/assets/project-coda.jpg";
 import explainerImg from "@/assets/project-explainer.jpg";
@@ -7,8 +8,27 @@ import doctorImg from "@/assets/project-doctor.jpg";
 import supportImg from "@/assets/project-support.jpg";
 import blogImg from "@/assets/project-blog.jpg";
 import realestateImg from "@/assets/project-realestate.jpg";
+import weatherImg from "@/assets/project-weather.jpg";
+import moviesImg from "@/assets/project-movies.jpg";
+import studentImg from "@/assets/project-student.jpg";
+import youtubeImg from "@/assets/project-youtube.jpg";
+import mentalImg from "@/assets/project-mental.jpg";
+import codeSmellsImg from "@/assets/project-code-smells.jpg";
+import stockImg from "@/assets/project-stock.jpg";
+import ecommerceImg from "@/assets/project-ecommerce.jpg";
 
-const projects = [
+type Project = {
+  title: string;
+  desc: string;
+  tools: string[];
+  gradient: string;
+  image: string;
+  link?: string;
+  github?: string;
+  kaggle?: string;
+};
+
+const genAiProjects: Project[] = [
   {
     title: "CODA-Ai: AI Code Agent",
     desc: "An intelligent AI code agent that helps developers write, debug, and understand code using advanced LLM workflows.",
@@ -74,59 +94,169 @@ const projects = [
   },
 ];
 
+const mlProjects: Project[] = [
+  {
+    title: "Extreme Weather Analysis",
+    desc: "In-depth analysis of extreme weather events using historical climate data, identifying patterns and trends.",
+    tools: ["Python", "Pandas", "Matplotlib", "Seaborn"],
+    gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(25,95%,53%))",
+    image: weatherImg,
+    kaggle: "https://www.kaggle.com/code/dastgeerjutt/extreme-weather-analysis",
+  },
+  {
+    title: "Movies Recommendation System",
+    desc: "Content-based and collaborative filtering recommendation system that suggests movies based on user preferences.",
+    tools: ["Python", "Scikit-learn", "Pandas", "NLP"],
+    gradient: "linear-gradient(135deg, hsl(0,84%,60%), hsl(45,93%,47%))",
+    image: moviesImg,
+    kaggle: "https://www.kaggle.com/code/dastgeerjutt/movies-recommendation-system",
+  },
+  {
+    title: "Student Performance Analysis",
+    desc: "Data-driven analysis of student academic performance with insights into factors influencing grades and outcomes.",
+    tools: ["Python", "Pandas", "Plotly", "EDA"],
+    gradient: "linear-gradient(135deg, hsl(142,71%,45%), hsl(217,91%,60%))",
+    image: studentImg,
+    kaggle: "https://www.kaggle.com/code/dastgeerjutt/student-performance-analysis",
+  },
+  {
+    title: "YouTube Trending Analysis",
+    desc: "Comprehensive analysis of trending YouTube videos identifying patterns in views, engagement, and content categories.",
+    tools: ["Python", "Pandas", "Matplotlib", "EDA"],
+    gradient: "linear-gradient(135deg, hsl(0,84%,60%), hsl(0,0%,15%))",
+    image: youtubeImg,
+    kaggle: "https://www.kaggle.com/code/dastgeerjutt/youtube-trending-analysis",
+  },
+  {
+    title: "Social Media Mental Health Analysis",
+    desc: "Statistical analysis exploring the relationship between social media usage and mental health indicators.",
+    tools: ["Python", "Pandas", "Seaborn", "Statistics"],
+    gradient: "linear-gradient(135deg, hsl(265,89%,50%), hsl(330,81%,60%))",
+    image: mentalImg,
+    kaggle: "https://www.kaggle.com/code/dastgeerjutt/social-media-mental-health-analysis",
+  },
+  {
+    title: "Code Smells Refactoring Analysis",
+    desc: "Data analysis of code smells and refactoring patterns in software repositories to improve code quality.",
+    tools: ["Python", "Pandas", "Matplotlib", "EDA"],
+    gradient: "linear-gradient(135deg, hsl(186,94%,42%), hsl(25,95%,53%))",
+    image: codeSmellsImg,
+    kaggle: "https://www.kaggle.com/code/dastgeerjutt/code-smells-refactoring-analysis",
+  },
+  {
+    title: "Stock Market Analysis",
+    desc: "Time-series analysis of stock market data with technical indicators, trend detection, and visualization.",
+    tools: ["Python", "Pandas", "Plotly", "Time Series"],
+    gradient: "linear-gradient(135deg, hsl(142,71%,45%), hsl(0,0%,15%))",
+    image: stockImg,
+    kaggle: "https://www.kaggle.com/code/dastgeerjutt/stock-market-analysis",
+  },
+  {
+    title: "Ecommerce Behavior Analysis",
+    desc: "Customer behavior analytics for ecommerce platforms uncovering buying patterns and conversion funnels.",
+    tools: ["Python", "Pandas", "Seaborn", "EDA"],
+    gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(265,89%,50%))",
+    image: ecommerceImg,
+    kaggle: "https://www.kaggle.com/code/dastgeerjutt/ecommerce-behavior-analysis",
+  },
+];
+
+const KaggleIcon = () => (
+  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.358"/>
+  </svg>
+);
+
+const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
+  <ScrollReveal key={project.title} delay={i * 0.05}>
+    <div className="bg-card border border-border rounded-xl overflow-hidden hover-card-lift group h-full">
+      <div className="h-1.5" style={{ background: project.gradient }} />
+      <div className="relative overflow-hidden aspect-[16/9] bg-secondary">
+        <img
+          src={project.image}
+          alt={`${project.title} thumbnail`}
+          loading="lazy"
+          width={800}
+          height={450}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
+      </div>
+      <div className="p-6">
+        <h3 className="font-heading text-xl font-bold text-foreground mb-2">{project.title}</h3>
+        <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.desc}</p>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.tools.map((t) => (
+            <span key={t} className="px-2 py-1 text-xs border border-border rounded-md text-muted-foreground bg-secondary hover-badge">{t}</span>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-3">
+          {project.link && (
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg gradient-purple-bg text-primary-foreground hover:opacity-90 transition-opacity">
+              <ExternalLink size={14} /> Demo Video
+            </a>
+          )}
+          {project.kaggle && (
+            <a href={project.kaggle} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg gradient-purple-bg text-primary-foreground hover:opacity-90 transition-opacity">
+              <KaggleIcon /> View on Kaggle
+            </a>
+          )}
+          {project.github && (
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg border border-border text-foreground hover:bg-secondary transition-colors">
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> GitHub
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </ScrollReveal>
+);
+
 const Projects = () => {
+  const [activeTab, setActiveTab] = useState<"genai" | "ml">("genai");
+  const projects = activeTab === "genai" ? genAiProjects : mlProjects;
+
   return (
     <section id="projects" className="py-20 bg-background">
       <div className="container mx-auto px-4 md:px-8">
         <ScrollReveal>
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <p className="section-subtitle mb-2">PORTFOLIO</p>
             <h2 className="section-title"><span className="highlight-text">Projects</span></h2>
-            <p className="text-muted-foreground mt-2">Real-world AI solutions that deliver measurable results</p>
+            <p className="text-muted-foreground mt-2">Real-world AI & ML solutions that deliver measurable results</p>
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <ScrollReveal>
+          <div className="flex justify-center mb-10">
+            <div className="inline-flex p-1 bg-secondary border border-border rounded-full">
+              <button
+                onClick={() => setActiveTab("genai")}
+                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all ${
+                  activeTab === "genai"
+                    ? "gradient-purple-bg text-primary-foreground shadow-md"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Agentic & GenAI
+              </button>
+              <button
+                onClick={() => setActiveTab("ml")}
+                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all ${
+                  activeTab === "ml"
+                    ? "gradient-purple-bg text-primary-foreground shadow-md"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Machine Learning
+              </button>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <div key={activeTab} className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {projects.map((project, i) => (
-            <ScrollReveal key={project.title} delay={i * 0.1}>
-              <div className="bg-card border border-border rounded-xl overflow-hidden hover-card-lift group">
-                <div className="h-1.5" style={{ background: project.gradient }} />
-                <div className="relative overflow-hidden aspect-[16/9] bg-secondary">
-                  <img
-                    src={project.image}
-                    alt={`${project.title} thumbnail`}
-                    loading="lazy"
-                    width={800}
-                    height={450}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-heading text-xl font-bold text-foreground">{project.title}</h3>
-                  </div>
-                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.desc}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tools.map((t) => (
-                      <span key={t} className="px-2 py-1 text-xs border border-border rounded-md text-muted-foreground bg-secondary hover-badge">{t}</span>
-                    ))}
-                  </div>
-                  <div className="flex gap-3">
-                    {project.link && (
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg gradient-purple-bg text-primary-foreground hover:opacity-90 transition-opacity">
-                        <ExternalLink size={14} /> Demo Video
-                      </a>
-                    )}
-                    {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg border border-border text-foreground hover:bg-secondary transition-colors">
-                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> GitHub
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
+            <ProjectCard key={project.title} project={project} i={i} />
           ))}
         </div>
       </div>
