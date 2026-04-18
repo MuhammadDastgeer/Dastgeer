@@ -23,6 +23,7 @@ import gmailSheetsImg from "@/assets/project-gmail-sheets.jpg";
 import ragDriveImg from "@/assets/project-rag-drive.jpg";
 import whatsappRagImg from "@/assets/project-whatsapp-rag.jpg";
 import ragStarterImg from "@/assets/project-rag-starter.jpg";
+import authSystemImg from "@/assets/project-auth-system.jpg";
 
 type Project = {
   title: string;
@@ -223,6 +224,14 @@ const automationProjects: Project[] = [
     tools: ["n8n", "Vector Store", "OpenAI", "Forms"],
     gradient: "linear-gradient(135deg, hsl(265,89%,50%), hsl(186,94%,42%))",
     image: ragStarterImg,
+    github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
+  },
+  {
+    title: "Full Authentication System",
+    desc: "End-to-end authentication workflow with sign up, login, email verification and logout built using n8n automation.",
+    tools: ["n8n", "Auth", "Email", "Webhooks"],
+    gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(265,89%,50%))",
+    image: authSystemImg,
     github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
 ];
