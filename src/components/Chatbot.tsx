@@ -1,40 +1,105 @@
 import { useState } from "react";
-import { MessageCircle, X, Send } from "lucide-react";
+import { MessageCircle, X, Send, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const botResponses = {
-  "hello": "Hello! 👋 I'm Muhammad Dastgeer's AI assistant. How can I help you?",
-  "hi": "Hi there! 👋 Welcome! Ask me anything about Muhammad's work, skills, or how to get in touch.",
-  "services": "Muhammad offers: AI/ML Development, Deep Learning, Agentic AI Systems, Data Analytics, Generative AI, and AI Automation. Want to know more about any?",
-  "skills": "Muhammad is skilled in Python, TensorFlow, PyTorch, LangChain, OpenAI, scikit-learn, Pandas, and many more AI/ML tools!",
-  "contact": "You can reach Muhammad at dastgeerjutt8888@gmail.com or connect on LinkedIn. He responds within 24 hours!",
-  "experience": "Muhammad has worked as ML Specialist at CodaAlpha, Arch Technologies & Codveda Technologies. He's built 30+ AI agents and 20+ ML projects!",
-  "projects": "Muhammad has built AI Assistants, Real Estate platforms, Token Optimization Engines, and Full-Stack AI Platforms. Check the Projects section!",
-  "hire": "Muhammad is currently available for hire! Fill out the contact form or email dastgeerjutt8888@gmail.com to discuss your project.",
-  "kaggle": "Muhammad is a Kaggle Grandmaster! Check his profile: kaggle.com/dastgeerjutt 🏆",
+type QuickQuestion = {
+  id: string;
+  label: string;
+  question: string;
+  answer: string;
 };
 
-const getResponse = (msg) => {
+const quickQuestions: QuickQuestion[] = [
+  {
+    id: "about",
+    label: "👤 About me & skills",
+    question: "Tell me about yourself and your skills",
+    answer:
+      "I'm **Muhammad Dastgeer** — an AI/ML Engineer specializing in **Agentic AI, Generative AI, Machine Learning, Deep Learning, and AI Automation**.\n\n**Core skills:**\n• Python, TensorFlow, PyTorch, scikit-learn\n• LangChain, LangGraph, LangSmith, MCP\n• OpenAI, Gemini, Groq APIs\n• RAG, Vector Stores, Prompt Engineering\n• n8n Automation, Streamlit, Pandas, NumPy\n• Data Analysis & Visualization (Matplotlib, Seaborn, Plotly)",
+  },
+  {
+    id: "projects",
+    label: "🚀 Show projects",
+    question: "What projects have you built?",
+    answer:
+      "I've built **30+ projects** across 3 categories:\n\n**🤖 Agentic & GenAI (8):**\nCODA-Ai Code Agent, Code Explainer, AI Travel Agent, Doctor AI, Customer Support Bot, Auto Blog Writer, Real Estate Platform, MCP Client Chatbot\n\n**📊 Machine Learning (8):**\nExtreme Weather Analysis, Movies Recommendation, Student Performance, YouTube Trending, Mental Health Analysis, Code Smells, Stock Market, Ecommerce Behavior\n\n**⚙️ AI Automation (8):**\nWordPress+PDF, Discord Bot, Email HITL, Bulk Gmail, RAG with Drive+Gemini, WhatsApp RAG, RAG Starter, Full Auth System\n\n👉 Check the **Projects** section above for live demos & GitHub links!",
+  },
+  {
+    id: "experience",
+    label: "🎓 Experience & education",
+    question: "Tell me about your experience and education",
+    answer:
+      "**💼 Experience:**\n• ML Specialist @ **CodaAlpha**\n• ML Engineer @ **Arch Technologies**\n• Data Science Intern @ **Codveda Technologies**\n\n**🎓 Education:**\n• BS in Computer Science\n• Specialization in AI & Machine Learning\n\n**🏆 Achievements:**\n• 30+ AI agents built\n• 20+ ML projects on Kaggle\n• Multiple certifications in AI, ML, and Data Science\n\n👉 See the **Experience**, **Education** & **Certifications** sections for full details!",
+  },
+  {
+    id: "contact",
+    label: "📬 Contact info",
+    question: "How can I contact you?",
+    answer:
+      "Aap mujhse in tareeqon se rabta kar sakte hain:\n\n📧 **Email:** dastgeerjutt8888@gmail.com\n💼 **LinkedIn:** linkedin.com/in/muhammad-dastgeer\n💻 **GitHub:** github.com/MuhammadDastgeer\n🏆 **Kaggle:** kaggle.com/dastgeerjutt\n📱 **WhatsApp:** Click the WhatsApp button on the page\n\nMain **24 hours** ke andar reply karta hoon. Contact form bhi use kar sakte hain — niche **Let's Connect** section mein!",
+  },
+];
+
+const fallback =
+  "Main aapke sawal ka jawab in topics mein de sakta hoon: **About & Skills**, **Projects**, **Experience & Education**, ya **Contact**. Niche diye buttons par click karein, ya direct email karein: **dastgeerjutt8888@gmail.com**";
+
+const getResponse = (msg: string): string => {
   const lower = msg.toLowerCase();
-  for (const [key, val] of Object.entries(botResponses)) {
-    if (lower.includes(key)) return val;
-  }
-  return "Thanks for your message! For detailed inquiries, please email dastgeerjutt8888@gmail.com or fill the contact form. I can help with: services, skills, contact, experience, projects, hire, kaggle.";
+  if (/(hi|hello|hey|salam|assalam)/.test(lower))
+    return "Hello! 👋 I'm Muhammad Dastgeer's assistant. Niche diye quick buttons par click karein ya apna sawal type karein!";
+  if (/(skill|about|who|kaun|tumhar|aap kaun)/.test(lower)) return quickQuestions[0].answer;
+  if (/(project|portfolio|kaam|work)/.test(lower)) return quickQuestions[1].answer;
+  if (/(experience|education|qualif|degree|certif|tajurba)/.test(lower)) return quickQuestions[2].answer;
+  if (/(contact|email|reach|hire|whatsapp|linkedin|rabta)/.test(lower)) return quickQuestions[3].answer;
+  if (/(thank|shukr)/.test(lower)) return "You're welcome! 😊 Koi aur sawal ho to puchein.";
+  return fallback;
+};
+
+type Message = { role: "user" | "bot"; text: string };
+
+const formatText = (text: string) => {
+  return text.split("\n").map((line, i) => {
+    const parts = line.split(/(\*\*[^*]+\*\*)/g);
+    return (
+      <span key={i}>
+        {parts.map((p, j) =>
+          p.startsWith("**") && p.endsWith("**") ? (
+            <strong key={j} className="font-semibold">{p.slice(2, -2)}</strong>
+          ) : (
+            <span key={j}>{p}</span>
+          )
+        )}
+        <br />
+      </span>
+    );
+  });
 };
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    { role: "bot", text: "Hi! 👋 I'm Muhammad's AI assistant. Ask me about his skills, projects, or how to get in touch!" },
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      role: "bot",
+      text:
+        "Hi! 👋 I'm Muhammad's assistant. Quick sawal ke liye niche buttons par click karein, ya apna sawal type karein!",
+    },
   ]);
   const [input, setInput] = useState("");
 
-  const handleSend = () => {
-    if (!input.trim()) return;
-    const userMsg = { role: "user", text: input };
-    const botMsg = { role: "bot", text: getResponse(input) };
+  const sendMessage = (text: string) => {
+    if (!text.trim()) return;
+    const userMsg: Message = { role: "user", text };
+    const botMsg: Message = { role: "bot", text: getResponse(text) };
     setMessages((prev) => [...prev, userMsg, botMsg]);
     setInput("");
+  };
+
+  const handleQuickClick = (q: QuickQuestion) => {
+    setMessages((prev) => [
+      ...prev,
+      { role: "user", text: q.question },
+      { role: "bot", text: q.answer },
+    ]);
   };
 
   return (
@@ -45,19 +110,25 @@ const Chatbot = () => {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="fixed bottom-24 right-4 md:right-8 w-80 bg-card border border-border rounded-2xl shadow-2xl z-50 overflow-hidden"
+            className="fixed bottom-24 right-4 md:right-8 w-[22rem] max-w-[calc(100vw-2rem)] bg-card border border-border rounded-2xl shadow-2xl z-50 overflow-hidden flex flex-col"
           >
-            <div className="gradient-purple-bg p-4 flex items-center justify-between">
+            <div className="gradient-purple-bg p-4 flex items-center justify-between flex-shrink-0">
               <div className="flex items-center gap-2">
                 <MessageCircle className="text-primary-foreground" size={20} />
-                <span className="text-primary-foreground font-semibold text-sm">Chat with AI Assistant</span>
+                <span className="text-primary-foreground font-semibold text-sm">
+                  Chat with AI Assistant
+                </span>
               </div>
-              <button onClick={() => setIsOpen(false)} className="text-primary-foreground/80 hover:text-primary-foreground">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-primary-foreground/80 hover:text-primary-foreground"
+                aria-label="Close chat"
+              >
                 <X size={18} />
               </button>
             </div>
 
-            <div className="h-72 overflow-y-auto p-3 space-y-2">
+            <div className="h-80 overflow-y-auto p-3 space-y-2">
               {messages.map((msg, i) => (
                 <motion.div
                   key={i}
@@ -65,22 +136,52 @@ const Chatbot = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  <div className={`max-w-[80%] px-3 py-2 rounded-xl text-xs ${msg.role === "user" ? "gradient-purple-bg text-primary-foreground" : "bg-secondary text-foreground"}`}>
-                    {msg.text}
+                  <div
+                    className={`max-w-[85%] px-3 py-2 rounded-xl text-xs leading-relaxed ${
+                      msg.role === "user"
+                        ? "gradient-purple-bg text-primary-foreground"
+                        : "bg-secondary text-foreground"
+                    }`}
+                  >
+                    {formatText(msg.text)}
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            <div className="p-3 border-t border-border flex gap-2">
+            <div className="px-3 pb-2 flex-shrink-0 border-t border-border pt-2">
+              <div className="flex items-center gap-1 mb-2">
+                <Sparkles size={12} className="text-primary" />
+                <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">
+                  Quick questions
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {quickQuestions.map((q) => (
+                  <button
+                    key={q.id}
+                    onClick={() => handleQuickClick(q)}
+                    className="text-[11px] px-2.5 py-1.5 rounded-full border border-border bg-secondary text-foreground hover:gradient-purple-bg hover:text-primary-foreground hover:border-transparent transition-all"
+                  >
+                    {q.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="p-3 border-t border-border flex gap-2 flex-shrink-0">
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSend()}
+                onKeyDown={(e) => e.key === "Enter" && sendMessage(input)}
                 placeholder="Type a message..."
                 className="flex-1 px-3 py-2 text-xs rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
               />
-              <button onClick={handleSend} className="gradient-purple-bg text-primary-foreground p-2 rounded-lg hover:opacity-90">
+              <button
+                onClick={() => sendMessage(input)}
+                className="gradient-purple-bg text-primary-foreground p-2 rounded-lg hover:opacity-90"
+                aria-label="Send message"
+              >
                 <Send size={14} />
               </button>
             </div>
@@ -93,6 +194,7 @@ const Chatbot = () => {
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-20 right-4 md:right-8 gradient-purple-bg text-primary-foreground p-4 rounded-full shadow-lg z-50"
+        aria-label={isOpen ? "Close chat" : "Open chat"}
       >
         {isOpen ? <X size={22} /> : <MessageCircle size={22} />}
       </motion.button>
