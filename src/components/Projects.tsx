@@ -24,6 +24,7 @@ import ragDriveImg from "@/assets/project-rag-drive.jpg";
 import whatsappRagImg from "@/assets/project-whatsapp-rag.jpg";
 import ragStarterImg from "@/assets/project-rag-starter.jpg";
 import authSystemImg from "@/assets/project-auth-system.jpg";
+import mcpChatbotImg from "@/assets/project-mcp-chatbot.jpg";
 
 type Project = {
   title: string;
@@ -99,6 +100,15 @@ const genAiProjects: Project[] = [
     image: realestateImg,
     link: "https://drive.google.com/file/d/15bDLE7-kCGwcjmnMEu2uUaTG5IABZ8yF/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Real_Estate_Project.git",
+  },
+  {
+    title: "AI Chatbot with MCP Client & Server",
+    desc: "Intelligent AI chatbot built with MCP (Model Context Protocol) client and server architecture using LangGraph for advanced tool orchestration.",
+    tools: ["LangGraph", "MCP", "OpenAI", "Python"],
+    gradient: "linear-gradient(135deg, hsl(265,89%,50%), hsl(186,94%,42%))",
+    image: mcpChatbotImg,
+    link: "https://drive.google.com/file/d/1tkN89iD6S82oy_y-DpBN_HA-YKoYTbml/view?usp=sharing",
+    github: "https://github.com/MuhammadDastgeer/Mcp-Client-Langgraph.git",
   },
 ];
 
