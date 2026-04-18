@@ -16,6 +16,13 @@ import mentalImg from "@/assets/project-mental.jpg";
 import codeSmellsImg from "@/assets/project-code-smells.jpg";
 import stockImg from "@/assets/project-stock.jpg";
 import ecommerceImg from "@/assets/project-ecommerce.jpg";
+import wpPdfImg from "@/assets/project-wp-pdf.jpg";
+import discordBotImg from "@/assets/project-discord-bot.jpg";
+import emailHitlImg from "@/assets/project-email-hitl.jpg";
+import gmailSheetsImg from "@/assets/project-gmail-sheets.jpg";
+import ragDriveImg from "@/assets/project-rag-drive.jpg";
+import whatsappRagImg from "@/assets/project-whatsapp-rag.jpg";
+import ragStarterImg from "@/assets/project-rag-starter.jpg";
 
 type Project = {
   title: string;
@@ -161,6 +168,65 @@ const mlProjects: Project[] = [
   },
 ];
 
+const automationProjects: Project[] = [
+  {
+    title: "WordPress Content from PDF + Gmail HITL",
+    desc: "Easy WordPress content creation from PDF docs with a human-in-the-loop Gmail approval step before publishing.",
+    tools: ["n8n", "WordPress", "Gmail", "OpenAI"],
+    gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(25,95%,53%))",
+    image: wpPdfImg,
+    github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
+  },
+  {
+    title: "Discord AI-Powered Bot",
+    desc: "AI-powered Discord bot that responds intelligently to messages and automates server interactions.",
+    tools: ["n8n", "Discord", "OpenAI", "Webhooks"],
+    gradient: "linear-gradient(135deg, hsl(265,89%,50%), hsl(235,89%,60%))",
+    image: discordBotImg,
+    github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
+  },
+  {
+    title: "Human-in-the-Loop Email Response",
+    desc: "Simple AI-powered email response system using IMAP with human approval before replies are sent.",
+    tools: ["n8n", "IMAP", "OpenAI", "Email"],
+    gradient: "linear-gradient(135deg, hsl(160,84%,45%), hsl(217,91%,60%))",
+    image: emailHitlImg,
+    github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
+  },
+  {
+    title: "Bulk Gmail from Google Sheets",
+    desc: "Send multiple personalized emails directly from Google Sheets via Gmail with automated workflows.",
+    tools: ["n8n", "Gmail", "Google Sheets", "Automation"],
+    gradient: "linear-gradient(135deg, hsl(0,84%,60%), hsl(142,71%,45%))",
+    image: gmailSheetsImg,
+    github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
+  },
+  {
+    title: "RAG Chatbot with Google Drive + Gemini",
+    desc: "Retrieval-augmented chatbot for company documents stored on Google Drive, powered by Gemini.",
+    tools: ["n8n", "Google Drive", "Gemini", "RAG"],
+    gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(45,93%,47%))",
+    image: ragDriveImg,
+    github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
+  },
+  {
+    title: "WhatsApp AI Chatbot (Multimodal RAG)",
+    desc: "AI-powered WhatsApp chatbot supporting text, voice, images and PDFs with retrieval-augmented generation.",
+    tools: ["n8n", "WhatsApp", "OpenAI", "RAG"],
+    gradient: "linear-gradient(135deg, hsl(142,71%,45%), hsl(186,94%,42%))",
+    image: whatsappRagImg,
+    github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
+  },
+  {
+    title: "RAG Starter Template",
+    desc: "Reusable RAG starter using simple vector stores, a form trigger and OpenAI for fast prototyping.",
+    tools: ["n8n", "Vector Store", "OpenAI", "Forms"],
+    gradient: "linear-gradient(135deg, hsl(265,89%,50%), hsl(186,94%,42%))",
+    image: ragStarterImg,
+    github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
+  },
+];
+
 const KaggleIcon = () => (
   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.358"/>
@@ -213,8 +279,9 @@ const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
 );
 
 const Projects = () => {
-  const [activeTab, setActiveTab] = useState<"genai" | "ml">("genai");
-  const projects = activeTab === "genai" ? genAiProjects : mlProjects;
+  const [activeTab, setActiveTab] = useState<"genai" | "ml" | "automation">("genai");
+  const projects =
+    activeTab === "genai" ? genAiProjects : activeTab === "ml" ? mlProjects : automationProjects;
 
   return (
     <section id="projects" className="py-20 bg-background">
@@ -229,7 +296,7 @@ const Projects = () => {
 
         <ScrollReveal>
           <div className="flex justify-center mb-10">
-            <div className="inline-flex p-1 bg-secondary border border-border rounded-full">
+            <div className="inline-flex flex-wrap justify-center p-1 bg-secondary border border-border rounded-full">
               <button
                 onClick={() => setActiveTab("genai")}
                 className={`px-5 py-2 text-sm font-semibold rounded-full transition-all ${
@@ -249,6 +316,16 @@ const Projects = () => {
                 }`}
               >
                 Machine Learning
+              </button>
+              <button
+                onClick={() => setActiveTab("automation")}
+                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all ${
+                  activeTab === "automation"
+                    ? "gradient-purple-bg text-primary-foreground shadow-md"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                AI Automation
               </button>
             </div>
           </div>
