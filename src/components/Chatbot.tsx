@@ -65,6 +65,9 @@ const getResponse = (msg: string): string => {
   if (/(project|portfolio|kaam|work)/.test(lower)) return quickQuestions[1].answer;
   if (/(experience|education|qualif|degree|certif|tajurba)/.test(lower)) return quickQuestions[2].answer;
   if (/(contact|email|reach|hire|whatsapp|linkedin|rabta)/.test(lower)) return quickQuestions[3].answer;
+  if (/(certif|badge|course|diploma)/.test(lower)) return quickQuestions[4].answer;
+  if (/(hire|job|work|service|available|freelance|project)/.test(lower)) return quickQuestions[5].answer;
+  if (/(kaggle|competition|notebook|dataset|grandmaster)/.test(lower)) return quickQuestions[6].answer;
   if (/(thank|shukr)/.test(lower)) return "You're welcome! 😊 Koi aur sawal ho to puchein.";
   return fallback;
 };
