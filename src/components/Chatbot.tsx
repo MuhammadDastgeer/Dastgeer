@@ -32,11 +32,25 @@ const quickQuestions: QuickQuestion[] = [
       "**💼 Experience:**\n• ML Specialist @ **CodaAlpha**\n• ML Engineer @ **Arch Technologies**\n• Data Science Intern @ **Codveda Technologies**\n\n**🎓 Education:**\n• BS in Computer Science\n• Specialization in AI & Machine Learning\n\n**🏆 Achievements:**\n• 30+ AI agents built\n• 20+ ML projects on Kaggle\n• Multiple certifications in AI, ML, and Data Science\n\n👉 See the **Experience**, **Education** & **Certifications** sections for full details!",
   },
   {
-    id: "contact",
-    label: "📬 Contact info",
-    question: "How can I contact you?",
+    id: "certifications",
+    label: "🏅 Certifications",
+    question: "What certifications do you have?",
     answer:
-      "Aap mujhse in tareeqon se rabta kar sakte hain:\n\n📧 **Email:** dastgeerjutt8888@gmail.com\n💼 **LinkedIn:** linkedin.com/in/muhammad-dastgeer\n💻 **GitHub:** github.com/MuhammadDastgeer\n🏆 **Kaggle:** kaggle.com/dastgeerjutt\n📱 **WhatsApp:** Click the WhatsApp button on the page\n\nMain **24 hours** ke andar reply karta hoon. Contact form bhi use kar sakte hain — niche **Let's Connect** section mein!",
+      "**🏅 My Certifications:**\n\n**Codanics:**\n• Six-Month AI & Data Science Mentorship\n• Python ka Chilla for Data Science\n• Tableau for Data Analytics\n\n**InnoVista Learn Easy:**\n• Machine Learning\n• Python Course\n\n**Hugging Face:**\n• MCP (Model Context Protocol)\n\n**Kaggle:**\n• Machine Learning Explainability\n• Deep Learning\n• Computer Vision\n• SQL, Python, Data Visualization, Data Cleaning\n\n🏆 **Kaggle Grandmaster** — Top competitive rank globally!",
+  },
+  {
+    id: "hire",
+    label: "💼 Hire me",
+    question: "Are you available for hire?",
+    answer:
+      "**💼 Yes, I'm available for hire!**\n\n**Services I offer:**\n• AI/ML Development & Consulting\n• Agentic AI & GenAI Solutions\n• Machine Learning Model Development\n• AI Automation (n8n, Make.com)\n• RAG Systems & Chatbots\n• Data Science & Analytics\n\n**Experience:**\n• ML Specialist @ CodaAlpha\n• ML Engineer @ Arch Technologies\n• Data Science Intern @ Codveda Technologies\n\n📧 **Email:** dastgeerjutt8888@gmail.com\n💬 **WhatsApp:** Button se contact karein!\n\n**Project-based, full-time, ya freelance** — sab options available hain!",
+  },
+  {
+    id: "kaggle",
+    label: "🏆 Kaggle",
+    question: "What's your Kaggle profile?",
+    answer:
+      "**🏆 Kaggle Grandmaster Profile**\n\n**Profile:** kaggle.com/dastgeerjutt\n\n**Certifications Earned:**\n• Machine Learning Explainability\n• Deep Learning\n• Computer Vision\n• SQL, Python, Data Visualization, Data Cleaning\n\n**Competition Rank:** Top competitive rank globally\n\n**Notebooks & Datasets:** Multiple contributions to the Kaggle community\n\n👉 **Visit my Kaggle:** kaggle.com/dastgeerjutt",
   },
 ];
 
