@@ -83,9 +83,6 @@ const agenticProjects: Project[] = [
     link: "https://drive.google.com/file/d/1tkN89iD6S82oy_y-DpBN_HA-YKoYTbml/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Mcp-Client-Langgraph.git",
   },
-];
-
-const genAiProjects: Project[] = [
   {
     title: "Code Explainer App",
     desc: "AI-powered app that explains complex code snippets in plain language, making programming easier for learners and devs.",
@@ -301,12 +298,10 @@ const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
 );
 
 const Projects = () => {
-  const [activeTab, setActiveTab] = useState<"agentic" | "genai" | "ml" | "automation">("agentic");
+  const [activeTab, setActiveTab] = useState<"agentic" | "ml" | "automation">("agentic");
   const projects =
     activeTab === "agentic"
       ? agenticProjects
-      : activeTab === "genai"
-      ? genAiProjects
       : activeTab === "ml"
       ? mlProjects
       : automationProjects;
@@ -334,16 +329,6 @@ const Projects = () => {
                 }`}
               >
                 Agentic AI
-              </button>
-              <button
-                onClick={() => setActiveTab("genai")}
-                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all hover:scale-105 ${
-                  activeTab === "genai"
-                    ? "gradient-purple-bg text-primary-foreground shadow-md"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                GenAI
               </button>
               <button
                 onClick={() => setActiveTab("ml")}
