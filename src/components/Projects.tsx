@@ -25,6 +25,11 @@ import whatsappRagImg from "@/assets/project-whatsapp-rag.jpg";
 import ragStarterImg from "@/assets/project-rag-starter.jpg";
 import authSystemImg from "@/assets/project-auth-system.jpg";
 import mcpChatbotImg from "@/assets/project-mcp-chatbot.jpg";
+import medicallImg from "@/assets/project-medicall.jpg";
+import contentGeneratorImg from "@/assets/project-content-generator.jpg";
+import leetmasterImg from "@/assets/project-leetmaster.jpg";
+import studentPlanImg from "@/assets/project-student-plan.jpg";
+import medinexusImg from "@/assets/project-medinexus.jpg";
 
 type Project = {
   title: string;
@@ -37,7 +42,50 @@ type Project = {
   kaggle?: string;
 };
 
-const agenticProjects: Project[] = [
+const latestAgenticProjects: Project[] = [
+  {
+    title: "Medicall - AI Medical Platform",
+    desc: "AI-powered medical platform for healthcare assistance, symptom analysis, and intelligent patient support using advanced LLMs.",
+    tools: ["Google AI Studio", "OpenAI", "Supabase", "LangChain", "LangGraph", "Gemini"],
+    gradient: "linear-gradient(135deg, hsl(186,94%,42%), hsl(217,91%,60%))",
+    image: medicallImg,
+    link: "https://medicall-one.vercel.app/",
+  },
+  {
+    title: "AI Content Generator",
+    desc: "End-to-end AI content generation platform that creates blog posts, marketing copy, and creative content with smart prompts.",
+    tools: ["Google AI Studio", "OpenAI", "Supabase", "LangChain", "LangGraph", "Gemini"],
+    gradient: "linear-gradient(135deg, hsl(265,89%,50%), hsl(186,94%,42%))",
+    image: contentGeneratorImg,
+    link: "https://ai-content-generator-five-sandy.vercel.app/",
+  },
+  {
+    title: "LeetMaster - AI Coding Assistant",
+    desc: "Interactive coding interview prep assistant that explains LeetCode-style problems, hints, and solutions with AI tutoring.",
+    tools: ["Google AI Studio", "OpenAI", "Supabase", "LangChain", "LangGraph", "Gemini"],
+    gradient: "linear-gradient(135deg, hsl(142,71%,45%), hsl(160,84%,45%))",
+    image: leetmasterImg,
+    link: "https://leetmaster.onrender.com",
+  },
+  {
+    title: "Student Plan AI",
+    desc: "AI academic planner for students that builds schedules, suggests study plans, and tracks learning goals intelligently.",
+    tools: ["Google AI Studio", "OpenAI", "Supabase", "LangChain", "LangGraph", "Gemini"],
+    gradient: "linear-gradient(135deg, hsl(25,95%,53%), hsl(0,84%,60%))",
+    image: studentPlanImg,
+    link: "https://student-plan-ai.vercel.app/",
+  },
+  {
+    title: "MediNexus - Healthcare AI",
+    desc: "Healthcare AI system connecting medical knowledge with patients through conversational intelligence and real-time assistance.",
+    tools: ["Google AI Studio", "OpenAI", "Supabase", "LangChain", "LangGraph", "Gemini"],
+    gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(186,94%,42%))",
+    image: medinexusImg,
+    link: "https://medinexus-a6k9.onrender.com",
+  },
+];
+
+const oldAgenticProjects: Project[] = [
   {
     title: "CODA-Ai: AI Code Agent",
     desc: "An intelligent AI code agent that helps developers write, debug, and understand code using advanced LLM workflows.",
@@ -261,8 +309,8 @@ const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
           src={project.image}
           alt={`${project.title} thumbnail`}
           loading="lazy"
-          width={800}
-          height={450}
+          width={1024}
+          height={576}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
@@ -278,7 +326,7 @@ const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
         <div className="flex flex-wrap gap-3">
           {project.link && (
             <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg gradient-purple-bg text-primary-foreground hover:opacity-90 transition-opacity hover:scale-105">
-              <ExternalLink size={14} /> Demo Video
+              <ExternalLink size={14} /> {project.link.includes("drive.google.com") ? "Demo Video" : "Live Demo"}
             </a>
           )}
           {project.kaggle && (
@@ -299,12 +347,6 @@ const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
 
 const Projects = () => {
   const [activeTab, setActiveTab] = useState<"agentic" | "ml" | "automation">("agentic");
-  const projects =
-    activeTab === "agentic"
-      ? agenticProjects
-      : activeTab === "ml"
-      ? mlProjects
-      : automationProjects;
 
   return (
     <section id="projects" className="py-20 bg-background">
@@ -354,11 +396,40 @@ const Projects = () => {
           </div>
         </ScrollReveal>
 
-        <div key={activeTab} className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.title} project={project} i={i} />
-          ))}
-        </div>
+        {activeTab === "agentic" ? (
+          <div className="max-w-5xl mx-auto space-y-14">
+            <div key="latest">
+              <ScrollReveal>
+                <h3 className="font-heading text-2xl font-bold text-foreground mb-6 border-l-4 border-primary pl-4">
+                  Latest
+                </h3>
+              </ScrollReveal>
+              <div className="grid md:grid-cols-2 gap-6">
+                {latestAgenticProjects.map((project, i) => (
+                  <ProjectCard key={project.title} project={project} i={i} />
+                ))}
+              </div>
+            </div>
+            <div key="old">
+              <ScrollReveal>
+                <h3 className="font-heading text-2xl font-bold text-foreground mb-6 border-l-4 border-muted-foreground pl-4">
+                  Old
+                </h3>
+              </ScrollReveal>
+              <div className="grid md:grid-cols-2 gap-6">
+                {oldAgenticProjects.map((project, i) => (
+                  <ProjectCard key={project.title} project={project} i={i} />
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div key={activeTab} className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {(activeTab === "ml" ? mlProjects : automationProjects).map((project, i) => (
+              <ProjectCard key={project.title} project={project} i={i} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
