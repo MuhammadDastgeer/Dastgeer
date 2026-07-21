@@ -37,7 +37,7 @@ type Project = {
   kaggle?: string;
 };
 
-const genAiProjects: Project[] = [
+const agenticProjects: Project[] = [
   {
     title: "CODA-Ai: AI Code Agent",
     desc: "An intelligent AI code agent that helps developers write, debug, and understand code using advanced LLM workflows.",
@@ -48,15 +48,6 @@ const genAiProjects: Project[] = [
     github: "https://github.com/MuhammadDastgeer/CODA-Ai-APP.git",
   },
   {
-    title: "Code Explainer App",
-    desc: "AI-powered app that explains complex code snippets in plain language, making programming easier for learners and devs.",
-    tools: ["LangChain", "OpenAI", "Groq", "Streamlit"],
-    gradient: "linear-gradient(135deg, hsl(186,94%,42%), hsl(217,91%,60%))",
-    image: explainerImg,
-    link: "https://drive.google.com/file/d/1umKkniooMV_BEOx_yiSuDAkNWVcYx_4f/view?usp=sharing",
-    github: "https://github.com/MuhammadDastgeer/code-explainer-app.git",
-  },
-  {
     title: "AI Travel Agent",
     desc: "Smart travel planning assistant that builds personalized itineraries, suggests destinations, and handles travel queries.",
     tools: ["LangGraph", "Gemini", "LangSmith", "Streamlit"],
@@ -64,15 +55,6 @@ const genAiProjects: Project[] = [
     image: travelImg,
     link: "https://drive.google.com/file/d/1-jy0OY3TPaeg28Oxp3c5wj8KzglnG-W2/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/travel_agent_app.git",
-  },
-  {
-    title: "Doctor AI - Healthcare Chatbot",
-    desc: "Healthcare chatbot that provides preliminary medical guidance, symptom analysis, and health-related Q&A.",
-    tools: ["LangChain", "OpenAI", "MCP", "Streamlit"],
-    gradient: "linear-gradient(135deg, hsl(0,84%,60%), hsl(25,95%,53%))",
-    image: doctorImg,
-    link: "https://drive.google.com/file/d/1o0-y7ON2jY8rlAw66NQUTcV7W-r8Wgg4/view?usp=sharing",
-    github: "https://github.com/MuhammadDastgeer/Health_Care_app.git",
   },
   {
     title: "Customer Support Chatbot",
@@ -93,15 +75,6 @@ const genAiProjects: Project[] = [
     github: "https://github.com/MuhammadDastgeer/Writes-Blogs-Automatically-Agent.git",
   },
   {
-    title: "Real Estate Platform",
-    desc: "A full-stack real estate platform with property listings, search, and modern UI for buying, selling, and renting properties.",
-    tools: ["Next.js", "React", "Vercel", "REST APIs"],
-    gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(265,89%,50%))",
-    image: realestateImg,
-    link: "https://drive.google.com/file/d/15bDLE7-kCGwcjmnMEu2uUaTG5IABZ8yF/view?usp=sharing",
-    github: "https://github.com/MuhammadDastgeer/Real_Estate_Project.git",
-  },
-  {
     title: "AI Chatbot with MCP Client & Server",
     desc: "Intelligent AI chatbot built with MCP (Model Context Protocol) client and server architecture using LangGraph for advanced tool orchestration.",
     tools: ["LangGraph", "MCP", "OpenAI", "Python"],
@@ -109,6 +82,36 @@ const genAiProjects: Project[] = [
     image: mcpChatbotImg,
     link: "https://drive.google.com/file/d/1tkN89iD6S82oy_y-DpBN_HA-YKoYTbml/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Mcp-Client-Langgraph.git",
+  },
+];
+
+const genAiProjects: Project[] = [
+  {
+    title: "Code Explainer App",
+    desc: "AI-powered app that explains complex code snippets in plain language, making programming easier for learners and devs.",
+    tools: ["LangChain", "OpenAI", "Groq", "Streamlit"],
+    gradient: "linear-gradient(135deg, hsl(186,94%,42%), hsl(217,91%,60%))",
+    image: explainerImg,
+    link: "https://drive.google.com/file/d/1umKkniooMV_BEOx_yiSuDAkNWVcYx_4f/view?usp=sharing",
+    github: "https://github.com/MuhammadDastgeer/code-explainer-app.git",
+  },
+  {
+    title: "Doctor AI - Healthcare Chatbot",
+    desc: "Healthcare chatbot that provides preliminary medical guidance, symptom analysis, and health-related Q&A.",
+    tools: ["LangChain", "OpenAI", "MCP", "Streamlit"],
+    gradient: "linear-gradient(135deg, hsl(0,84%,60%), hsl(25,95%,53%))",
+    image: doctorImg,
+    link: "https://drive.google.com/file/d/1o0-y7ON2jY8rlAw66NQUTcV7W-r8Wgg4/view?usp=sharing",
+    github: "https://github.com/MuhammadDastgeer/Health_Care_app.git",
+  },
+  {
+    title: "Real Estate Platform",
+    desc: "A full-stack real estate platform with property listings, search, and modern UI for buying, selling, and renting properties.",
+    tools: ["Next.js", "React", "Vercel", "REST APIs"],
+    gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(265,89%,50%))",
+    image: realestateImg,
+    link: "https://drive.google.com/file/d/15bDLE7-kCGwcjmnMEu2uUaTG5IABZ8yF/view?usp=sharing",
+    github: "https://github.com/MuhammadDastgeer/Real_Estate_Project.git",
   },
 ];
 
@@ -277,17 +280,17 @@ const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
         </div>
         <div className="flex flex-wrap gap-3">
           {project.link && (
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg gradient-purple-bg text-primary-foreground hover:opacity-90 transition-opacity">
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg gradient-purple-bg text-primary-foreground hover:opacity-90 transition-opacity hover:scale-105">
               <ExternalLink size={14} /> Demo Video
             </a>
           )}
           {project.kaggle && (
-            <a href={project.kaggle} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg gradient-purple-bg text-primary-foreground hover:opacity-90 transition-opacity">
+            <a href={project.kaggle} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg gradient-purple-bg text-primary-foreground hover:opacity-90 transition-opacity hover:scale-105">
               <KaggleIcon /> View on Kaggle
             </a>
           )}
           {project.github && (
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg border border-border text-foreground hover:bg-secondary transition-colors">
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg border border-border text-foreground hover:bg-secondary transition-colors hover:scale-105">
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> GitHub
             </a>
           )}
@@ -298,9 +301,15 @@ const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
 );
 
 const Projects = () => {
-  const [activeTab, setActiveTab] = useState<"genai" | "ml" | "automation">("genai");
+  const [activeTab, setActiveTab] = useState<"agentic" | "genai" | "ml" | "automation">("agentic");
   const projects =
-    activeTab === "genai" ? genAiProjects : activeTab === "ml" ? mlProjects : automationProjects;
+    activeTab === "agentic"
+      ? agenticProjects
+      : activeTab === "genai"
+      ? genAiProjects
+      : activeTab === "ml"
+      ? mlProjects
+      : automationProjects;
 
   return (
     <section id="projects" className="py-20 bg-background">
@@ -317,18 +326,28 @@ const Projects = () => {
           <div className="flex justify-center mb-10">
             <div className="inline-flex flex-wrap justify-center p-1 bg-secondary border border-border rounded-full">
               <button
+                onClick={() => setActiveTab("agentic")}
+                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all hover:scale-105 ${
+                  activeTab === "agentic"
+                    ? "gradient-purple-bg text-primary-foreground shadow-md"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Agentic AI
+              </button>
+              <button
                 onClick={() => setActiveTab("genai")}
-                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all ${
+                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all hover:scale-105 ${
                   activeTab === "genai"
                     ? "gradient-purple-bg text-primary-foreground shadow-md"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                Agentic & GenAI
+                GenAI
               </button>
               <button
                 onClick={() => setActiveTab("ml")}
-                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all ${
+                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all hover:scale-105 ${
                   activeTab === "ml"
                     ? "gradient-purple-bg text-primary-foreground shadow-md"
                     : "text-muted-foreground hover:text-foreground"
@@ -338,7 +357,7 @@ const Projects = () => {
               </button>
               <button
                 onClick={() => setActiveTab("automation")}
-                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all ${
+                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all hover:scale-105 ${
                   activeTab === "automation"
                     ? "gradient-purple-bg text-primary-foreground shadow-md"
                     : "text-muted-foreground hover:text-foreground"
