@@ -30,6 +30,7 @@ import contentGeneratorImg from "@/assets/project-content-generator.jpg";
 import leetmasterImg from "@/assets/project-leetmaster.jpg";
 import studentPlanImg from "@/assets/project-student-plan.jpg";
 import medinexusImg from "@/assets/project-medinexus.jpg";
+import ragShowcaseImg from "@/assets/project-rag-showcase.jpg";
 
 type Project = {
   title: string;
@@ -43,6 +44,14 @@ type Project = {
 };
 
 const latestAgenticProjects: Project[] = [
+  {
+    title: "RAG Showcase",
+    desc: "Intelligent RAG application demonstrating document retrieval, vector search, and context-aware AI question answering.",
+    tools: ["Google AI Studio", "OpenAI", "Supabase", "LangChain", "LangGraph", "Gemini"],
+    gradient: "linear-gradient(135deg, hsl(280,89%,50%), hsl(217,91%,60%))",
+    image: ragShowcaseImg,
+    link: "https://rag-showcase-tawny.vercel.app/",
+  },
   {
     title: "Medicall - AI Medical Platform",
     desc: "AI-powered medical platform for healthcare assistance, symptom analysis, and intelligent patient support using advanced LLMs.",
