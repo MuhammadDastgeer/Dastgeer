@@ -370,7 +370,7 @@ const Projects = () => {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                Agentic AI
+                Gen AI and Agentic AI
               </button>
               <button
                 onClick={() => setActiveTab("ml")}
