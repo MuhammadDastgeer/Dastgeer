@@ -454,6 +454,12 @@ const Projects = () => {
               </div>
             </div>
           </div>
+        ) : activeTab === "blog" ? (
+          <div key={activeTab} className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {blogProjects.map((project, i) => (
+              <ProjectCard key={project.title} project={project} i={i} />
+            ))}
+          </div>
         ) : (
           <div key={activeTab} className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {(activeTab === "ml" ? mlProjects : automationProjects).map((project, i) => (
