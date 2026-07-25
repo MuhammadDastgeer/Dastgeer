@@ -1,6 +1,7 @@
 import { ExternalLink } from "lucide-react";
 import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
+import generativeAIBlogAsset from "@/assets/generative-ai-blog.png.asset.json";
 import codaImg from "@/assets/project-coda.jpg";
 import explainerImg from "@/assets/project-explainer.jpg";
 import travelImg from "@/assets/project-travel.jpg";
