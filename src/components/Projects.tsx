@@ -1,6 +1,7 @@
 import { ExternalLink } from "lucide-react";
 import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
+import generativeAIBlogAsset from "@/assets/generative-ai-blog.png.asset.json";
 import codaImg from "@/assets/project-coda.jpg";
 import explainerImg from "@/assets/project-explainer.jpg";
 import travelImg from "@/assets/project-travel.jpg";
@@ -303,6 +304,17 @@ const automationProjects: Project[] = [
   },
 ];
 
+const blogProjects: Project[] = [
+  {
+    title: "Generative AI — The Complete Guide",
+    desc: "A comprehensive Notion blog covering the journey from data to creation with generative AI: concepts, tools, and real-world applications.",
+    tools: ["Generative AI", "Notion", "AI Writing", "LLMs"],
+    gradient: "linear-gradient(135deg, hsl(200,85%,50%), hsl(260,85%,60%))",
+    image: generativeAIBlogAsset.url,
+    link: "https://app.notion.com/p/Generative-AI-3a7bb6b3c45c81a593ade28ad408502f?source=copy_link",
+  },
+];
+
 const KaggleIcon = () => (
   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.358"/>
@@ -335,7 +347,7 @@ const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
         <div className="flex flex-wrap gap-3">
           {project.link && (
             <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg gradient-purple-bg text-primary-foreground hover:opacity-90 transition-opacity hover:scale-105">
-              <ExternalLink size={14} /> {project.link.includes("drive.google.com") ? "Demo Video" : "Live Demo"}
+              <ExternalLink size={14} /> {project.link.includes("notion") ? "Read on Notion" : project.link.includes("drive.google.com") ? "Demo Video" : "Live Demo"}
             </a>
           )}
           {project.kaggle && (
@@ -355,7 +367,7 @@ const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
 );
 
 const Projects = () => {
-  const [activeTab, setActiveTab] = useState<"agentic" | "ml" | "automation">("agentic");
+  const [activeTab, setActiveTab] = useState<"agentic" | "ml" | "automation" | "blog">("agentic");
 
   return (
     <section id="projects" className="py-20 bg-background">
@@ -401,6 +413,16 @@ const Projects = () => {
               >
                 AI Automation
               </button>
+              <button
+                onClick={() => setActiveTab("blog")}
+                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all hover:scale-105 ${
+                  activeTab === "blog"
+                    ? "gradient-purple-bg text-primary-foreground shadow-md"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Blog
+              </button>
             </div>
           </div>
         </ScrollReveal>
@@ -431,6 +453,12 @@ const Projects = () => {
                 ))}
               </div>
             </div>
+          </div>
+        ) : activeTab === "blog" ? (
+          <div key={activeTab} className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {blogProjects.map((project, i) => (
+              <ProjectCard key={project.title} project={project} i={i} />
+            ))}
           </div>
         ) : (
           <div key={activeTab} className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
