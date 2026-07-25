@@ -413,6 +413,16 @@ const Projects = () => {
               >
                 AI Automation
               </button>
+              <button
+                onClick={() => setActiveTab("blog")}
+                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all hover:scale-105 ${
+                  activeTab === "blog"
+                    ? "gradient-purple-bg text-primary-foreground shadow-md"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Blog
+              </button>
             </div>
           </div>
         </ScrollReveal>
