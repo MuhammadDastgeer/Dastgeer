@@ -347,7 +347,7 @@ const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
         <div className="flex flex-wrap gap-3">
           {project.link && (
             <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg gradient-purple-bg text-primary-foreground hover:opacity-90 transition-opacity hover:scale-105">
-              <ExternalLink size={14} /> {project.link.includes("drive.google.com") ? "Demo Video" : "Live Demo"}
+              <ExternalLink size={14} /> {project.link.includes("notion") ? "Read on Notion" : project.link.includes("drive.google.com") ? "Demo Video" : "Live Demo"}
             </a>
           )}
           {project.kaggle && (
