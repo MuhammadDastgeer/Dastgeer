@@ -367,7 +367,7 @@ const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
 );
 
 const Projects = () => {
-  const [activeTab, setActiveTab] = useState<"agentic" | "ml" | "automation">("agentic");
+  const [activeTab, setActiveTab] = useState<"agentic" | "ml" | "automation" | "blog">("agentic");
 
   return (
     <section id="projects" className="py-20 bg-background">
