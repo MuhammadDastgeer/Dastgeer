@@ -367,7 +367,7 @@ const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
 );
 
 const Projects = () => {
-  const [activeTab, setActiveTab] = useState<"agentic" | "ml" | "automation" | "blog">("agentic");
+  const [activeTab, setActiveTab] = useState<"agentic" | "ml" | "automation">("agentic");
 
   return (
     <section id="projects" className="py-20 bg-background">
@@ -413,16 +413,6 @@ const Projects = () => {
               >
                 AI Automation
               </button>
-              <button
-                onClick={() => setActiveTab("blog")}
-                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all hover:scale-105 ${
-                  activeTab === "blog"
-                    ? "gradient-purple-bg text-primary-foreground shadow-md"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                Blog
-              </button>
             </div>
           </div>
         </ScrollReveal>
@@ -453,12 +443,6 @@ const Projects = () => {
                 ))}
               </div>
             </div>
-          </div>
-        ) : activeTab === "blog" ? (
-          <div key={activeTab} className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {blogProjects.map((project, i) => (
-              <ProjectCard key={project.title} project={project} i={i} />
-            ))}
           </div>
         ) : (
           <div key={activeTab} className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
