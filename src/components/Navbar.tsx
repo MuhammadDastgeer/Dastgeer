@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import profileImg from "@/assets/profile.png";
@@ -8,16 +8,28 @@ const navLinks = [
   { name: "Home", href: "/#home" },
   { name: "About", href: "/#about" },
   { name: "Projects", href: "/#projects" },
-  { name: "Blog", href: "/#projects" },
+  { name: "Blog", href: "/blog" },
   { name: "Skills", href: "/#skills" },
   { name: "Contact", href: "/#contact" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const scrollToSection = (href) => {
+  const scrollToSection = (href: string) => {
+    if (!href.startsWith("/#")) {
+      navigate(href);
+      setIsOpen(false);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
     const id = href.replace("/#", "");
+    if (window.location.pathname !== "/") {
+      navigate("/#" + id);
+      setIsOpen(false);
+      return;
+    }
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
