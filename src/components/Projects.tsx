@@ -41,7 +41,7 @@ type Project = {
   image: string;
   link?: string;
   github?: string;
-  kaggle?: string;
+  
 };
 
 const latestAgenticProjects: Project[] = [
@@ -177,7 +177,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Pandas", "Matplotlib", "Seaborn"],
     gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(25,95%,53%))",
     image: weatherImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/extreme-weather-analysis",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
@@ -186,7 +186,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Scikit-learn", "Pandas", "NLP"],
     gradient: "linear-gradient(135deg, hsl(0,84%,60%), hsl(45,93%,47%))",
     image: moviesImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/movies-recommendation-system",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
@@ -195,7 +195,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Pandas", "Plotly", "EDA"],
     gradient: "linear-gradient(135deg, hsl(142,71%,45%), hsl(217,91%,60%))",
     image: studentImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/student-performance-analysis",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
@@ -204,7 +204,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Pandas", "Matplotlib", "EDA"],
     gradient: "linear-gradient(135deg, hsl(0,84%,60%), hsl(0,0%,15%))",
     image: youtubeImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/youtube-trending-analysis",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
@@ -213,7 +213,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Pandas", "Seaborn", "Statistics"],
     gradient: "linear-gradient(135deg, hsl(265,89%,50%), hsl(330,81%,60%))",
     image: mentalImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/social-media-mental-health-analysis",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
@@ -222,7 +222,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Pandas", "Matplotlib", "EDA"],
     gradient: "linear-gradient(135deg, hsl(186,94%,42%), hsl(25,95%,53%))",
     image: codeSmellsImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/code-smells-refactoring-analysis",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
@@ -231,7 +231,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Pandas", "Plotly", "Time Series"],
     gradient: "linear-gradient(135deg, hsl(142,71%,45%), hsl(0,0%,15%))",
     image: stockImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/stock-market-analysis",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
@@ -240,7 +240,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Pandas", "Seaborn", "EDA"],
     gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(265,89%,50%))",
     image: ecommerceImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/ecommerce-behavior-analysis",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
 ];
