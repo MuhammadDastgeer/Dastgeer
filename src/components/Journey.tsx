@@ -6,7 +6,7 @@ const timeline = [
   { year: "2022", text: "Intermediate ICS — BISE Faisalabad", color: "hsl(142, 71%, 45%)" },
   { year: "2022", text: "Computer Operator at Johar Centre Pir Mahal — first professional role", color: "hsl(25, 95%, 53%)" },
   { year: "2023", text: "Started Data Science journey — enrolled at Codanics", color: "hsl(265, 89%, 50%)" },
-  { year: "2024", text: "Completed 6-month AI & Data Science Mentorship — earned Kaggle Grandmaster title", color: "hsl(186, 94%, 42%)" },
+  { year: "2024", text: "Completed 6-month AI & Data Science Mentorship at Codanics", color: "hsl(186, 94%, 42%)" },
   { year: "2025", text: "Joined CodaAlpha, Arch Technologies & Codveda Technologies as ML Specialist/Engineer", color: "hsl(330, 80%, 60%)" },
   { year: "Now", text: "Building production-grade AI systems — 30+ agents & 20+ ML projects delivered", color: "hsl(265, 89%, 50%)", isNow: true },
 ];

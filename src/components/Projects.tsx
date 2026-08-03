@@ -41,7 +41,7 @@ type Project = {
   image: string;
   link?: string;
   github?: string;
-  kaggle?: string;
+  
 };
 
 const latestAgenticProjects: Project[] = [
@@ -177,7 +177,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Pandas", "Matplotlib", "Seaborn"],
     gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(25,95%,53%))",
     image: weatherImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/extreme-weather-analysis",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
@@ -186,7 +186,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Scikit-learn", "Pandas", "NLP"],
     gradient: "linear-gradient(135deg, hsl(0,84%,60%), hsl(45,93%,47%))",
     image: moviesImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/movies-recommendation-system",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
@@ -195,7 +195,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Pandas", "Plotly", "EDA"],
     gradient: "linear-gradient(135deg, hsl(142,71%,45%), hsl(217,91%,60%))",
     image: studentImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/student-performance-analysis",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
@@ -204,7 +204,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Pandas", "Matplotlib", "EDA"],
     gradient: "linear-gradient(135deg, hsl(0,84%,60%), hsl(0,0%,15%))",
     image: youtubeImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/youtube-trending-analysis",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
@@ -213,7 +213,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Pandas", "Seaborn", "Statistics"],
     gradient: "linear-gradient(135deg, hsl(265,89%,50%), hsl(330,81%,60%))",
     image: mentalImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/social-media-mental-health-analysis",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
@@ -222,7 +222,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Pandas", "Matplotlib", "EDA"],
     gradient: "linear-gradient(135deg, hsl(186,94%,42%), hsl(25,95%,53%))",
     image: codeSmellsImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/code-smells-refactoring-analysis",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
@@ -231,7 +231,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Pandas", "Plotly", "Time Series"],
     gradient: "linear-gradient(135deg, hsl(142,71%,45%), hsl(0,0%,15%))",
     image: stockImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/stock-market-analysis",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
@@ -240,7 +240,7 @@ const mlProjects: Project[] = [
     tools: ["Python", "Pandas", "Seaborn", "EDA"],
     gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(265,89%,50%))",
     image: ecommerceImg,
-    kaggle: "https://www.kaggle.com/code/dastgeerjutt/ecommerce-behavior-analysis",
+    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
 ];
@@ -323,11 +323,6 @@ const blogProjects: Project[] = [
   },
 ];
 
-const KaggleIcon = () => (
-  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.358"/>
-  </svg>
-);
 
 const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
   <ScrollReveal key={project.title} delay={i * 0.05}>
@@ -356,11 +351,6 @@ const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
           {project.link && (
             <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg gradient-purple-bg text-primary-foreground hover:opacity-90 transition-opacity hover:scale-105">
               <ExternalLink size={14} /> {project.link.includes("notion") ? "Read on Notion" : project.link.includes("drive.google.com") ? "Demo Video" : "Live Demo"}
-            </a>
-          )}
-          {project.kaggle && (
-            <a href={project.kaggle} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg gradient-purple-bg text-primary-foreground hover:opacity-90 transition-opacity hover:scale-105">
-              <KaggleIcon /> View on Kaggle
             </a>
           )}
           {project.github && (

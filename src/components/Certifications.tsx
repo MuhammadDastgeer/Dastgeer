@@ -8,10 +8,6 @@ const certs = [
   { title: "Machine Learning", org: "InnoVista Learn Easy", color: "hsl(45,93%,90%)" },
   { title: "Python Course", org: "InnoVista Learn Easy", color: "hsl(45,93%,90%)" },
   { title: "MCP (Model Context Protocol)", org: "Hugging Face", color: "hsl(45,93%,90%)" },
-  { title: "Machine Learning Explainability", org: "Kaggle", color: "hsl(142,50%,92%)" },
-  { title: "Deep Learning", org: "Kaggle", color: "hsl(142,50%,92%)" },
-  { title: "Computer Vision", org: "Kaggle", color: "hsl(142,50%,92%)" },
-  { title: "SQL, Python, Data Visualization, Data Cleaning", org: "Kaggle", color: "hsl(142,50%,92%)" },
 ];
 
 const Certifications = () => {
@@ -41,17 +37,6 @@ const Certifications = () => {
             </ScrollReveal>
           ))}
 
-          <ScrollReveal delay={0.5}>
-            <div className="rounded-xl p-4 border-2 border-orange-accent/30 flex items-center gap-3" style={{ backgroundColor: "hsl(25,95%,93%)" }}>
-              <div className="p-2 rounded-lg bg-orange-accent/10">
-                <Trophy className="w-5 h-5 text-orange-accent" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-sm text-foreground">🏆 Kaggle Grandmaster</h4>
-                <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-orange-accent/15 text-orange-accent">Top competitive rank globally</span>
-              </div>
-            </div>
-          </ScrollReveal>
         </div>
       </div>
     </section>

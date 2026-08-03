@@ -18,7 +18,7 @@ const WebCV = () => {
               <img src={profileImg} alt="Muhammad Dastgeer" className="w-24 h-24 rounded-full object-cover border-4 border-primary/20" />
               <div className="text-center md:text-left">
                 <h1 className="font-heading text-3xl font-bold text-foreground">MUHAMMAD DASTGEER</h1>
-                <p className="text-primary font-semibold text-sm">Kaggle Grandmaster • AI/ML Engineer • Generative AI Specialist • Data Scientist</p>
+                <p className="text-primary font-semibold text-sm">AI/ML Engineer • Generative AI Specialist • Data Scientist</p>
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-2 text-xs text-muted-foreground">
                   <span className="flex items-center gap-1"><Phone size={12} /> +92 318 2460719</span>
                   <span className="flex items-center gap-1"><Mail size={12} /> dastgeerjutt8888@gmail.com</span>
@@ -27,7 +27,6 @@ const WebCV = () => {
                 <div className="flex flex-wrap gap-3 mt-2">
                   <a href="https://linkedin.com/in/muhammad-dastgeer" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">LinkedIn</a>
                   <a href="https://github.com/MuhammadDastgeer" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">GitHub</a>
-                  <a href="https://www.kaggle.com/dastgeerjutt" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">Kaggle</a>
                 </div>
               </div>
             </div>
@@ -35,7 +34,7 @@ const WebCV = () => {
             {/* Professional Summary */}
             <Section title="Professional Summary">
               <p className="text-muted-foreground text-sm leading-relaxed">
-                Kaggle Grandmaster and AI/ML Engineer with deep hands-on expertise across the complete AI/ML spectrum — from classical machine learning to cutting-edge Generative AI and Agentic systems. Proficient in Python, PyTorch, TensorFlow, and the full data science pipeline. Passionate about building intelligent, scalable AI systems and automating complex real-world workflows. Currently contributing to multiple ML engineering roles, continuously advancing expertise in LLMs, Computer Vision, NLP, and Autonomous AI Agents.
+                AI/ML Engineer with deep hands-on expertise across the complete AI/ML spectrum — from classical machine learning to cutting-edge Generative AI and Agentic systems. Proficient in Python, PyTorch, TensorFlow, and the full data science pipeline. Passionate about building intelligent, scalable AI systems and automating complex real-world workflows. Currently contributing to multiple ML engineering roles, continuously advancing expertise in LLMs, Computer Vision, NLP, and Autonomous AI Agents.
               </p>
             </Section>
 
@@ -140,11 +139,6 @@ const WebCV = () => {
                   "Machine Learning — InnoVista Learn Easy",
                   "Python Course — InnoVista Learn Easy",
                   "MCP (Model Context Protocol) — Hugging Face",
-                  "Machine Learning Explainability — Kaggle",
-                  "Deep Learning — Kaggle",
-                  "Computer Vision — Kaggle",
-                  "SQL, Python, Data Visualization, Data Cleaning — Kaggle",
-                  "🏆 Kaggle Grandmaster — Top competitive rank globally",
                 ].map((c, i) => (
                   <p key={i} className="text-sm text-muted-foreground">• {c}</p>
                 ))}

@@ -29,14 +29,14 @@ const quickQuestions: QuickQuestion[] = [
     label: "🎓 Experience & education",
     question: "Tell me about your experience and education",
     answer:
-      "**💼 Experience:**\n• ML Specialist @ **CodaAlpha**\n• ML Engineer @ **Arch Technologies**\n• Data Science Intern @ **Codveda Technologies**\n\n**🎓 Education:**\n• BS in Computer Science\n• Specialization in AI & Machine Learning\n\n**🏆 Achievements:**\n• 30+ AI agents built\n• 20+ ML projects on Kaggle\n• Multiple certifications in AI, ML, and Data Science\n\n👉 See the **Experience**, **Education** & **Certifications** sections for full details!",
+      "**💼 Experience:**\n• ML Specialist @ **CodaAlpha**\n• ML Engineer @ **Arch Technologies**\n• Data Science Intern @ **Codveda Technologies**\n\n**🎓 Education:**\n• BS in Computer Science\n• Specialization in AI & Machine Learning\n\n**🏆 Achievements:**\n• 30+ AI agents built\n• 20+ ML projects delivered\n• Multiple certifications in AI, ML, and Data Science\n\n👉 See the **Experience**, **Education** & **Certifications** sections for full details!",
   },
   {
     id: "certifications",
     label: "🏅 Certifications",
     question: "What certifications do you have?",
     answer:
-      "**🏅 My Certifications:**\n\n**Codanics:**\n• Six-Month AI & Data Science Mentorship\n• Python ka Chilla for Data Science\n• Tableau for Data Analytics\n\n**InnoVista Learn Easy:**\n• Machine Learning\n• Python Course\n\n**Hugging Face:**\n• MCP (Model Context Protocol)\n\n**Kaggle:**\n• Machine Learning Explainability\n• Deep Learning\n• Computer Vision\n• SQL, Python, Data Visualization, Data Cleaning\n\n🏆 **Kaggle Grandmaster** — Top competitive rank globally!",
+      "**🏅 My Certifications:**\n\n**Codanics:**\n• Six-Month AI & Data Science Mentorship\n• Python ka Chilla for Data Science\n• Tableau for Data Analytics\n\n**InnoVista Learn Easy:**\n• Machine Learning\n• Python Course\n\n**Hugging Face:**\n• MCP (Model Context Protocol)\n\n👉 See the **Certifications** section for full details!",
   },
   {
     id: "hire",
@@ -44,13 +44,6 @@ const quickQuestions: QuickQuestion[] = [
     question: "Are you available for hire?",
     answer:
       "**💼 Yes, I'm available for hire!**\n\n**Services I offer:**\n• AI/ML Development & Consulting\n• Agentic AI & GenAI Solutions\n• Machine Learning Model Development\n• AI Automation (n8n, Make.com)\n• RAG Systems & Chatbots\n• Data Science & Analytics\n\n**Experience:**\n• ML Specialist @ CodaAlpha\n• ML Engineer @ Arch Technologies\n• Data Science Intern @ Codveda Technologies\n\n📧 **Email:** dastgeerjutt8888@gmail.com\n💬 **WhatsApp:** Button se contact karein!\n\n**Project-based, full-time, ya freelance** — sab options available hain!",
-  },
-  {
-    id: "kaggle",
-    label: "🏆 Kaggle",
-    question: "What's your Kaggle profile?",
-    answer:
-      "**🏆 Kaggle Grandmaster Profile**\n\n**Profile:** kaggle.com/dastgeerjutt\n\n**Certifications Earned:**\n• Machine Learning Explainability\n• Deep Learning\n• Computer Vision\n• SQL, Python, Data Visualization, Data Cleaning\n\n**Competition Rank:** Top competitive rank globally\n\n**Notebooks & Datasets:** Multiple contributions to the Kaggle community\n\n👉 **Visit my Kaggle:** kaggle.com/dastgeerjutt",
   },
 ];
 
@@ -67,7 +60,6 @@ const getResponse = (msg: string): string => {
   if (/(contact|email|reach|hire|whatsapp|linkedin|rabta)/.test(lower)) return quickQuestions[3].answer;
   if (/(certif|badge|course|diploma)/.test(lower)) return quickQuestions[4].answer;
   if (/(hire|job|work|service|available|freelance|project)/.test(lower)) return quickQuestions[5].answer;
-  if (/(kaggle|competition|notebook|dataset|grandmaster)/.test(lower)) return quickQuestions[6].answer;
   if (/(thank|shukr)/.test(lower)) return "You're welcome! 😊 Koi aur sawal ho to puchein.";
   return fallback;
 };
