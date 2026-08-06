@@ -28,7 +28,7 @@ const blogs: {
     desc: "A comprehensive Notion blog covering the journey from data to creation with generative AI: concepts, tools, and real-world applications.",
     tools: ["Generative AI", "Notion", "AI Writing", "LLMs"],
     gradient: "linear-gradient(135deg, hsl(200,85%,50%), hsl(260,85%,60%))",
-    image: generativeAIBlogAsset.url,
+    image: generativeAIBlog,
     link: "https://app.notion.com/p/Generative-AI-3a7bb6b3c45c81a593ade28ad408502f?source=copy_link",
   },
   {
