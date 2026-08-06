@@ -126,12 +126,22 @@ const Blog = () => {
                 <div className="bg-card border border-border rounded-xl overflow-hidden hover-card-lift group h-full">
                   <div className="h-1.5" style={{ background: b.gradient }} />
                   <div className="relative overflow-hidden aspect-[16/9] bg-secondary">
-                    <img
-                      src={b.image}
-                      alt={`${b.title} thumbnail`}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
+                    {b.image ? (
+                      <img
+                        src={b.image}
+                        alt={`${b.title} thumbnail`}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    ) : (
+                      <div
+                        className="w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-110"
+                        style={{ background: b.gradient }}
+                        aria-hidden="true"
+                      >
+                        <BookOpen className="text-primary-foreground/90" size={44} />
+                      </div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
                   </div>
                   <div className="p-6">
