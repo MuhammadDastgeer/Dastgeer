@@ -3,6 +3,17 @@ import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
 import Navbar from "@/components/Navbar";
 import generativeAIBlogAsset from "@/assets/generative-ai-blog.png.asset.json";
+import blogNeural from "@/assets/blog-neural-networks.jpg";
+import blogTransformer from "@/assets/blog-transformer.jpg";
+import blogNlp from "@/assets/blog-nlp.jpg";
+import blogPrompt from "@/assets/blog-prompt-engineering.jpg";
+import blogLlm from "@/assets/blog-llm.jpg";
+import blogModels from "@/assets/blog-ai-models.jpg";
+import blogLangchain from "@/assets/blog-langchain.jpg";
+import blogModalities from "@/assets/blog-modalities.jpg";
+import blogContext from "@/assets/blog-context-engineering.jpg";
+import blogLcModels from "@/assets/blog-langchain-models.jpg";
+import blogLoaders from "@/assets/blog-document-loaders.jpg";
 
 const blogs: {
   title: string;
@@ -25,6 +36,7 @@ const blogs: {
     desc: "Deep dive into neural network architectures: perceptrons, MLPs, CNNs, RNNs, autoencoders and GANs — how they work and where they're used.",
     tools: ["Deep Learning", "CNN", "RNN", "GANs"],
     gradient: "linear-gradient(135deg, hsl(260,85%,60%), hsl(320,80%,55%))",
+    image: blogNeural,
     link: "https://app.notion.com/p/1_Neural-Network-Architectures-From-Perceptrons-to-GANs-3a9bb6b3c45c819cbb28f7f7f14c3501?source=copy_link",
   },
   {
@@ -32,6 +44,7 @@ const blogs: {
     desc: "How transformers work end-to-end: self-attention, multi-head attention, positional encoding, encoder-decoder stacks and why they changed AI.",
     tools: ["Transformers", "Attention", "Deep Learning"],
     gradient: "linear-gradient(135deg, hsl(190,85%,50%), hsl(230,85%,60%))",
+    image: blogTransformer,
     link: "https://app.notion.com/p/2_Transformer-Architecture-3a8bb6b3c45c8104abfed387dbe1710f?source=copy_link",
   },
   {
@@ -39,6 +52,7 @@ const blogs: {
     desc: "Core NLP concepts and tasks: tokenization, embeddings, classification, NER, summarization, translation and modern LLM-based pipelines.",
     tools: ["NLP", "Embeddings", "Text Processing"],
     gradient: "linear-gradient(135deg, hsl(150,70%,45%), hsl(200,85%,55%))",
+    image: blogNlp,
     link: "https://app.notion.com/p/3_Natural-Language-Processing-NLP-Core-Concepts-and-Tasks-3a9bb6b3c45c81cc858be089cb349659?source=copy_link",
   },
   {
@@ -46,6 +60,7 @@ const blogs: {
     desc: "Practical prompt engineering: patterns, zero/few-shot prompting, chain-of-thought, structured outputs and reliability techniques.",
     tools: ["Prompting", "LLMs", "Best Practices"],
     gradient: "linear-gradient(135deg, hsl(35,90%,55%), hsl(0,80%,60%))",
+    image: blogPrompt,
     link: "https://app.notion.com/p/4_Prompt-Engineering-3a8bb6b3c45c8144a12fda5e8c539311?source=copy_link",
   },
   {
@@ -53,6 +68,7 @@ const blogs: {
     desc: "What LLMs are, how they're trained, scaling laws, fine-tuning vs RAG, and how to choose the right model for a task.",
     tools: ["LLMs", "Fine-tuning", "RAG"],
     gradient: "linear-gradient(135deg, hsl(280,80%,60%), hsl(200,85%,55%))",
+    image: blogLlm,
     link: "https://app.notion.com/p/5_Large-Language-Models-LLMs-3a8bb6b3c45c813b82c0cf64806abc5e?source=copy_link",
   },
   {
@@ -60,6 +76,7 @@ const blogs: {
     desc: "A complete map of AI model families: discriminative, generative, multimodal, foundation models and their practical trade-offs.",
     tools: ["AI Models", "ML", "Guide"],
     gradient: "linear-gradient(135deg, hsl(220,80%,55%), hsl(160,70%,45%))",
+    image: blogModels,
     link: "https://app.notion.com/p/6_Model-and-Types-of-AI-Models-A-Complete-Guide-3a8bb6b3c45c81ef8ac6fba3c8fe80d0?source=copy_link",
   },
   {
@@ -67,6 +84,7 @@ const blogs: {
     desc: "LangChain from the ground up: chains, agents, tools, memory, retrievers and building production-ready LLM applications.",
     tools: ["LangChain", "Agents", "RAG"],
     gradient: "linear-gradient(135deg, hsl(160,70%,45%), hsl(260,85%,60%))",
+    image: blogLangchain,
     link: "https://app.notion.com/p/6_LangChain-The-Complete-Deep-Dive-3afbb6b3c45c81c1ab7fc65a469761f3?source=copy_link",
   },
   {
@@ -74,6 +92,7 @@ const blogs: {
     desc: "Generative AI beyond text — image, video, audio, music and code generation, plus the models powering each modality.",
     tools: ["Multimodal", "Image", "Audio", "Video"],
     gradient: "linear-gradient(135deg, hsl(320,80%,58%), hsl(35,90%,55%))",
+    image: blogModalities,
     link: "https://app.notion.com/p/7_Generative-AI-Across-Modalities-Text-Image-Video-Audio-Music-and-Code-3a9bb6b3c45c819db335c74e8f901cdb?source=copy_link",
   },
   {
@@ -81,6 +100,7 @@ const blogs: {
     desc: "Context engineering techniques: context windows, chunking, retrieval, compression and memory to control what the model actually sees.",
     tools: ["Context", "RAG", "Memory"],
     gradient: "linear-gradient(135deg, hsl(200,85%,50%), hsl(150,70%,45%))",
+    image: blogContext,
     link: "https://app.notion.com/p/8_Context-Engineering-Managing-What-an-AI-Model-Actually-Sees-3a9bb6b3c45c81359cf6c7517e59fce9?source=copy_link",
   },
   {
@@ -88,6 +108,7 @@ const blogs: {
     desc: "Working with models in LangChain: chat models, LLMs, embeddings, providers, streaming, structured output and configuration.",
     tools: ["LangChain", "Models", "Embeddings"],
     gradient: "linear-gradient(135deg, hsl(250,85%,60%), hsl(190,85%,50%))",
+    image: blogLcModels,
     link: "https://app.notion.com/p/9_Models-in-LangChain-The-Complete-Guide-3b2bb6b3c45c8120b974caebc2e1b378?source=copy_link",
   },
   {
@@ -95,6 +116,7 @@ const blogs: {
     desc: "Every LangChain document loader explained: PDFs, web pages, CSVs, databases and building reliable ingestion pipelines.",
     tools: ["LangChain", "Loaders", "Data Ingestion"],
     gradient: "linear-gradient(135deg, hsl(15,85%,58%), hsl(280,80%,60%))",
+    image: blogLoaders,
     link: "https://app.notion.com/p/9-1-_Document-Loaders-in-LangChain-The-Complete-Guide-3b0bb6b3c45c81ada4d9e0b97cf3c06b?source=copy_link",
   },
 ];
