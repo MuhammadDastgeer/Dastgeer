@@ -2,7 +2,7 @@ import { ExternalLink, ArrowLeft, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
 import Navbar from "@/components/Navbar";
-import generativeAIBlogAsset from "@/assets/generative-ai-blog.png.asset.json";
+import generativeAIBlog from "@/assets/generative-ai-blog-new.jpg";
 import blogNeural from "@/assets/blog-neural-networks.jpg";
 import blogTransformer from "@/assets/blog-transformer.jpg";
 import blogNlp from "@/assets/blog-nlp.jpg";
