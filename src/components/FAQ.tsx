@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ChevronDown, MessageCircle, Zap, CheckCircle, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
@@ -70,13 +71,12 @@ const FAQ = () => {
                 <p className="flex items-center gap-2 text-sm"><CheckCircle size={14} /> 100% reply rate</p>
                 <p className="flex items-center gap-2 text-sm"><MessageSquare size={14} /> Free consultation</p>
               </div>
-              <a
-                href="/#contact"
-                onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
+              <Link
+                to="/contact"
                 className="inline-block px-6 py-2 bg-card text-foreground rounded-full text-sm font-semibold hover:bg-secondary transition-colors"
               >
                 Ask Me Directly →
-              </a>
+              </Link>
             </div>
           </ScrollReveal>
         </div>

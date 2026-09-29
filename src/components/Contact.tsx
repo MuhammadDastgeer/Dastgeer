@@ -8,7 +8,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const mailtoLink = `mailto:dastgeerjutt8888@gmail.com?subject=Portfolio Contact from ${form.name}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${form.name} (${form.email})`;
-    window.open(mailtoLink);
+    window.location.href = mailtoLink;
   };
 
   return (

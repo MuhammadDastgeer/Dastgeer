@@ -73,9 +73,9 @@ const Hero = () => {
 
             <ScrollReveal delay={0.4}>
               <div className="flex flex-wrap gap-3 mb-6">
-                <a href="/#contact" onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }} className="gradient-purple-bg text-primary-foreground px-6 py-3 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity">
+                <Link to="/contact" className="gradient-purple-bg text-primary-foreground px-6 py-3 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity">
                   Get In Touch
-                </a>
+                </Link>
                 <Link to="/web-cv" className="border border-primary text-primary px-6 py-3 rounded-lg font-semibold text-sm hover:bg-primary/5 transition-colors flex items-center gap-2">
                   🌐 Web CV
                 </Link>
