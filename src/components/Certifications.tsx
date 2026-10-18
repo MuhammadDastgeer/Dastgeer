@@ -2,6 +2,8 @@ import { Award, Trophy } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const certs = [
+  { title: "Artificial Intelligence using Python", org: "DigiSkills", color: "hsl(0,0%,100%)" },
+  { title: "Cloud Computing (AWS)", org: "DigiSkills", color: "hsl(0,0%,100%)" },
   { title: "Six-Month AI & Data Science Mentorship", org: "Codanics", color: "hsl(0,0%,100%)" },
   { title: "Python ka Chilla for Data Science", org: "Codanics", color: "hsl(0,0%,100%)" },
   { title: "Tableau for Data Analytics", org: "Codanics", color: "hsl(0,0%,100%)" },

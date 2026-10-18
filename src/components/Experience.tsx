@@ -3,6 +3,14 @@ import ScrollReveal from "./ScrollReveal";
 
 const experience = [
   {
+    title: "AI / Machine Learning Intern",
+    company: "Zeltrion Solutions",
+    period: "15 Aug 2026 – 15 Oct 2026",
+    location: "Pakistan (Internship • Certificate ID: ZS-0004)",
+    badge: "Certified • ZS-0004",
+    desc: "Successfully completed the intensive Internship Program at Zeltrion Solutions ('Where Strategy Meets Intelligence'). Demonstrated dedication, leadership, teamwork, innovation, and impact while contributing to data-driven AI and machine learning workflows.",
+  },
+  {
     title: "Machine Learning Engineer",
     company: "Codveda Technologies",
     period: "Apr 2025 – Present",
@@ -57,7 +65,14 @@ const Experience = () => {
                       <h3 className="font-heading font-bold text-foreground">{item.title}</h3>
                       <span className="text-xs font-medium px-3 py-1 rounded-full bg-primary/10 text-primary">{item.period}</span>
                     </div>
-                    <p className="text-sm highlight-text font-semibold">{item.company}</p>
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      <p className="text-sm highlight-text font-semibold">{item.company}</p>
+                      {item.badge && (
+                        <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 border border-emerald-500/20">
+                          {item.badge}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-xs text-muted-foreground mb-2">{item.location}</p>
                     <p className="text-sm text-muted-foreground">{item.desc}</p>
                   </div>

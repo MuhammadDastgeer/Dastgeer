@@ -49,7 +49,8 @@ const WebCV = () => {
                   { area: "Generative AI", skills: "LLMs, RAG Systems, Prompt Engineering, LangChain, LlamaIndex, Groq API, Gemini API, Anthropic Claude API" },
                   { area: "Agentic AI", skills: "Multi-Agent Systems, LangGraph, CrewAI, AutoGen, MCP Servers, Autonomous Workflows" },
                   { area: "AI Automation", skills: "n8n Workflows, FastAPI, Flask, Celery, Redis, Webhooks, API Integrations, CI/CD for ML" },
-                  { area: "MLOps", skills: "Model Deployment, Monitoring, A/B Testing, MLflow, Weights & Biases, Docker" },
+                  { area: "MLOps & Cloud", skills: "AWS (Amazon Web Services), Microsoft Azure, Docker, Model Deployment, Monitoring, MLflow, Weights & Biases" },
+                  { area: "Cloud Computing", skills: "AWS (EC2, S3, IAM, CloudWatch), Microsoft Azure, Cloud Architecture, Scalable AI Infrastructure" },
                   { area: "NLP", skills: "Text Classification, NER, Sentiment Analysis, BERT, Seq2Seq, Summarization, Hugging Face" },
                   { area: "Computer Vision", skills: "Image Classification, YOLO Object Detection, Segmentation, OCR, Video Processing, OpenCV" },
                   { area: "Time Series", skills: "ARIMA, Prophet, LSTM Forecasting, Anomaly Detection, Trend Analysis" },
@@ -64,6 +65,18 @@ const WebCV = () => {
 
             {/* Professional Experience */}
             <Section title="Professional Experience">
+              <ExperienceItem
+                title="AI / Machine Learning Intern"
+                company="Zeltrion Solutions"
+                period="15 Aug 2026 – 15 Oct 2026"
+                location="Pakistan (Internship • Certificate ID: ZS-0004)"
+                bullets={[
+                  "Successfully completed the Internship Program at Zeltrion Solutions ('Where Strategy Meets Intelligence').",
+                  "Demonstrated dedication, eagerness to learn, and strong commitment to professional growth in AI and ML domains.",
+                  "Collaborated with the technical team on data workflows, model evaluation, and intelligent problem-solving based on core values of Leadership, Teamwork, Innovation, and Impact.",
+                  "Awarded Certificate of Internship Completion (Certificate ID: ZS-0004) signed by Founder & CEO Nimra Akbar.",
+                ]}
+              />
               <ExperienceItem
                 title="Machine Learning Engineer"
                 company="Codveda Technologies"
@@ -133,6 +146,8 @@ const WebCV = () => {
             <Section title="Certifications & Training">
               <div className="grid md:grid-cols-2 gap-1">
                 {[
+                  "Artificial Intelligence using Python — DigiSkills",
+                  "Cloud Computing (AWS) — DigiSkills",
                   "Six-Month AI & Data Science Mentorship — Codanics",
                   "Python ka Chilla for Data Science — Codanics",
                   "Tableau for Data Analytics — Codanics",

@@ -55,6 +55,12 @@ const skills = [
     tools: ["N8N", "Make.com", "Zapier"],
     bg: "hsl(45,93%,90%)",
   },
+  {
+    title: "Cloud Computing",
+    emoji: "☁️",
+    tools: ["AWS", "Microsoft Azure", "EC2", "S3", "Cloud Hosting"],
+    bg: "hsl(199,89%,92%)",
+  },
 ];
 
 const Skills = () => {

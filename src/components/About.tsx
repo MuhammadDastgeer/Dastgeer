@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const skills = [
   "Machine Learning", "Deep Learning", "Computer Vision",
   "Generative AI & LLMs", "Agentic AI", "Data Analysis & Visualization",
-  "NLP", "AI Automation"
+  "NLP", "AI Automation", "Cloud Computing (AWS / Azure)"
 ];
 
 const About = () => {
