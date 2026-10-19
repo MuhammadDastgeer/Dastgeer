@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
@@ -7,58 +8,54 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight, Mail } from "lucide-react";
 
-const ProjectsPage = () => {
+export const ProjectsPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent relative z-10">
       <Navbar />
 
       {/* Page Header */}
-      <div className="pt-28 pb-10 bg-card/50 border-b border-border">
-        <div className="container mx-auto px-4 md:px-8 text-center max-w-3xl">
+      <div className="pt-32 pb-14 border-b border-border bg-surface/30 backdrop-blur-md relative overflow-hidden">
+        <div className="container max-w-[1200px] mx-auto px-6 text-left relative z-10">
           <ScrollReveal>
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-card text-sm font-medium text-muted-foreground mb-4">
-              <span className="w-2 h-2 rounded-full bg-primary" />
-              Portfolio Showcase
-            </span>
-            <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">
-              Featured AI & <span className="highlight-text">Machine Learning</span> Projects
+            <span className="section-label mb-2 block">// PORTFOLIO ARCHIVE</span>
+            <h1 className="fluid-h1 font-heading font-extrabold text-foreground mb-4">
+              Featured AI & <span className="text-gradient">ML Deployments</span>
             </h1>
-            <p className="text-muted-foreground leading-relaxed text-base">
-              A comprehensive showcase of deployed AI agents, RAG pipelines, healthcare diagnostic assistants, full-stack applications, and automation systems.
+            <p className="text-muted-foreground text-base md:text-lg max-w-[65ch] leading-relaxed">
+              A comprehensive showcase of deployed AI agents, RAG pipelines, healthcare diagnostic assistants, full-stack applications, and automated workflows.
             </p>
           </ScrollReveal>
         </div>
       </div>
 
-      <Projects />
+      <main>
+        <Projects />
 
-      {/* Next Step Call to Action */}
-      <section className="py-16 bg-card border-t border-border">
-        <div className="container mx-auto px-4 md:px-8 text-center max-w-2xl">
-          <ScrollReveal>
-            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">
-              Have an AI project or idea in mind?
-            </h2>
-            <p className="text-muted-foreground mb-8 text-sm md:text-base">
-              Whether you need end-to-end AI agent development, fine-tuning, or workflow automation, I'm available for full-time roles and contract projects.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                to="/contact"
-                className="gradient-purple-bg text-primary-foreground px-6 py-3 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity flex items-center gap-2"
-              >
-                <Mail size={16} /> Contact Me Today <ArrowRight size={16} />
-              </Link>
-              <Link
-                to="/web-cv"
-                className="border border-border text-foreground px-6 py-3 rounded-lg font-semibold text-sm hover:bg-secondary transition-colors"
-              >
-                🌐 View Web CV
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+        {/* CTA */}
+        <section className="py-20 border-t border-border bg-surface/40 relative">
+          <div className="container max-w-[1200px] mx-auto px-6 text-center max-w-2xl relative z-10">
+            <ScrollReveal>
+              <span className="section-label mb-2 block">// READY TO COMMENCE?</span>
+              <h2 className="fluid-h2 font-heading font-bold text-foreground mb-4">
+                Have an AI project or architecture in mind?
+              </h2>
+              <p className="text-muted-foreground mb-8 text-base leading-relaxed">
+                Whether you need end-to-end AI agent development, fine-tuning, or workflow automation, I'm available for full-time roles and contract projects.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link to="/contact" className="btn-gradient">
+                  <Mail size={15} />
+                  <span>Contact Me Today</span>
+                  <ArrowRight size={14} />
+                </Link>
+                <Link to="/web-cv" className="btn-ghost">
+                  <span>View Web CV</span>
+                </Link>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+      </main>
 
       <Footer />
       <Chatbot />

@@ -1,136 +1,194 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Mail } from "lucide-react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, MapPin, Mail, Sparkles, Terminal, Download } from "lucide-react";
 import profileImg from "@/assets/profile.png";
-import ScrollReveal from "./ScrollReveal";
+import { CountUp } from "./CountUp";
 
-const roles = [
-  "Deep Learning",
-  "Machine Learning",
-  "Generative AI",
-  "Computer Vision",
-  "NLP Expert",
-  "Agentic AI",
-  "Data Scientist",
-  "AI Automation",
+const rotatingRoles = [
+  "Agentic AI Architect",
+  "Generative AI & LLMs",
+  "Deep Learning Specialist",
+  "Computer Vision Expert",
+  "Production MLOps Engineer",
 ];
 
-const Hero = () => {
+export const Hero: React.FC = () => {
   const [roleIndex, setRoleIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % roles.length);
-    }, 2500);
-    return () => clearInterval(interval);
+    const timer = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % rotatingRoles.length);
+    }, 2800);
+    return () => clearInterval(timer);
   }, []);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
   return (
-    <section id="home" className="min-h-screen flex items-center pt-16 bg-background">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <ScrollReveal>
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-card text-sm font-medium text-muted-foreground mb-6">
-                <span className="w-2 h-2 rounded-full bg-green-badge" />
-                Available for Hire
+    <section className="relative min-h-[92vh] flex items-center pt-28 pb-16 overflow-hidden">
+      <div className="container max-w-[1200px] mx-auto px-6 relative z-10">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center"
+        >
+          {/* Left Column: Left-aligned Hero text */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left">
+            {/* Monospace Section Tag */}
+            <motion.div variants={itemVariants} className="mb-4">
+              <span className="section-label flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-aurora-cyan animate-pulse" />
+                // 00 — AI/ML SPECIALIST
               </span>
-            </ScrollReveal>
+            </motion.div>
 
-            <ScrollReveal delay={0.1}>
-              <p className="text-muted-foreground text-lg mb-1">Hello, I'm</p>
-              <h1 className="font-heading text-4xl md:text-6xl font-bold mb-4">
-                <span className="highlight-text">Muhammad</span> Dastgeer
-              </h1>
-            </ScrollReveal>
+            {/* Fluid Hero Name: One word with gradient text fill */}
+            <motion.h1 variants={itemVariants} className="fluid-h1 font-heading font-extrabold text-foreground mb-4">
+              <span className="text-gradient">Muhammad</span>
+              <br />
+              Dastgeer
+            </motion.h1>
 
-            <ScrollReveal delay={0.2}>
-              <h2 className="font-heading text-xl font-bold text-foreground mb-2 h-8 overflow-hidden">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={roles[roleIndex]}
-                    initial={{ y: 30, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -30, opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="inline-block highlight-text"
-                  >
-                    {roles[roleIndex]}
-                  </motion.span>
-                </AnimatePresence>
-              </h2>
-              <p className="flex items-center gap-1 text-muted-foreground text-sm mb-4">
-                <MapPin size={14} /> Pir Mahal, Punjab, Pakistan
-              </p>
-            </ScrollReveal>
+            {/* Rotating Role Pill */}
+            <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6 h-9">
+              <span className="mono-tag text-xs text-muted-foreground">// FOCUS:</span>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={rotatingRoles[roleIndex]}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="px-3.5 py-1 rounded-full border border-aurora-violet/40 bg-aurora-violet/10 text-aurora-cyan font-mono text-xs font-semibold tracking-wide flex items-center gap-1.5"
+                >
+                  <Sparkles size={12} className="text-aurora-violet" />
+                  {rotatingRoles[roleIndex]}
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
 
-            <ScrollReveal delay={0.3}>
-              <p className="text-muted-foreground leading-relaxed mb-6 max-w-lg">
-                AI/ML Engineer with deep hands-on expertise across the complete AI/ML spectrum — from classical machine learning to cutting-edge Generative AI and Agentic systems. Proficient in Python, PyTorch, TensorFlow, and the full data science pipeline.
-              </p>
-            </ScrollReveal>
+            {/* Brief Introduction max-w-[65ch] */}
+            <motion.p
+              variants={itemVariants}
+              className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-[65ch] mb-8"
+            >
+              AI/ML Engineer with hands-on expertise building production-grade autonomous agent systems,
+              fine-tuned LLM architectures, real-time computer vision pipelines, and scalable cloud solutions on AWS & Azure.
+            </motion.p>
 
-            <ScrollReveal delay={0.4}>
-              <div className="flex flex-wrap gap-3 mb-6">
-                <Link to="/contact" className="gradient-purple-bg text-primary-foreground px-6 py-3 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity">
-                  Get In Touch
-                </Link>
-                <Link to="/web-cv" className="border border-primary text-primary px-6 py-3 rounded-lg font-semibold text-sm hover:bg-primary/5 transition-colors flex items-center gap-2">
-                  🌐 Web CV
-                </Link>
-                <a href="/Muhammad_Dastgeer_CV.pdf" download className="border border-border text-foreground px-6 py-3 rounded-lg font-semibold text-sm hover:bg-secondary transition-colors flex items-center gap-2">
-                  ↓ Download CV
-                </a>
-              </div>
-            </ScrollReveal>
+            {/* CTAs with magnetic hover styling */}
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 mb-8">
+              <Link to="/contact" className="btn-gradient group">
+                <span>Start a Project</span>
+                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+              <Link to="/projects" className="btn-ghost">
+                <span>View Selected Work</span>
+              </Link>
+              <a
+                href="/Muhammad_Dastgeer_CV.pdf"
+                download
+                className="btn-ghost text-xs py-2.5 px-4"
+              >
+                <Download size={14} />
+                <span>Download CV</span>
+              </a>
+            </motion.div>
 
-            <ScrollReveal delay={0.5}>
-              <div className="flex items-center gap-4">
-                <a href="https://github.com/MuhammadDastgeer" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors"><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
-                <a href="https://www.linkedin.com/in/muhammad-dastgeer/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors"><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-                <a href="mailto:dastgeerjutt8888@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors"><Mail size={20} /></a>
-              </div>
-            </ScrollReveal>
+            {/* Meta tags */}
+            <motion.div variants={itemVariants} className="flex items-center gap-5 text-xs text-muted-foreground pt-4 border-t border-border/50">
+              <span className="flex items-center gap-1.5">
+                <MapPin size={13} className="text-aurora-cyan" />
+                Punjab, Pakistan (Remote Global)
+              </span>
+              <span className="w-1 h-1 rounded-full bg-border" />
+              <span className="flex items-center gap-1.5 text-accent font-mono">
+                <span className="w-2 h-2 rounded-full bg-accent" />
+                Available Q4 2026
+              </span>
+            </motion.div>
           </div>
 
-          <ScrollReveal direction="right" delay={0.2}>
-            <div className="relative flex justify-center">
-              <div className="relative">
-                <div className="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-card shadow-2xl">
-                  <img src={profileImg} alt="Muhammad Dastgeer" className="w-full h-full object-cover" width={512} height={512} />
-                </div>
+          {/* Right Column: Profile Photo inside Gradient-Ring with Floating Chips */}
+          <motion.div
+            variants={itemVariants}
+            className="lg:col-span-5 flex justify-center lg:justify-end"
+          >
+            <div className="relative">
+              {/* Soft Aurora Glow Ring */}
+              <div className="absolute -inset-2.5 rounded-[32px] bg-gradient-to-tr from-aurora-violet via-aurora-cyan to-aurora-lime opacity-75 blur-md -z-10 animate-aurora-1" />
 
-                <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-4 -left-8 bg-card rounded-xl shadow-lg px-4 py-2 text-center"
-                >
-                  <span className="text-2xl font-bold highlight-text">10+</span>
-                  <p className="text-xs text-muted-foreground">Projects</p>
-                </motion.div>
-
-                <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                  className="absolute top-1/2 -left-12 bg-card rounded-xl shadow-lg px-4 py-2 text-center"
-                >
-                  <span className="text-2xl font-bold highlight-text">20+</span>
-                  <p className="text-xs text-muted-foreground">Projects Shipped</p>
-                </motion.div>
-
-                <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="absolute bottom-4 -right-8 bg-card rounded-xl shadow-lg px-4 py-2 text-center"
-                >
-                  <span className="text-2xl font-bold highlight-text">30+</span>
-                  <p className="text-xs text-muted-foreground">AI Agents Built</p>
-                </motion.div>
+              {/* Main Portrait Container */}
+              <div className="relative w-64 h-80 sm:w-80 sm:h-[400px] rounded-[28px] overflow-hidden bg-surface border border-white/10 shadow-2xl">
+                <img
+                  src={profileImg}
+                  alt="Muhammad Dastgeer"
+                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+                  width={512}
+                  height={512}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/60 via-transparent to-transparent pointer-events-none" />
               </div>
+
+              {/* Floating Stat Chip 1 */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-4 -left-6 sm:-left-10 glass-pill px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-border"
+              >
+                <div className="w-9 h-9 rounded-xl bg-aurora-violet/20 border border-aurora-violet/40 flex items-center justify-center text-aurora-violet font-mono font-bold text-sm">
+                  ⚡
+                </div>
+                <div>
+                  <div className="font-heading font-extrabold text-lg text-foreground leading-none">
+                    <CountUp end={30} suffix="+" />
+                  </div>
+                  <span className="mono-tag text-[10px] text-muted-foreground">AI Agents Shipped</span>
+                </div>
+              </motion.div>
+
+              {/* Floating Stat Chip 2 */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                className="absolute -bottom-4 -right-4 sm:-right-8 glass-pill px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-border"
+              >
+                <div className="w-9 h-9 rounded-xl bg-aurora-cyan/20 border border-aurora-cyan/40 flex items-center justify-center text-aurora-cyan font-mono font-bold text-sm">
+                  🤖
+                </div>
+                <div>
+                  <div className="font-heading font-extrabold text-lg text-foreground leading-none">
+                    <CountUp end={20} suffix="+" />
+                  </div>
+                  <span className="mono-tag text-[10px] text-muted-foreground">Production ML Projects</span>
+                </div>
+              </motion.div>
             </div>
-          </ScrollReveal>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { MessageCircle, X, Send, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -12,85 +12,93 @@ type QuickQuestion = {
 const quickQuestions: QuickQuestion[] = [
   {
     id: "about",
-    label: "👤 About me & skills",
+    label: "👤 About & Skills",
     question: "Tell me about yourself and your skills",
     answer:
-      "I'm **Muhammad Dastgeer** — an AI/ML Engineer specializing in **Agentic AI, Generative AI, Machine Learning, Deep Learning, and AI Automation**.\n\n**Core skills:**\n• Python, TensorFlow, PyTorch, scikit-learn\n• LangChain, LangGraph, LangSmith, MCP\n• OpenAI, Gemini, Groq APIs\n• RAG, Vector Stores, Prompt Engineering\n• n8n Automation, Streamlit, Pandas, NumPy\n• Data Analysis & Visualization (Matplotlib, Seaborn, Plotly)",
+      "I'm **Muhammad Dastgeer** — an AI/ML Engineer specializing in **Autonomous Agentic AI, Generative AI & RAG, Deep Learning, and Cloud Computing**.\n\n**Core Stack:**\n• Python 3.12, PyTorch, TensorFlow, Scikit-Learn\n• LangGraph, LangChain, CrewAI, MCP Architecture\n• AWS (EC2, S3) & Microsoft Azure\n• Hybrid Vector RAG, ChromaDB, FastAPI, Docker",
   },
   {
     id: "projects",
-    label: "🚀 Show projects",
+    label: "🚀 Show Projects",
     question: "What projects have you built?",
     answer:
-      "I've built **30+ projects** across 3 categories:\n\n**🤖 Agentic & GenAI (8):**\nCODA-Ai Code Agent, Code Explainer, AI Travel Agent, Doctor AI, Customer Support Bot, Auto Blog Writer, Real Estate Platform, MCP Client Chatbot\n\n**📊 Machine Learning (8):**\nExtreme Weather Analysis, Movies Recommendation, Student Performance, YouTube Trending, Mental Health Analysis, Code Smells, Stock Market, Ecommerce Behavior\n\n**⚙️ AI Automation (8):**\nWordPress+PDF, Discord Bot, Email HITL, Bulk Gmail, RAG with Drive+Gemini, WhatsApp RAG, RAG Starter, Full Auth System\n\n👉 Check the **Projects** section above for live demos & GitHub links!",
+      "I've built **30+ AI systems** across three core pillars:\n\n**🤖 Agentic & GenAI:**\nRAG Showcase, Medicall Healthcare Platform, CODA-Ai Code Agent, Code Explainer, AI Travel Agent, Auto Blog Writer, MCP Chatbot\n\n**📊 Machine Learning:**\nExtreme Weather Analysis, Movies Recommendation, Student Performance, Stock Market Analysis, Code Smells Refactoring\n\n**⚙️ AI Automation:**\nWhatsApp Multimodal RAG, Full Auth Workflow, Discord Bot, Email HITL, Bulk Gmail & Google Sheets automation\n\n👉 Check out the **Projects** section for live interactive demos!",
   },
   {
     id: "experience",
-    label: "🎓 Experience & education",
-    question: "Tell me about your experience and education",
+    label: "🎓 Experience & Track Record",
+    question: "Tell me about your experience and background",
     answer:
-      "**💼 Experience:**\n• ML Specialist @ **CodaAlpha**\n• ML Engineer @ **Arch Technologies**\n• Data Science Intern @ **Codveda Technologies**\n\n**🎓 Education:**\n• BS in Computer Science\n• Specialization in AI & Machine Learning\n\n**🏆 Achievements:**\n• 30+ AI agents built\n• 20+ ML projects delivered\n• Multiple certifications in AI, ML, and Data Science\n\n👉 See the **Experience**, **Education** & **Certifications** sections for full details!",
-  },
-  {
-    id: "certifications",
-    label: "🏅 Certifications",
-    question: "What certifications do you have?",
-    answer:
-      "**🏅 My Certifications:**\n\n**Codanics:**\n• Six-Month AI & Data Science Mentorship\n• Python ka Chilla for Data Science\n• Tableau for Data Analytics\n\n**InnoVista Learn Easy:**\n• Machine Learning\n• Python Course\n\n**Hugging Face:**\n• MCP (Model Context Protocol)\n\n👉 See the **Certifications** section for full details!",
+      "**💼 Professional Experience:**\n• AI/ML Intern @ **Zeltrion Solutions** (15 Aug – 15 Oct 2026 • Certificate ID: ZS-0004)\n• ML Engineer @ **Codveda Technologies**\n• ML Specialist @ **Arch Technologies**\n• ML Specialist @ **CodaAlpha**\n\n**🎓 Education & Training:**\n• Intermediate ICS (Computer Science) — BISE Faisalabad\n• Certified in AI using Python & AWS Cloud by DigiSkills\n• 6-Month AI Mentorship — Codanics\n\n👉 See the **About** and **Web CV** pages for verified credentials!",
   },
   {
     id: "hire",
-    label: "💼 Hire me",
+    label: "💼 Hire Me",
     question: "Are you available for hire?",
     answer:
-      "**💼 Yes, I'm available for hire!**\n\n**Services I offer:**\n• AI/ML Development & Consulting\n• Agentic AI & GenAI Solutions\n• Machine Learning Model Development\n• AI Automation (n8n, Make.com)\n• RAG Systems & Chatbots\n• Data Science & Analytics\n\n**Experience:**\n• ML Specialist @ CodaAlpha\n• ML Engineer @ Arch Technologies\n• Data Science Intern @ Codveda Technologies\n\n📧 **Email:** dastgeerjutt8888@gmail.com\n💬 **WhatsApp:** Button se contact karein!\n\n**Project-based, full-time, ya freelance** — sab options available hain!",
+      "**💼 Yes, I am actively available for Q4 2026 roles!**\n\n**Areas of Collaboration:**\n• Autonomous AI Multi-Agent Architecture\n• Custom LLM Fine-Tuning & RAG Pipelines\n• Predictive ML Model Training & Telemetry\n• Enterprise Workflow Automation (n8n, Make)\n• Cloud AI Deployment on AWS & Azure\n\n📧 **Email:** dastgeerjutt8888@gmail.com\n💬 **WhatsApp:** Available on the floating green button\n\nAvailable for full-time, contract, and advisory engagements worldwide!",
   },
 ];
 
 const fallback =
-  "Main aapke sawal ka jawab in topics mein de sakta hoon: **About & Skills**, **Projects**, **Experience & Education**, ya **Contact**. Niche diye buttons par click karein, ya direct email karein: **dastgeerjutt8888@gmail.com**";
+  "You can ask me about **About & Skills**, **Projects**, **Experience**, or **Hiring**. Click any suggested chip below or reach Muhammad directly at **dastgeerjutt8888@gmail.com**.";
 
 const getResponse = (msg: string): string => {
   const lower = msg.toLowerCase();
   if (/(hi|hello|hey|salam|assalam)/.test(lower))
-    return "Hello! 👋 I'm Muhammad Dastgeer's assistant. Niche diye quick buttons par click karein ya apna sawal type karein!";
-  if (/(skill|about|who|kaun|tumhar|aap kaun)/.test(lower)) return quickQuestions[0].answer;
-  if (/(project|portfolio|kaam|work)/.test(lower)) return quickQuestions[1].answer;
-  if (/(experience|education|qualif|degree|certif|tajurba)/.test(lower)) return quickQuestions[2].answer;
-  if (/(contact|email|reach|hire|whatsapp|linkedin|rabta)/.test(lower)) return quickQuestions[3].answer;
-  if (/(certif|badge|course|diploma)/.test(lower)) return quickQuestions[4].answer;
-  if (/(hire|job|work|service|available|freelance|project)/.test(lower)) return quickQuestions[5].answer;
-  if (/(thank|shukr)/.test(lower)) return "You're welcome! 😊 Koi aur sawal ho to puchein.";
+    return "Hello! 👋 I'm Muhammad Dastgeer's AI Portfolio Assistant. Select a topic below or ask me any question about Muhammad's engineering stack!";
+  if (/(skill|about|who|kaun|stack)/.test(lower)) return quickQuestions[0].answer;
+  if (/(project|portfolio|work|demo)/.test(lower)) return quickQuestions[1].answer;
+  if (/(experience|education|qualif|degree|certif|zeltrion|internship)/.test(lower))
+    return quickQuestions[2].answer;
+  if (/(contact|email|reach|hire|whatsapp|linkedin|role)/.test(lower)) return quickQuestions[3].answer;
   return fallback;
 };
 
-type Message = { role: "user" | "bot"; text: string };
+type Message = {
+  role: "user" | "bot";
+  text: string;
+};
 
 const formatText = (text: string) => {
   return text.split("\n").map((line, i) => {
-    const parts = line.split(/(\*\*[^*]+\*\*)/g);
+    let formatted: React.ReactNode = line;
+    if (line.startsWith("• ")) {
+      formatted = <span className="block ml-2">{line}</span>;
+    }
+    const boldRegex = /\*\*(.*?)\*\*/g;
+    const parts: (string | React.ReactNode)[] = [];
+    let lastIndex = 0;
+    let match;
+    const str = typeof formatted === "string" ? formatted : line;
+    while ((match = boldRegex.exec(str)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(str.substring(lastIndex, match.index));
+      }
+      parts.push(
+        <strong key={match.index} className="text-aurora-cyan font-bold">
+          {match[1]}
+        </strong>
+      );
+      lastIndex = match.index + match[0].length;
+    }
+    if (lastIndex < str.length) {
+      parts.push(str.substring(lastIndex));
+    }
     return (
-      <span key={i}>
-        {parts.map((p, j) =>
-          p.startsWith("**") && p.endsWith("**") ? (
-            <strong key={j} className="font-semibold">{p.slice(2, -2)}</strong>
-          ) : (
-            <span key={j}>{p}</span>
-          )
-        )}
-        <br />
+      <span key={i} className="block mb-1">
+        {parts.length > 0 ? parts : formatted}
       </span>
     );
   });
 };
 
-const Chatbot = () => {
+export const Chatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "bot",
-      text:
-        "Hi! 👋 I'm Muhammad's assistant. Quick sawal ke liye niche buttons par click karein, ya apna sawal type karein!",
+      text: "👋 Hi there! I'm Muhammad Dastgeer's AI Assistant. Ask me about his autonomous AI agents, machine learning experience, or availability!",
     },
   ]);
   const [input, setInput] = useState("");
@@ -98,17 +106,13 @@ const Chatbot = () => {
   const sendMessage = (text: string) => {
     if (!text.trim()) return;
     const userMsg: Message = { role: "user", text };
-    const botMsg: Message = { role: "bot", text: getResponse(text) };
-    setMessages((prev) => [...prev, userMsg, botMsg]);
+    const botReply: Message = { role: "bot", text: getResponse(text) };
+    setMessages((prev) => [...prev, userMsg, botReply]);
     setInput("");
   };
 
   const handleQuickClick = (q: QuickQuestion) => {
-    setMessages((prev) => [
-      ...prev,
-      { role: "user", text: q.question },
-      { role: "bot", text: q.answer },
-    ]);
+    sendMessage(q.question);
   };
 
   return (
@@ -116,40 +120,49 @@ const Chatbot = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="fixed bottom-24 right-4 md:right-8 w-[22rem] max-w-[calc(100vw-2rem)] bg-card border border-border rounded-2xl shadow-2xl z-50 overflow-hidden flex flex-col"
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="fixed bottom-24 right-4 md:right-8 w-[23rem] max-w-[calc(100vw-2rem)] glass-pill rounded-3xl shadow-2xl z-50 overflow-hidden flex flex-col border border-border"
           >
-            <div className="gradient-purple-bg p-4 flex items-center justify-between flex-shrink-0">
-              <div className="flex items-center gap-2">
-                <MessageCircle className="text-primary-foreground" size={20} />
-                <span className="text-primary-foreground font-semibold text-sm">
-                  Chat with AI Assistant
-                </span>
+            {/* Header */}
+            <div className="bg-surface/80 border-b border-border p-4 flex items-center justify-between flex-shrink-0">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-aurora-violet/15 border border-aurora-violet/30 text-aurora-violet flex items-center justify-center">
+                  <Sparkles size={16} />
+                </div>
+                <div>
+                  <span className="text-foreground font-heading font-bold text-sm block leading-tight">
+                    AI Assistant
+                  </span>
+                  <span className="mono-tag text-[10px] text-aurora-cyan flex items-center gap-1 font-semibold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" /> Live Agent
+                  </span>
+                </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-primary-foreground/80 hover:text-primary-foreground"
+                className="text-muted-foreground hover:text-foreground p-1 rounded-lg transition-colors cursor-pointer"
                 aria-label="Close chat"
               >
                 <X size={18} />
               </button>
             </div>
 
-            <div className="h-80 overflow-y-auto p-3 space-y-2">
+            {/* Messages */}
+            <div className="h-80 overflow-y-auto p-4 space-y-3">
               {messages.map((msg, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[85%] px-3 py-2 rounded-xl text-xs leading-relaxed ${
+                    className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl text-xs leading-relaxed ${
                       msg.role === "user"
-                        ? "gradient-purple-bg text-primary-foreground"
-                        : "bg-secondary text-foreground"
+                        ? "bg-gradient-to-r from-aurora-violet to-aurora-cyan text-white font-medium shadow-md"
+                        : "bg-surface border border-border text-foreground"
                     }`}
                   >
                     {formatText(msg.text)}
@@ -158,11 +171,12 @@ const Chatbot = () => {
               ))}
             </div>
 
-            <div className="px-3 pb-2 flex-shrink-0 border-t border-border pt-2">
+            {/* Quick Suggestions */}
+            <div className="px-3.5 pb-2.5 flex-shrink-0 border-t border-border pt-2.5 bg-surface/40">
               <div className="flex items-center gap-1 mb-2">
-                <Sparkles size={12} className="text-primary" />
-                <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">
-                  Quick questions
+                <Sparkles size={11} className="text-aurora-violet" />
+                <span className="mono-tag text-[9px] text-muted-foreground">
+                  Quick inquiries
                 </span>
               </div>
               <div className="flex flex-wrap gap-1.5">
@@ -170,7 +184,7 @@ const Chatbot = () => {
                   <button
                     key={q.id}
                     onClick={() => handleQuickClick(q)}
-                    className="text-[11px] px-2.5 py-1.5 rounded-full border border-border bg-secondary text-foreground hover:gradient-purple-bg hover:text-primary-foreground hover:border-transparent transition-all"
+                    className="mono-tag text-[10px] px-2.5 py-1 rounded-full border border-border bg-surface text-foreground hover:border-aurora-violet hover:text-aurora-cyan transition-all cursor-pointer"
                   >
                     {q.label}
                   </button>
@@ -178,17 +192,18 @@ const Chatbot = () => {
               </div>
             </div>
 
-            <div className="p-3 border-t border-border flex gap-2 flex-shrink-0">
+            {/* Input form */}
+            <div className="p-3 border-t border-border flex gap-2 flex-shrink-0 bg-surface/60">
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && sendMessage(input)}
-                placeholder="Type a message..."
-                className="flex-1 px-3 py-2 text-xs rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
+                placeholder="Ask about AI stack, architecture..."
+                className="flex-1 px-3 py-2 text-xs rounded-xl border border-border bg-surface text-foreground focus:outline-none focus:border-aurora-violet focus:ring-1 focus:ring-aurora-violet/30 placeholder:text-muted-foreground/60"
               />
               <button
                 onClick={() => sendMessage(input)}
-                className="gradient-purple-bg text-primary-foreground p-2 rounded-lg hover:opacity-90"
+                className="btn-gradient p-2.5 rounded-xl cursor-pointer"
                 aria-label="Send message"
               >
                 <Send size={14} />
@@ -198,14 +213,15 @@ const Chatbot = () => {
         )}
       </AnimatePresence>
 
+      {/* Floating Toggle Button */}
       <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-20 right-4 md:right-8 gradient-purple-bg text-primary-foreground p-4 rounded-full shadow-lg z-50"
+        className="fixed bottom-20 right-4 md:right-8 w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-tr from-aurora-violet to-aurora-cyan text-white shadow-lg hover:shadow-aurora-violet/50 z-50 transition-all cursor-pointer border border-white/20"
         aria-label={isOpen ? "Close chat" : "Open chat"}
       >
-        {isOpen ? <X size={22} /> : <MessageCircle size={22} />}
+        {isOpen ? <X size={20} /> : <MessageCircle size={20} />}
       </motion.button>
     </>
   );

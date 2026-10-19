@@ -1,3 +1,4 @@
+import React from "react";
 import Navbar from "@/components/Navbar";
 import Contact from "@/components/Contact";
 import FAQ from "@/components/FAQ";
@@ -6,31 +7,30 @@ import Chatbot from "@/components/Chatbot";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollReveal from "@/components/ScrollReveal";
 
-const ContactPage = () => {
+export const ContactPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent relative z-10">
       <Navbar />
 
       {/* Page Header */}
-      <div className="pt-28 pb-10 bg-card/50 border-b border-border">
-        <div className="container mx-auto px-4 md:px-8 text-center max-w-3xl">
+      <div className="pt-32 pb-14 border-b border-border bg-surface/30 backdrop-blur-md relative overflow-hidden">
+        <div className="container max-w-[1200px] mx-auto px-6 text-center relative z-10">
           <ScrollReveal>
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-card text-sm font-medium text-muted-foreground mb-4">
-              <span className="w-2 h-2 rounded-full bg-green-badge" />
-              Available for New Opportunities
-            </span>
-            <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">
-              Get in Touch & <span className="highlight-text">Collaborate</span>
+            <span className="section-label mb-2 block">// DIRECT COMMUNICATIONS</span>
+            <h1 className="fluid-h1 font-heading font-extrabold text-foreground mb-4">
+              Get in Touch & <span className="text-gradient">Collaborate</span>
             </h1>
-            <p className="text-muted-foreground leading-relaxed text-base">
+            <p className="text-muted-foreground text-base md:text-lg max-w-[65ch] mx-auto leading-relaxed">
               Looking for an AI engineer, machine learning consultant, or technical partner? Send me a message or check the frequently asked questions below.
             </p>
           </ScrollReveal>
         </div>
       </div>
 
-      <Contact />
-      <FAQ />
+      <main>
+        <Contact />
+        <FAQ />
+      </main>
 
       <Footer />
       <Chatbot />

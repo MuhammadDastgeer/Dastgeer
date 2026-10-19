@@ -1,89 +1,109 @@
-import { Bot, Code, Brain, BarChart3, Sparkles, Zap } from "lucide-react";
-import ScrollReveal from "./ScrollReveal";
+import React from "react";
+import { SpotlightCard } from "./SpotlightCard";
+import { Bot, Code2, Brain, Sparkles, Cloud, Zap, ArrowUpRight } from "lucide-react";
 
-const expertise = [
+const domains = [
   {
-    icon: <Bot className="w-8 h-8" style={{ color: "hsl(265, 89%, 50%)" }} />,
-    stat: "30+", statLabel: "Agents Built",
-    title: "Agentic AI",
-    desc: "Building autonomous AI agents that make decisions, automate workflows, and adapt to complex scenarios.",
-    tools: ["OpenAI SDK", "LangChain", "MCP", "n8n"],
-    color: "hsl(265, 89%, 50%)",
+    icon: <Bot className="w-6 h-6 text-aurora-violet" />,
+    badge: "CORE STRENGTH",
+    title: "Autonomous Agentic AI",
+    desc: "Building multi-agent systems that autonomously reason, leverage real-time external tools, coordinate sub-tasks, and execute complex workflows.",
+    tools: ["LangGraph", "LangChain", "CrewAI", "MCP Architecture"],
+    colSpan: "md:col-span-8",
   },
   {
-    icon: <Code className="w-8 h-8" style={{ color: "hsl(217, 91%, 60%)" }} />,
-    stat: "20+", statLabel: "Projects Shipped",
-    title: "Machine Learning",
-    desc: "Building and deploying ML models for prediction, classification, regression, and real-world data-driven solutions.",
-    tools: ["Scikit-learn", "XGBoost", "LightGBM", "Python"],
-    color: "hsl(217, 91%, 60%)",
+    icon: <Sparkles className="w-6 h-6 text-aurora-cyan" />,
+    badge: "LLM PIPELINES",
+    title: "Generative AI & RAG",
+    desc: "Production Retrieval-Augmented Generation with hybrid vector search, chunk reranking, prompt engineering, and structured JSON parsing.",
+    tools: ["OpenAI API", "Gemini 2.5", "Claude 3.7", "ChromaDB"],
+    colSpan: "md:col-span-4",
   },
   {
-    icon: <Brain className="w-8 h-8" style={{ color: "hsl(186, 94%, 42%)" }} />,
-    stat: "10+", statLabel: "DL Models",
-    title: "Deep Learning",
-    desc: "Designing neural networks — CNNs, RNNs, Transformers — for computer vision, NLP, and complex AI tasks.",
-    tools: ["PyTorch", "TensorFlow", "Keras", "Transfer Learning"],
-    color: "hsl(186, 94%, 42%)",
+    icon: <Brain className="w-6 h-6 text-accent" />,
+    badge: "DEEP LEARNING",
+    title: "Neural Architectures & Vision",
+    desc: "Designing and fine-tuning CNNs, RNNs, and Transformers for computer vision, image segmentation, OCR, and sequential time-series forecasting.",
+    tools: ["PyTorch", "TensorFlow", "YOLOv8", "Hugging Face"],
+    colSpan: "md:col-span-4",
   },
   {
-    icon: <BarChart3 className="w-8 h-8" style={{ color: "hsl(142, 71%, 45%)" }} />,
-    stat: "100%", statLabel: "Data-Driven",
-    title: "Data Analytics",
-    desc: "Transforming raw data into actionable insights through EDA, statistical analysis, and interactive dashboards.",
-    tools: ["Pandas", "NumPy", "Plotly", "Tableau"],
-    color: "hsl(142, 71%, 45%)",
+    icon: <Cloud className="w-6 h-6 text-aurora-violet" />,
+    badge: "INFRASTRUCTURE",
+    title: "Cloud Computing & MLOps",
+    desc: "Containerized model serving with Docker, low-latency microservices using FastAPI, and cloud deployment pipelines on AWS and Microsoft Azure.",
+    tools: ["AWS (EC2, S3)", "Microsoft Azure", "Docker", "FastAPI"],
+    colSpan: "md:col-span-4",
   },
   {
-    icon: <Sparkles className="w-8 h-8" style={{ color: "hsl(265, 89%, 50%)" }} />,
-    stat: "LLMs", statLabel: "& RAG Systems",
-    title: "Generative AI",
-    desc: "Building LLM-powered applications with RAG pipelines, prompt engineering, and multi-modal AI capabilities.",
-    tools: ["LangChain", "OpenAI", "Groq", "LlamaIndex"],
-    color: "hsl(265, 89%, 50%)",
+    icon: <Zap className="w-6 h-6 text-aurora-cyan" />,
+    badge: "ORCHESTRATION",
+    title: "AI Workflow Automation",
+    desc: "Integrating intelligent LLM decision nodes into automated enterprise webhooks and low-code operational flows to eliminate repetitive manual work.",
+    tools: ["n8n Workflows", "Make.com", "Zapier", "Webhooks"],
+    colSpan: "md:col-span-4",
   },
   {
-    icon: <Zap className="w-8 h-8" style={{ color: "hsl(25, 95%, 53%)" }} />,
-    stat: "90%", statLabel: "Efficiency Gain",
-    title: "AI Automation",
-    desc: "Connecting intelligent systems with code and no-code tools to eliminate manual work and scale operations.",
-    tools: ["n8n", "Make.com", "Zapier", "FastAPI"],
-    color: "hsl(25, 95%, 53%)",
+    icon: <Code2 className="w-6 h-6 text-aurora-violet" />,
+    badge: "PREDICTIVE ML",
+    title: "Classical Machine Learning",
+    desc: "Supervised and unsupervised models for classification, regression, and ranking. Rigorous cross-validation, feature engineering, and model explainability.",
+    tools: ["Scikit-learn", "XGBoost", "LightGBM", "Pandas"],
+    colSpan: "md:col-span-12",
   },
 ];
 
-const Expertise = () => {
+export const Expertise: React.FC = () => {
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4 md:px-8">
-        <ScrollReveal>
-          <div className="text-center mb-12">
-            <p className="section-subtitle mb-2">EXPERTISE</p>
-            <h2 className="section-title">What I <span className="highlight-text">Do</span></h2>
-          </div>
-        </ScrollReveal>
+    <section id="expertise" className="py-24 relative">
+      <div className="container max-w-[1200px] mx-auto px-6">
+        {/* Left-aligned Section Header */}
+        <div className="text-left mb-12">
+          <span className="section-label mb-2 block">// 02 — WHAT I DO</span>
+          <h2 className="fluid-h2 font-heading font-bold text-foreground mb-3">
+            Specialized AI Capabilities
+          </h2>
+          <p className="text-muted-foreground text-base max-w-[65ch]">
+            End-to-end artificial intelligence engineering, from conceptual algorithm design to scalable production inference.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {expertise.map((item, i) => (
-            <ScrollReveal key={item.title} delay={i * 0.1}>
-              <div className="bg-card rounded-xl p-6 border border-border hover-card-lift group cursor-default">
-                <div className="h-1 rounded-full mb-4" style={{ background: item.color }} />
-                <div className="flex items-center justify-between mb-4">
-                  <div className="p-2 rounded-lg bg-secondary hover-icon-glow">{item.icon}</div>
-                  <div className="text-right">
-                    <span className="text-xl font-bold" style={{ color: item.color }}>{item.stat}</span>
-                    <p className="text-xs text-muted-foreground">{item.statLabel}</p>
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+          {domains.map((item, index) => (
+            <SpotlightCard
+              key={index}
+              className={`${item.colSpan} p-6 sm:p-7 flex flex-col justify-between`}
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-surface border border-border flex items-center justify-center shadow-inner">
+                    {item.icon}
                   </div>
+                  <span className="mono-tag text-[10px] px-2.5 py-1 rounded-full border border-border bg-surface text-muted-foreground">
+                    {item.badge}
+                  </span>
                 </div>
-                <h3 className="font-heading text-lg font-bold mb-2 text-foreground">{item.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{item.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {item.tools.map((t) => (
-                    <span key={t} className="px-2 py-1 text-xs border border-border rounded-md text-muted-foreground bg-secondary hover-badge">{t}</span>
-                  ))}
-                </div>
+
+                <h3 className="font-heading font-bold text-xl text-foreground mb-2.5">
+                  {item.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                  {item.desc}
+                </p>
               </div>
-            </ScrollReveal>
+
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-border/60">
+                {item.tools.map((t) => (
+                  <span
+                    key={t}
+                    className="mono-tag text-[10px] px-2.5 py-1 rounded-lg border border-border/80 bg-surface/80 text-foreground/90"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </SpotlightCard>
           ))}
         </div>
       </div>

@@ -1,32 +1,78 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Mail, ExternalLink, ArrowLeft, Phone } from "lucide-react";
+import { MapPin, Mail, ExternalLink, ArrowLeft, Phone, Download, Sparkles, Building2, Calendar, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import profileImg from "@/assets/profile.png";
 
-const WebCV = () => {
+export const WebCV: React.FC = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="max-w-3xl mx-auto px-4 py-8">
+    <div className="min-h-screen bg-transparent relative z-10 py-10 px-4">
+      <div className="max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <Link to="/" className="inline-flex items-center gap-2 text-sm text-primary hover:underline mb-8">
-            <ArrowLeft size={16} /> Back to Portfolio
-          </Link>
+          {/* Top navigation row */}
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+            <Link to="/" className="btn-ghost text-xs py-2 px-4">
+              <ArrowLeft size={14} /> Back to Portfolio
+            </Link>
+            <a
+              href="/Muhammad_Dastgeer_CV.pdf"
+              download
+              className="btn-gradient text-xs py-2 px-5"
+            >
+              <Download size={14} /> Download Official PDF
+            </a>
+          </div>
 
-          <div className="bg-card border border-border rounded-2xl p-8 shadow-sm mb-6">
-            {/* Header */}
-            <div className="flex flex-col md:flex-row items-center gap-6 mb-6">
-              <img src={profileImg} alt="Muhammad Dastgeer" className="w-24 h-24 rounded-full object-cover border-4 border-primary/20" />
-              <div className="text-center md:text-left">
-                <h1 className="font-heading text-3xl font-bold text-foreground">MUHAMMAD DASTGEER</h1>
-                <p className="text-primary font-semibold text-sm">AI/ML Engineer • Generative AI Specialist • Data Scientist</p>
-                <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-2 text-xs text-muted-foreground">
-                  <span className="flex items-center gap-1"><Phone size={12} /> +92 318 2460719</span>
-                  <span className="flex items-center gap-1"><Mail size={12} /> dastgeerjutt8888@gmail.com</span>
-                  <span className="flex items-center gap-1"><MapPin size={12} /> Pir Mahal, Punjab, Pakistan</span>
+          {/* Main CV Card */}
+          <div className="bento-card p-6 sm:p-10 border border-border shadow-2xl mb-8">
+            {/* Header / Bio */}
+            <div className="flex flex-col md:flex-row items-center gap-6 mb-8 pb-8 border-b border-border">
+              <div className="relative w-28 h-28 rounded-2xl overflow-hidden ring-2 ring-aurora-violet/50 shadow-xl flex-shrink-0">
+                <img
+                  src={profileImg}
+                  alt="Muhammad Dastgeer"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              <div className="text-center md:text-left flex-1">
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 mb-1">
+                  <h1 className="font-heading text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
+                    Muhammad <span className="text-gradient">Dastgeer</span>
+                  </h1>
+                  <span className="mono-tag text-[10px] px-2.5 py-0.5 rounded-full bg-accent/15 text-accent border border-accent/30 font-bold">
+                    AVAILABLE Q4 2026
+                  </span>
                 </div>
-                <div className="flex flex-wrap gap-3 mt-2">
-                  <a href="https://linkedin.com/in/muhammad-dastgeer" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">LinkedIn</a>
-                  <a href="https://github.com/MuhammadDastgeer" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">GitHub</a>
+
+                <p className="text-aurora-cyan font-heading font-semibold text-xs sm:text-sm tracking-wide mb-3">
+                  AI/ML Engineer • Generative AI & Multi-Agent Architect
+                </p>
+
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs text-muted-foreground mb-3">
+                  <span className="flex items-center gap-1.5"><Phone size={13} className="text-aurora-cyan" /> +92 318 2460719</span>
+                  <span className="flex items-center gap-1.5"><Mail size={13} className="text-aurora-violet" /> dastgeerjutt8888@gmail.com</span>
+                  <span className="flex items-center gap-1.5"><MapPin size={13} className="text-aurora-cyan" /> Pir Mahal, Punjab, Pakistan</span>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
+                  <a
+                    href="https://linkedin.com/in/muhammad-dastgeer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mono-tag text-[11px] text-aurora-cyan hover:underline"
+                  >
+                    LinkedIn ↗
+                  </a>
+                  <span className="text-border">•</span>
+                  <a
+                    href="https://github.com/MuhammadDastgeer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mono-tag text-[11px] text-aurora-violet hover:underline"
+                  >
+                    GitHub ↗
+                  </a>
                 </div>
               </div>
             </div>
@@ -34,30 +80,30 @@ const WebCV = () => {
             {/* Professional Summary */}
             <Section title="Professional Summary">
               <p className="text-muted-foreground text-sm leading-relaxed">
-                AI/ML Engineer with deep hands-on expertise across the complete AI/ML spectrum — from classical machine learning to cutting-edge Generative AI and Agentic systems. Proficient in Python, PyTorch, TensorFlow, and the full data science pipeline. Passionate about building intelligent, scalable AI systems and automating complex real-world workflows. Currently contributing to multiple ML engineering roles, continuously advancing expertise in LLMs, Computer Vision, NLP, and Autonomous AI Agents.
+                AI/ML Engineer with deep hands-on expertise across the complete AI/ML lifecycle — from classical predictive modeling to cutting-edge Generative AI, RAG, and autonomous agent orchestration. Proficient in Python, PyTorch, TensorFlow, and full-stack MLOps containerization. Experienced delivering production systems with verifiable guardrails across multiple ML contract engagements.
               </p>
             </Section>
 
             {/* Core Competencies */}
             <Section title="Core AI/ML Competencies">
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 {[
-                  { area: "Programming & Math", skills: "Python (Advanced), Mathematics & Statistics for AI, Linear Algebra, Calculus, Probability" },
-                  { area: "Data & Analysis", skills: "Data Analysis, Data Processing & Visualization, Pandas, NumPy, Matplotlib, Seaborn, Plotly" },
-                  { area: "Machine Learning", skills: "Supervised & Unsupervised Learning, Feature Engineering, Model Evaluation, Scikit-learn, XGBoost, LightGBM" },
-                  { area: "Deep Learning", skills: "Neural Networks, CNNs, RNNs, Transformers, PyTorch, TensorFlow/Keras, Transfer Learning, Fine-tuning" },
-                  { area: "Generative AI", skills: "LLMs, RAG Systems, Prompt Engineering, LangChain, LlamaIndex, Groq API, Gemini API, Anthropic Claude API" },
-                  { area: "Agentic AI", skills: "Multi-Agent Systems, LangGraph, CrewAI, AutoGen, MCP Servers, Autonomous Workflows" },
-                  { area: "AI Automation", skills: "n8n Workflows, FastAPI, Flask, Celery, Redis, Webhooks, API Integrations, CI/CD for ML" },
-                  { area: "MLOps & Cloud", skills: "AWS (Amazon Web Services), Microsoft Azure, Docker, Model Deployment, Monitoring, MLflow, Weights & Biases" },
-                  { area: "Cloud Computing", skills: "AWS (EC2, S3, IAM, CloudWatch), Microsoft Azure, Cloud Architecture, Scalable AI Infrastructure" },
-                  { area: "NLP", skills: "Text Classification, NER, Sentiment Analysis, BERT, Seq2Seq, Summarization, Hugging Face" },
-                  { area: "Computer Vision", skills: "Image Classification, YOLO Object Detection, Segmentation, OCR, Video Processing, OpenCV" },
-                  { area: "Time Series", skills: "ARIMA, Prophet, LSTM Forecasting, Anomaly Detection, Trend Analysis" },
+                  { area: "Programming & Math", skills: "Python (Advanced), Applied Mathematics & Statistics for AI, Linear Algebra, Calculus, Probability" },
+                  { area: "Data Science & Viz", skills: "Data Processing, Feature Engineering, Pandas, NumPy, Matplotlib, Seaborn, Plotly" },
+                  { area: "Machine Learning", skills: "Supervised & Unsupervised Learning, Cross-Validation, Scikit-learn, XGBoost, LightGBM, CatBoost" },
+                  { area: "Deep Learning", skills: "Neural Architectures, CNNs, RNNs, Transformers, PyTorch, TensorFlow/Keras, Transfer Learning" },
+                  { area: "Generative AI & RAG", skills: "LLMs, Hybrid RAG, Prompt Engineering, LangChain, ChromaDB, OpenAI, Gemini 2.5, Claude 3.7" },
+                  { area: "Agentic AI", skills: "Multi-Agent Workflows, LangGraph State Machines, CrewAI, MCP Architecture, Human-in-the-Loop" },
+                  { area: "AI Automation", skills: "n8n Enterprise Pipelines, FastAPI, Microservices, Webhooks, API Integrations" },
+                  { area: "Cloud & MLOps", skills: "AWS (EC2, S3, IAM), Microsoft Azure, Docker Containers, Inference Telemetry, CI/CD" },
+                  { area: "Computer Vision", skills: "YOLO Object Detection, Segmentation, OCR, Image Processing, OpenCV" },
+                  { area: "NLP", skills: "Text Classification, NER, Sentiment Analysis, Tokenization, Hugging Face Hub" },
                 ].map((item, i) => (
-                  <div key={i} className="flex gap-2 text-sm">
-                    <span className="font-semibold text-foreground min-w-[140px] flex-shrink-0">{item.area}</span>
-                    <span className="text-muted-foreground">{item.skills}</span>
+                  <div key={i} className="flex flex-col sm:flex-row gap-1 sm:gap-3 text-xs sm:text-sm py-1 border-b border-border/40 last:border-none">
+                    <span className="font-heading font-semibold text-foreground sm:min-w-[160px] flex-shrink-0 text-aurora-cyan">
+                      {item.area}
+                    </span>
+                    <span className="text-muted-foreground leading-relaxed">{item.skills}</span>
                   </div>
                 ))}
               </div>
@@ -71,9 +117,9 @@ const WebCV = () => {
                 period="15 Aug 2026 – 15 Oct 2026"
                 location="Pakistan (Internship • Certificate ID: ZS-0004)"
                 bullets={[
-                  "Successfully completed the Internship Program at Zeltrion Solutions ('Where Strategy Meets Intelligence').",
-                  "Demonstrated dedication, eagerness to learn, and strong commitment to professional growth in AI and ML domains.",
-                  "Collaborated with the technical team on data workflows, model evaluation, and intelligent problem-solving based on core values of Leadership, Teamwork, Innovation, and Impact.",
+                  "Successfully completed the industrial AI Internship Program at Zeltrion Solutions ('Where Strategy Meets Intelligence').",
+                  "Demonstrated dedication, leadership, teamwork, innovation, and impact in engineering data-driven systems.",
+                  "Collaborated with technical leads on model evaluations, feature validation, and intelligent workflow automation.",
                   "Awarded Certificate of Internship Completion (Certificate ID: ZS-0004) signed by Founder & CEO Nimra Akbar.",
                 ]}
               />
@@ -81,33 +127,31 @@ const WebCV = () => {
                 title="Machine Learning Engineer"
                 company="Codveda Technologies"
                 period="Apr 2025 – Present"
-                location="Pakistan (Part-Time/Contract)"
+                location="Pakistan (Part-Time / Contract)"
                 bullets={[
-                  "Designed and deployed end-to-end ML pipelines for real-world data analysis and prediction tasks, reducing manual processing time by ~40%.",
-                  "Built and optimized deep learning models using PyTorch and TensorFlow achieving production-grade performance across classification and regression tasks.",
-                  "Led LLM integration projects incorporating RAG pipelines, prompt engineering, and Agentic workflows for client-facing AI applications.",
-                  "Conducted model evaluation, A/B testing, and performance monitoring for deployed AI systems.",
+                  "Designed and deployed end-to-end ML pipelines for production predictive systems, reducing manual workflows by 40%.",
+                  "Built deep learning models using PyTorch and TensorFlow achieving production performance across classification & regression.",
+                  "Spearheaded LLM integration projects incorporating RAG pipelines, prompt engineering, and Agentic workflows with LangGraph.",
+                  "Conducted rigorous model evaluation, drift monitoring, and latency profiling.",
                 ]}
               />
               <ExperienceItem
                 title="Machine Learning Specialist"
                 company="Arch Technologies"
                 period="Apr 2025 – Present"
-                location="Pakistan (Part-Time/Contract)"
+                location="Pakistan (Part-Time / Contract)"
                 bullets={[
-                  "Developed and tested ML models for predictive modeling tasks with cross-validation F1 scores consistently above 0.88.",
-                  "Performed comprehensive data preprocessing, feature engineering, and model training workflows on structured datasets.",
-                  "Evaluated model performance using precision/recall metrics and business KPIs aligned with client requirements.",
+                  "Developed and validated predictive models with benchmark cross-validation F1 scores exceeding 0.88.",
+                  "Performed end-to-end preprocessing, feature engineering, and model training on structured high-dimensional datasets.",
                 ]}
               />
               <ExperienceItem
                 title="Machine Learning Specialist"
                 company="CodaAlpha"
                 period="Mar 2025 – Present"
-                location="Pakistan (Freelance/Contract)"
+                location="Pakistan (Freelance / Contract)"
                 bullets={[
-                  "Built ML models for structured data prediction with hands-on preprocessing and performance evaluation pipelines.",
-                  "Deployed models to staging environments and monitored live inference pipelines for reliability and drift detection.",
+                  "Engineered structured data prediction pipelines and deployed models to staging environments with real-time inference telemetry.",
                 ]}
               />
               <ExperienceItem
@@ -116,89 +160,64 @@ const WebCV = () => {
                 period="2022 – 2023"
                 location="Pir Mahal, Pakistan"
                 bullets={[
-                  "Managed data entry, document processing, and office automation using MS Office suite.",
-                  "Handled client-facing administrative tasks and maintained accurate digital records.",
+                  "Managed administrative software workflows, data entry, digital archiving, and office system automation.",
                 ]}
               />
             </Section>
 
             {/* Education */}
             <Section title="Education">
-              <div className="space-y-2">
-                <div className="flex justify-between">
+              <div className="space-y-3">
+                <div className="flex justify-between items-center text-sm">
                   <div>
-                    <h4 className="font-semibold text-foreground text-sm">Intermediate (ICS) — Computer Science</h4>
+                    <h4 className="font-heading font-semibold text-foreground">Intermediate (ICS) — Computer Science</h4>
                     <p className="text-xs text-muted-foreground">BISE Faisalabad</p>
                   </div>
-                  <span className="text-xs text-muted-foreground">2022</span>
+                  <span className="mono-tag text-xs text-muted-foreground">2020 – 2022</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center text-sm">
                   <div>
-                    <h4 className="font-semibold text-foreground text-sm">Matric — Computer Science</h4>
+                    <h4 className="font-heading font-semibold text-foreground">Matriculation — Computer Science</h4>
                     <p className="text-xs text-muted-foreground">BISE Faisalabad</p>
                   </div>
-                  <span className="text-xs text-muted-foreground">2020</span>
+                  <span className="mono-tag text-xs text-muted-foreground">2018 – 2020</span>
                 </div>
               </div>
             </Section>
 
             {/* Certifications */}
-            <Section title="Certifications & Training">
-              <div className="grid md:grid-cols-2 gap-1">
+            <Section title="Certifications & Accreditations">
+              <div className="grid md:grid-cols-2 gap-2 text-xs sm:text-sm text-muted-foreground">
                 {[
                   "Artificial Intelligence using Python — DigiSkills",
                   "Cloud Computing (AWS) — DigiSkills",
                   "Six-Month AI & Data Science Mentorship — Codanics",
                   "Python ka Chilla for Data Science — Codanics",
                   "Tableau for Data Analytics — Codanics",
-                  "Machine Learning — InnoVista Learn Easy",
-                  "Python Course — InnoVista Learn Easy",
-                  "MCP (Model Context Protocol) — Hugging Face",
+                  "Applied Machine Learning — InnoVista Learn Easy",
+                  "Python Programming Course — InnoVista Learn Easy",
+                  "Model Context Protocol (MCP) — Hugging Face",
                 ].map((c, i) => (
-                  <p key={i} className="text-sm text-muted-foreground">• {c}</p>
+                  <p key={i} className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-aurora-cyan" />
+                    {c}
+                  </p>
                 ))}
               </div>
             </Section>
 
-            {/* Projects */}
-            <Section title="Projects">
-              {[
-                { title: "CODA-Ai: AI Code Agent", link: "https://drive.google.com/file/d/1H6R29Poe0mZWGJ7y80UaWpyKaOuWf1Y3/view?usp=sharing", github: "https://github.com/MuhammadDastgeer/CODA-Ai-APP.git" },
-                { title: "Code Explainer App", link: "https://drive.google.com/file/d/1umKkniooMV_BEOx_yiSuDAkNWVcYx_4f/view?usp=sharing", github: "https://github.com/MuhammadDastgeer/code-explainer-app.git" },
-                { title: "AI Travel Agent", link: "https://drive.google.com/file/d/1-jy0OY3TPaeg28Oxp3c5wj8KzglnG-W2/view?usp=sharing", github: "https://github.com/MuhammadDastgeer/travel_agent_app.git" },
-                { title: "Doctor AI - Healthcare Chatbot", link: "https://drive.google.com/file/d/1o0-y7ON2jY8rlAw66NQUTcV7W-r8Wgg4/view?usp=sharing", github: "https://github.com/MuhammadDastgeer/Health_Care_app.git" },
-                { title: "Customer Support Chatbot", link: "https://drive.google.com/file/d/1gQx-K7kRTdJXdcLhaP2Yux0dWA4-lgnu/view?usp=sharing", github: "https://github.com/MuhammadDastgeer/Customer_Support_chatbot_app.git" },
-                { title: "Auto Blog Writer Agent", link: "https://drive.google.com/file/d/1yX4gcXZRLH7CjhIm957cNRONaxvl_ihk/view?usp=sharing", github: "https://github.com/MuhammadDastgeer/Writes-Blogs-Automatically-Agent.git" },
-                { title: "Real Estate Platform", link: "https://drive.google.com/file/d/15bDLE7-kCGwcjmnMEu2uUaTG5IABZ8yF/view?usp=sharing", github: "https://github.com/MuhammadDastgeer/Real_Estate_Project.git" },
-              ].map((p, i) => (
-                <div key={i} className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-foreground">{p.title}</span>
-                  <div className="flex gap-3">
-                    {p.link && (
-                      <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-1 text-xs">
-                        Live <ExternalLink size={12} />
-                      </a>
-                    )}
-                    {p.github && (
-                      <a href={p.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:underline text-xs">
-                        GitHub
-                      </a>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </Section>
-
             {/* Languages */}
             <Section title="Languages">
-              <div className="flex gap-4 text-sm">
-                <span className="text-foreground"><strong>English</strong> (Professional)</span>
-                <span className="text-foreground"><strong>Urdu</strong> (Native)</span>
-                <span className="text-foreground"><strong>Punjabi</strong> (Native)</span>
+              <div className="flex gap-6 text-xs sm:text-sm">
+                <span className="text-foreground"><strong className="text-aurora-cyan">English</strong> (Professional Working)</span>
+                <span className="text-foreground"><strong className="text-aurora-violet">Urdu</strong> (Native)</span>
+                <span className="text-foreground"><strong className="text-accent">Punjabi</strong> (Native)</span>
               </div>
             </Section>
 
-            <p className="text-xs text-muted-foreground text-center mt-4">References available upon request.</p>
+            <p className="mono-tag text-[10px] text-muted-foreground text-center mt-8 pt-4 border-t border-border/50">
+              REFERENCES & CERTIFICATE VERIFICATION CODES AVAILABLE UPON REQUEST
+            </p>
           </div>
         </motion.div>
       </div>
@@ -206,25 +225,36 @@ const WebCV = () => {
   );
 };
 
-const Section = ({ title, children }) => (
-  <div className="mb-6">
-    <h3 className="font-heading text-lg font-bold text-foreground mb-3 pb-1 border-b border-border">{title}</h3>
+const Section: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
+  <div className="mb-8">
+    <div className="flex items-center gap-2.5 mb-3.5 pb-2 border-b border-border">
+      <div className="w-1.5 h-4 bg-gradient-to-b from-aurora-violet to-aurora-cyan rounded-full" />
+      <h3 className="font-heading text-base sm:text-lg font-bold text-foreground tracking-tight">{title}</h3>
+    </div>
     {children}
   </div>
 );
 
-const ExperienceItem = ({ title, company, period, location, bullets }) => (
-  <div className="mb-4 last:mb-0">
-    <div className="flex flex-wrap items-start justify-between gap-1 mb-1">
+const ExperienceItem: React.FC<{
+  title: string;
+  company: string;
+  period: string;
+  location: string;
+  bullets: string[];
+}> = ({ title, company, period, location, bullets }) => (
+  <div className="mb-6 last:mb-0">
+    <div className="flex flex-wrap items-start justify-between gap-1 mb-1.5">
       <div>
-        <h4 className="font-semibold text-foreground text-sm">{title}</h4>
-        <p className="text-xs text-primary">{company} • <span className="text-muted-foreground">{location}</span></p>
+        <h4 className="font-heading font-bold text-foreground text-sm sm:text-base">{title}</h4>
+        <p className="text-xs text-aurora-cyan font-medium">{company} • <span className="text-muted-foreground">{location}</span></p>
       </div>
-      <span className="text-xs text-muted-foreground italic">{period}</span>
+      <span className="mono-tag text-[10px] px-2.5 py-0.5 rounded-full bg-surface border border-border text-muted-foreground">
+        {period}
+      </span>
     </div>
-    <ul className="space-y-1 ml-4">
+    <ul className="space-y-1.5 ml-4 mt-2">
       {bullets.map((b, i) => (
-        <li key={i} className="text-xs text-muted-foreground list-disc">{b}</li>
+        <li key={i} className="text-xs text-muted-foreground list-disc leading-relaxed">{b}</li>
       ))}
     </ul>
   </div>

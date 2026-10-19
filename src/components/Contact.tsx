@@ -1,104 +1,197 @@
-import { useState } from "react";
-import { Mail, MapPin } from "lucide-react";
+import React, { useState } from "react";
+import { Mail, MapPin, Send, MessageSquare, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
+import { toast } from "sonner";
 import ScrollReveal from "./ScrollReveal";
+import { SpotlightCard } from "./SpotlightCard";
+import { GithubIcon, LinkedinIcon } from "./SocialIcons";
 
-const Contact = () => {
+export const Contact: React.FC = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoLink = `mailto:dastgeerjutt8888@gmail.com?subject=Portfolio Contact from ${form.name}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${form.name} (${form.email})`;
-    window.location.href = mailtoLink;
+    setIsSubmitting(true);
+
+    const mailtoLink = `mailto:dastgeerjutt8888@gmail.com?subject=AI Portfolio Inquiry from ${encodeURIComponent(
+      form.name
+    )}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${encodeURIComponent(
+      form.name
+    )} (${encodeURIComponent(form.email)})`;
+
+    toast.success("Preparing your message...", {
+      description: "Opening your default email client to send to dastgeerjutt8888@gmail.com",
+    });
+
+    setTimeout(() => {
+      window.location.href = mailtoLink;
+      setIsSubmitting(false);
+      setForm({ name: "", email: "", message: "" });
+    }, 600);
   };
 
   return (
-    <section id="contact" className="py-20 bg-background">
-      <div className="container mx-auto px-4 md:px-8">
-        <ScrollReveal>
-          <div className="text-center mb-12">
-            <p className="section-subtitle mb-2">GET IN TOUCH</p>
-            <h2 className="section-title">Let's <span className="highlight-text">Connect</span></h2>
-            <p className="text-muted-foreground mt-2">Ready to build something amazing together?</p>
+    <section id="contact" className="py-24 relative">
+      <div className="container max-w-[1200px] mx-auto px-6">
+        {/* Centered Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <span className="section-label mb-2 block">// 10 — CONTACT</span>
+          <h2 className="fluid-h2 font-heading font-bold text-foreground mb-3">
+            Initiate Collaboration
+          </h2>
+          <p className="text-muted-foreground text-base">
+            Discuss an AI architecture, autonomous agent pipeline, contract engagement, or technical advisory.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-12 gap-10 max-w-5xl mx-auto items-start">
+          {/* Left Column: Direct Info & Socials (5 cols) */}
+          <div className="lg:col-span-5 space-y-6">
+            <ScrollReveal direction="left">
+              <SpotlightCard className="p-7">
+                <h3 className="font-heading font-bold text-xl text-foreground mb-3">
+                  Let's Engineer Together
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                  Available for engineering roles, technical consulting, and multi-agent AI implementation worldwide.
+                </p>
+
+                <div className="space-y-4 mb-7">
+                  {/* Email Box */}
+                  <a
+                    href="mailto:dastgeerjutt8888@gmail.com"
+                    className="p-4 rounded-2xl border border-border bg-surface/80 hover:border-aurora-violet transition-all group flex items-center gap-3.5"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-aurora-violet/15 border border-aurora-violet/30 text-aurora-violet flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Mail size={18} />
+                    </div>
+                    <div>
+                      <span className="mono-tag text-[10px] text-aurora-cyan font-bold block">DIRECT EMAIL</span>
+                      <span className="text-xs sm:text-sm font-semibold text-foreground group-hover:text-aurora-violet transition-colors">
+                        dastgeerjutt8888@gmail.com
+                      </span>
+                    </div>
+                  </a>
+
+                  {/* Location Box */}
+                  <div className="p-4 rounded-2xl border border-border bg-surface/80 flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-xl bg-aurora-cyan/15 border border-aurora-cyan/30 text-aurora-cyan flex items-center justify-center">
+                      <MapPin size={18} />
+                    </div>
+                    <div>
+                      <span className="mono-tag text-[10px] text-muted-foreground font-bold block">BASE & AVAILABILITY</span>
+                      <span className="text-xs sm:text-sm font-semibold text-foreground">
+                        Punjab, Pakistan • Remote Worldwide
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Social icons: scale 1.1 + rotate 6deg + glow */}
+                <div className="pt-5 border-t border-border/60">
+                  <span className="mono-tag text-[10px] text-muted-foreground block mb-3">
+                    PROFESSIONAL PROFILES:
+                  </span>
+                  <div className="flex items-center gap-3">
+                    <a
+                      href="https://github.com/MuhammadDastgeer"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-11 h-11 rounded-full border border-border bg-surface flex items-center justify-center text-foreground transition-all duration-300 hover:scale-110 hover:rotate-6 hover:border-aurora-cyan hover:text-aurora-cyan hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
+                      aria-label="GitHub Profile"
+                    >
+                      <GithubIcon size={18} />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/muhammad-dastgeer/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-11 h-11 rounded-full border border-border bg-surface flex items-center justify-center text-foreground transition-all duration-300 hover:scale-110 hover:rotate-6 hover:border-aurora-violet hover:text-aurora-violet hover:shadow-[0_0_20px_rgba(124,92,255,0.4)]"
+                      aria-label="LinkedIn Profile"
+                    >
+                      <LinkedinIcon size={18} />
+                    </a>
+                  </div>
+                </div>
+              </SpotlightCard>
+            </ScrollReveal>
           </div>
-        </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <ScrollReveal direction="left">
-            <div>
-              <h3 className="font-heading text-xl font-bold mb-3 text-foreground">Let's work together</h3>
-              <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Whether you need an AI system, a web app, or automation solutions — let's talk.
-              </p>
+          {/* Right Column: Glass Form with Floating Label Inputs (7 cols) */}
+          <div className="lg:col-span-7">
+            <ScrollReveal direction="right">
+              <div className="glass-pill rounded-[24px] p-7 sm:p-9 border border-border shadow-2xl relative">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Floating label input: Name */}
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="name"
+                      required
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      placeholder=" "
+                      className="peer w-full px-4 pt-6 pb-2 rounded-2xl border border-border bg-surface/60 text-foreground text-sm focus:border-aurora-violet focus:ring-2 focus:ring-aurora-violet/20 focus:outline-none transition-all"
+                    />
+                    <label
+                      htmlFor="name"
+                      className="absolute left-4 top-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-xs peer-placeholder-shown:text-muted-foreground/60 peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-aurora-cyan"
+                    >
+                      Your Full Name
+                    </label>
+                  </div>
 
-              <div className="space-y-4 mb-6">
-                <div className="bg-card border border-border rounded-xl p-4 flex items-center gap-3 hover-card-lift">
-                  <div className="p-2 rounded-lg gradient-purple-bg">
-                    <Mail className="w-5 h-5 text-primary-foreground" />
+                  {/* Floating label input: Email */}
+                  <div className="relative">
+                    <input
+                      type="email"
+                      id="email"
+                      required
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      placeholder=" "
+                      className="peer w-full px-4 pt-6 pb-2 rounded-2xl border border-border bg-surface/60 text-foreground text-sm focus:border-aurora-violet focus:ring-2 focus:ring-aurora-violet/20 focus:outline-none transition-all"
+                    />
+                    <label
+                      htmlFor="email"
+                      className="absolute left-4 top-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-xs peer-placeholder-shown:text-muted-foreground/60 peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-aurora-cyan"
+                    >
+                      Email Address
+                    </label>
                   </div>
-                  <div>
-                    <p className="text-xs text-primary font-semibold">Email</p>
-                    <p className="text-sm text-foreground">dastgeerjutt8888@gmail.com</p>
-                  </div>
-                </div>
-                <div className="bg-card border border-border rounded-xl p-4 flex items-center gap-3 hover-card-lift">
-                  <div className="p-2 rounded-lg gradient-blue">
-                    <MapPin className="w-5 h-5 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-blue-accent font-semibold">Location</p>
-                    <p className="text-sm text-foreground">Pir Mahal, Punjab, Pakistan</p>
-                  </div>
-                </div>
-              </div>
 
-              <div className="flex gap-4">
-                <a href="https://github.com/MuhammadDastgeer" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full bg-foreground text-background hover-icon-glow hover:opacity-80 transition-opacity flex items-center justify-center w-14 h-14"><svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
-                <a href="https://www.linkedin.com/in/muhammad-dastgeer/" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full bg-cyan-accent text-primary-foreground hover-icon-glow hover:opacity-80 transition-opacity flex items-center justify-center w-14 h-14"><svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-                <a href="mailto:dastgeerjutt8888@gmail.com" className="p-4 rounded-full gradient-purple-bg text-primary-foreground hover-icon-glow hover:opacity-80 transition-opacity flex items-center justify-center w-14 h-14"><Mail size={26} /></a>
-              </div>
-            </div>
-          </ScrollReveal>
+                  {/* Floating label input: Message */}
+                  <div className="relative">
+                    <textarea
+                      id="message"
+                      required
+                      rows={5}
+                      value={form.message}
+                      onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      placeholder=" "
+                      className="peer w-full px-4 pt-6 pb-2 rounded-2xl border border-border bg-surface/60 text-foreground text-sm focus:border-aurora-violet focus:ring-2 focus:ring-aurora-violet/20 focus:outline-none resize-none transition-all"
+                    />
+                    <label
+                      htmlFor="message"
+                      className="absolute left-4 top-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-xs peer-placeholder-shown:text-muted-foreground/60 peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-aurora-cyan"
+                    >
+                      Project Details, Architecture, or Inquiries
+                    </label>
+                  </div>
 
-          <ScrollReveal direction="right">
-            <form onSubmit={handleSubmit} className="bg-card border border-border rounded-xl p-6 space-y-4">
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1 block">Your Name</label>
-                <input
-                  type="text"
-                  placeholder="John Doe"
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground text-sm focus:ring-2 focus:ring-primary focus:outline-none"
-                  required
-                />
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="btn-gradient w-full py-4 rounded-full font-heading font-semibold text-sm cursor-pointer shadow-lg hover:shadow-xl transition-all"
+                  >
+                    <span>{isSubmitting ? "Routing to Client..." : "Dispatch Message"}</span>
+                    <Send size={15} />
+                  </button>
+                </form>
               </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1 block">Email Address</label>
-                <input
-                  type="email"
-                  placeholder="john@example.com"
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground text-sm focus:ring-2 focus:ring-primary focus:outline-none"
-                  required
-                />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1 block">Message</label>
-                <textarea
-                  placeholder="Tell me about your project..."
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground text-sm focus:ring-2 focus:ring-primary focus:outline-none resize-none"
-                  required
-                />
-              </div>
-              <button type="submit" className="w-full gradient-purple-bg text-primary-foreground py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                Send Message
-              </button>
-            </form>
-          </ScrollReveal>
+            </ScrollReveal>
+          </div>
         </div>
       </div>
     </section>

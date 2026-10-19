@@ -1,37 +1,82 @@
-import { GraduationCap } from "lucide-react";
+import React from "react";
+import { GraduationCap, MapPin, Calendar, Award } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import { SpotlightCard } from "./SpotlightCard";
 
-const education = [
-  { title: "Matric — Computer Science", institution: "BISE Faisalabad", status: "Completed" },
-  { title: "Intermediate — ICS", institution: "BISE Faisalabad", status: "Completed" },
-  { title: "Data Science", institution: "Codaincs", status: "Completed" },
+const educationItems = [
+  {
+    title: "Intermediate — ICS (Computer Science)",
+    institution: "BISE Faisalabad",
+    year: "2020 – 2022",
+    status: "Completed",
+    focus: "Object-oriented programming, data structures, mathematics, statistics.",
+  },
+  {
+    title: "Matriculation — Computer Science",
+    institution: "BISE Faisalabad",
+    year: "2018 – 2020",
+    status: "Completed",
+    focus: "Fundamental algorithmic logic, computing principles, sciences.",
+  },
+  {
+    title: "Advanced Data Science & Machine Learning",
+    institution: "Codanics Institute",
+    year: "2023 – 2024",
+    status: "Completed",
+    focus: "Deep mentorship in predictive modeling, deep learning architectures, Python toolchains.",
+  },
 ];
 
-const Education = () => {
+export const Education: React.FC = () => {
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4 md:px-8">
-        <ScrollReveal>
-          <div className="text-center mb-12">
-            <p className="section-subtitle mb-2">BACKGROUND</p>
-            <h2 className="section-title">My <span className="highlight-text">Education</span></h2>
-            <p className="text-muted-foreground mt-2">Academic foundation that shaped my journey</p>
-          </div>
-        </ScrollReveal>
+    <section id="education" className="py-24 relative">
+      <div className="container max-w-[1200px] mx-auto px-6">
+        {/* Left-aligned Section Header */}
+        <div className="text-left mb-12">
+          <span className="section-label mb-2 block">// 07 — EDUCATION</span>
+          <h2 className="fluid-h2 font-heading font-bold text-foreground mb-3">
+            Academic Foundation
+          </h2>
+          <p className="text-muted-foreground text-base max-w-[65ch]">
+            Formal computer science studies and advanced postgraduate-level technical specializations.
+          </p>
+        </div>
 
-        <div className="max-w-2xl mx-auto space-y-4">
-          {education.map((item, i) => (
-            <ScrollReveal key={i} delay={i * 0.1}>
-              <div className="bg-card border border-border rounded-xl p-5 flex items-center gap-4 hover-card-lift">
-                <div className="p-3 rounded-xl bg-blue-accent/10">
-                  <GraduationCap className="w-6 h-6 text-blue-accent" />
+        <div className="grid md:grid-cols-3 gap-5">
+          {educationItems.map((item, i) => (
+            <ScrollReveal key={item.title} delay={i * 0.08}>
+              <SpotlightCard className="p-6 sm:p-7 flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <div className="w-11 h-11 rounded-2xl bg-surface border border-border flex items-center justify-center text-aurora-cyan">
+                      <GraduationCap size={20} />
+                    </div>
+                    <span className="mono-tag text-[10px] px-2.5 py-0.5 rounded-full border border-border bg-surface text-muted-foreground">
+                      {item.year}
+                    </span>
+                  </div>
+
+                  <h3 className="font-heading font-bold text-lg text-foreground mb-2">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-xs font-semibold text-aurora-cyan flex items-center gap-1.5 mb-3">
+                    <MapPin size={13} className="text-aurora-violet" />
+                    {item.institution}
+                  </p>
+
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {item.focus}
+                  </p>
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-foreground">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground flex items-center gap-1">📍 {item.institution}</p>
+
+                <div className="pt-4 mt-4 border-t border-border/60 flex items-center justify-between">
+                  <span className="mono-tag text-[10px] text-accent flex items-center gap-1">
+                    <Award size={12} /> {item.status}
+                  </span>
+                  <span className="mono-tag text-[10px] text-muted-foreground">VERIFIED</span>
                 </div>
-                <span className="text-green-badge text-sm font-semibold">{item.status}</span>
-              </div>
+              </SpotlightCard>
             </ScrollReveal>
           ))}
         </div>

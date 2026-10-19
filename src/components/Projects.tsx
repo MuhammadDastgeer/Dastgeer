@@ -1,6 +1,9 @@
-import { ExternalLink } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { ExternalLink, ArrowUpRight, Sparkles, Bot, Brain, Workflow, BookOpen } from "lucide-react";
+import { GithubIcon } from "./SocialIcons";
+import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
+
 import generativeAIBlogAsset from "@/assets/generative-ai-blog.png.asset.json";
 import codaImg from "@/assets/project-coda.jpg";
 import explainerImg from "@/assets/project-explainer.jpg";
@@ -41,7 +44,6 @@ type Project = {
   image: string;
   link?: string;
   github?: string;
-  
 };
 
 const latestAgenticProjects: Project[] = [
@@ -49,7 +51,7 @@ const latestAgenticProjects: Project[] = [
     title: "RAG Showcase",
     desc: "Intelligent RAG application demonstrating document retrieval, vector search, and context-aware AI question answering.",
     tools: ["Google AI Studio", "OpenAI", "Supabase", "LangChain", "LangGraph", "Gemini"],
-    gradient: "linear-gradient(135deg, hsl(280,89%,50%), hsl(217,91%,60%))",
+    gradient: "linear-gradient(135deg, #7C5CFF, #22D3EE)",
     image: ragShowcaseImg,
     link: "https://rag-showcase-tawny.vercel.app/",
   },
@@ -57,7 +59,7 @@ const latestAgenticProjects: Project[] = [
     title: "Medicall - AI Medical Platform",
     desc: "AI-powered medical platform for healthcare assistance, symptom analysis, and intelligent patient support using advanced LLMs.",
     tools: ["Google AI Studio", "OpenAI", "Supabase", "LangChain", "LangGraph", "Gemini"],
-    gradient: "linear-gradient(135deg, hsl(186,94%,42%), hsl(217,91%,60%))",
+    gradient: "linear-gradient(135deg, #22D3EE, #7C5CFF)",
     image: medicallImg,
     link: "https://medicall-one.vercel.app/",
   },
@@ -65,7 +67,7 @@ const latestAgenticProjects: Project[] = [
     title: "AI Content Generator",
     desc: "End-to-end AI content generation platform that creates blog posts, marketing copy, and creative content with smart prompts.",
     tools: ["Google AI Studio", "OpenAI", "Supabase", "LangChain", "LangGraph", "Gemini"],
-    gradient: "linear-gradient(135deg, hsl(265,89%,50%), hsl(186,94%,42%))",
+    gradient: "linear-gradient(135deg, #7C5CFF, #B6F24A)",
     image: contentGeneratorImg,
     link: "https://ai-content-generator-five-sandy.vercel.app/",
   },
@@ -73,7 +75,7 @@ const latestAgenticProjects: Project[] = [
     title: "LeetMaster - AI Coding Assistant",
     desc: "Interactive coding interview prep assistant that explains LeetCode-style problems, hints, and solutions with AI tutoring.",
     tools: ["Google AI Studio", "OpenAI", "Supabase", "LangChain", "LangGraph", "Gemini"],
-    gradient: "linear-gradient(135deg, hsl(142,71%,45%), hsl(160,84%,45%))",
+    gradient: "linear-gradient(135deg, #B6F24A, #22D3EE)",
     image: leetmasterImg,
     link: "https://leetmaster.onrender.com",
   },
@@ -81,7 +83,7 @@ const latestAgenticProjects: Project[] = [
     title: "Student Plan AI",
     desc: "AI academic planner for students that builds schedules, suggests study plans, and tracks learning goals intelligently.",
     tools: ["Google AI Studio", "OpenAI", "Supabase", "LangChain", "LangGraph", "Gemini"],
-    gradient: "linear-gradient(135deg, hsl(25,95%,53%), hsl(0,84%,60%))",
+    gradient: "linear-gradient(135deg, #7C5CFF, #22D3EE)",
     image: studentPlanImg,
     link: "https://student-plan-ai.vercel.app/",
   },
@@ -89,7 +91,7 @@ const latestAgenticProjects: Project[] = [
     title: "MediNexus - Healthcare AI",
     desc: "Healthcare AI system connecting medical knowledge with patients through conversational intelligence and real-time assistance.",
     tools: ["Google AI Studio", "OpenAI", "Supabase", "LangChain", "LangGraph", "Gemini"],
-    gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(186,94%,42%))",
+    gradient: "linear-gradient(135deg, #22D3EE, #7C5CFF)",
     image: medinexusImg,
     link: "https://medinexus-a6k9.onrender.com",
   },
@@ -100,7 +102,7 @@ const oldAgenticProjects: Project[] = [
     title: "CODA-Ai: AI Code Agent",
     desc: "An intelligent AI code agent that helps developers write, debug, and understand code using advanced LLM workflows.",
     tools: ["LangChain", "LangGraph", "OpenAI", "Streamlit"],
-    gradient: "linear-gradient(135deg, hsl(25,95%,53%), hsl(265,89%,50%))",
+    gradient: "linear-gradient(135deg, #7C5CFF, #22D3EE)",
     image: codaImg,
     link: "https://drive.google.com/file/d/1H6R29Poe0mZWGJ7y80UaWpyKaOuWf1Y3/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/CODA-Ai-APP.git",
@@ -109,7 +111,7 @@ const oldAgenticProjects: Project[] = [
     title: "AI Travel Agent",
     desc: "Smart travel planning assistant that builds personalized itineraries, suggests destinations, and handles travel queries.",
     tools: ["LangGraph", "Gemini", "LangSmith", "Streamlit"],
-    gradient: "linear-gradient(135deg, hsl(142,71%,45%), hsl(186,94%,42%))",
+    gradient: "linear-gradient(135deg, #22D3EE, #B6F24A)",
     image: travelImg,
     link: "https://drive.google.com/file/d/1-jy0OY3TPaeg28Oxp3c5wj8KzglnG-W2/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/travel_agent_app.git",
@@ -118,7 +120,7 @@ const oldAgenticProjects: Project[] = [
     title: "Customer Support Chatbot",
     desc: "Automated customer support chatbot that handles user queries, resolves issues, and escalates complex cases intelligently.",
     tools: ["LangChain", "Groq", "LangSmith", "Streamlit"],
-    gradient: "linear-gradient(135deg, hsl(265,89%,50%), hsl(217,91%,60%))",
+    gradient: "linear-gradient(135deg, #7C5CFF, #22D3EE)",
     image: supportImg,
     link: "https://drive.google.com/file/d/1gQx-K7kRTdJXdcLhaP2Yux0dWA4-lgnu/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Customer_Support_chatbot_app.git",
@@ -127,7 +129,7 @@ const oldAgenticProjects: Project[] = [
     title: "Auto Blog Writer Agent",
     desc: "Autonomous AI agent that writes complete blog posts on any topic with research, structuring, and SEO optimization.",
     tools: ["LangGraph", "Gemini", "OpenAI", "Streamlit"],
-    gradient: "linear-gradient(135deg, hsl(186,94%,42%), hsl(142,71%,45%))",
+    gradient: "linear-gradient(135deg, #22D3EE, #7C5CFF)",
     image: blogImg,
     link: "https://drive.google.com/file/d/1yX4gcXZRLH7CjhIm957cNRONaxvl_ihk/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Writes-Blogs-Automatically-Agent.git",
@@ -136,7 +138,7 @@ const oldAgenticProjects: Project[] = [
     title: "AI Chatbot with MCP Client & Server",
     desc: "Intelligent AI chatbot built with MCP (Model Context Protocol) client and server architecture using LangGraph for advanced tool orchestration.",
     tools: ["LangGraph", "MCP", "OpenAI", "Python"],
-    gradient: "linear-gradient(135deg, hsl(265,89%,50%), hsl(186,94%,42%))",
+    gradient: "linear-gradient(135deg, #7C5CFF, #B6F24A)",
     image: mcpChatbotImg,
     link: "https://drive.google.com/file/d/1tkN89iD6S82oy_y-DpBN_HA-YKoYTbml/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Mcp-Client-Langgraph.git",
@@ -145,7 +147,7 @@ const oldAgenticProjects: Project[] = [
     title: "Code Explainer App",
     desc: "AI-powered app that explains complex code snippets in plain language, making programming easier for learners and devs.",
     tools: ["LangChain", "OpenAI", "Groq", "Streamlit"],
-    gradient: "linear-gradient(135deg, hsl(186,94%,42%), hsl(217,91%,60%))",
+    gradient: "linear-gradient(135deg, #22D3EE, #7C5CFF)",
     image: explainerImg,
     link: "https://drive.google.com/file/d/1umKkniooMV_BEOx_yiSuDAkNWVcYx_4f/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/code-explainer-app.git",
@@ -154,7 +156,7 @@ const oldAgenticProjects: Project[] = [
     title: "Doctor AI - Healthcare Chatbot",
     desc: "Healthcare chatbot that provides preliminary medical guidance, symptom analysis, and health-related Q&A.",
     tools: ["LangChain", "OpenAI", "MCP", "Streamlit"],
-    gradient: "linear-gradient(135deg, hsl(0,84%,60%), hsl(25,95%,53%))",
+    gradient: "linear-gradient(135deg, #7C5CFF, #22D3EE)",
     image: doctorImg,
     link: "https://drive.google.com/file/d/1o0-y7ON2jY8rlAw66NQUTcV7W-r8Wgg4/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Health_Care_app.git",
@@ -163,7 +165,7 @@ const oldAgenticProjects: Project[] = [
     title: "Real Estate Platform",
     desc: "A full-stack real estate platform with property listings, search, and modern UI for buying, selling, and renting properties.",
     tools: ["Next.js", "React", "Vercel", "REST APIs"],
-    gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(265,89%,50%))",
+    gradient: "linear-gradient(135deg, #22D3EE, #7C5CFF)",
     image: realestateImg,
     link: "https://drive.google.com/file/d/15bDLE7-kCGwcjmnMEu2uUaTG5IABZ8yF/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Real_Estate_Project.git",
@@ -175,72 +177,64 @@ const mlProjects: Project[] = [
     title: "Extreme Weather Analysis",
     desc: "In-depth analysis of extreme weather events using historical climate data, identifying patterns and trends.",
     tools: ["Python", "Pandas", "Matplotlib", "Seaborn"],
-    gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(25,95%,53%))",
+    gradient: "linear-gradient(135deg, #7C5CFF, #22D3EE)",
     image: weatherImg,
-    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
     title: "Movies Recommendation System",
     desc: "Content-based and collaborative filtering recommendation system that suggests movies based on user preferences.",
     tools: ["Python", "Scikit-learn", "Pandas", "NLP"],
-    gradient: "linear-gradient(135deg, hsl(0,84%,60%), hsl(45,93%,47%))",
+    gradient: "linear-gradient(135deg, #22D3EE, #B6F24A)",
     image: moviesImg,
-    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
     title: "Student Performance Analysis",
     desc: "Data-driven analysis of student academic performance with insights into factors influencing grades and outcomes.",
     tools: ["Python", "Pandas", "Plotly", "EDA"],
-    gradient: "linear-gradient(135deg, hsl(142,71%,45%), hsl(217,91%,60%))",
+    gradient: "linear-gradient(135deg, #7C5CFF, #22D3EE)",
     image: studentImg,
-    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
     title: "YouTube Trending Analysis",
     desc: "Comprehensive analysis of trending YouTube videos identifying patterns in views, engagement, and content categories.",
     tools: ["Python", "Pandas", "Matplotlib", "EDA"],
-    gradient: "linear-gradient(135deg, hsl(0,84%,60%), hsl(0,0%,15%))",
+    gradient: "linear-gradient(135deg, #22D3EE, #7C5CFF)",
     image: youtubeImg,
-    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
     title: "Social Media Mental Health Analysis",
     desc: "Statistical analysis exploring the relationship between social media usage and mental health indicators.",
     tools: ["Python", "Pandas", "Seaborn", "Statistics"],
-    gradient: "linear-gradient(135deg, hsl(265,89%,50%), hsl(330,81%,60%))",
+    gradient: "linear-gradient(135deg, #7C5CFF, #B6F24A)",
     image: mentalImg,
-    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
     title: "Code Smells Refactoring Analysis",
     desc: "Data analysis of code smells and refactoring patterns in software repositories to improve code quality.",
     tools: ["Python", "Pandas", "Matplotlib", "EDA"],
-    gradient: "linear-gradient(135deg, hsl(186,94%,42%), hsl(25,95%,53%))",
+    gradient: "linear-gradient(135deg, #22D3EE, #7C5CFF)",
     image: codeSmellsImg,
-    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
     title: "Stock Market Analysis",
     desc: "Time-series analysis of stock market data with technical indicators, trend detection, and visualization.",
     tools: ["Python", "Pandas", "Plotly", "Time Series"],
-    gradient: "linear-gradient(135deg, hsl(142,71%,45%), hsl(0,0%,15%))",
+    gradient: "linear-gradient(135deg, #B6F24A, #22D3EE)",
     image: stockImg,
-    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
     title: "Ecommerce Behavior Analysis",
     desc: "Customer behavior analytics for ecommerce platforms uncovering buying patterns and conversion funnels.",
     tools: ["Python", "Pandas", "Seaborn", "EDA"],
-    gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(265,89%,50%))",
+    gradient: "linear-gradient(135deg, #7C5CFF, #22D3EE)",
     image: ecommerceImg,
-    
     github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
 ];
@@ -248,207 +242,293 @@ const mlProjects: Project[] = [
 const automationProjects: Project[] = [
   {
     title: "WordPress Content from PDF + Gmail HITL",
-    desc: "Easy WordPress content creation from PDF docs with a human-in-the-loop Gmail approval step before publishing.",
+    desc: "Automated WordPress publishing from PDF documents with human-in-the-loop Gmail verification step.",
     tools: ["n8n", "WordPress", "Gmail", "OpenAI"],
-    gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(25,95%,53%))",
+    gradient: "linear-gradient(135deg, #7C5CFF, #22D3EE)",
     image: wpPdfImg,
     github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
   {
     title: "Discord AI-Powered Bot",
-    desc: "AI-powered Discord bot that responds intelligently to messages and automates server interactions.",
+    desc: "Intelligent Discord assistant responding dynamically to queries with context-aware natural language understanding.",
     tools: ["n8n", "Discord", "OpenAI", "Webhooks"],
-    gradient: "linear-gradient(135deg, hsl(265,89%,50%), hsl(235,89%,60%))",
+    gradient: "linear-gradient(135deg, #22D3EE, #7C5CFF)",
     image: discordBotImg,
     github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
   {
     title: "Human-in-the-Loop Email Response",
-    desc: "Simple AI-powered email response system using IMAP with human approval before replies are sent.",
+    desc: "Intelligent IMAP email triage pipeline drafting AI answers with required human sign-off before dispatch.",
     tools: ["n8n", "IMAP", "OpenAI", "Email"],
-    gradient: "linear-gradient(135deg, hsl(160,84%,45%), hsl(217,91%,60%))",
+    gradient: "linear-gradient(135deg, #7C5CFF, #B6F24A)",
     image: emailHitlImg,
     github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
   {
     title: "Bulk Gmail from Google Sheets",
-    desc: "Send multiple personalized emails directly from Google Sheets via Gmail with automated workflows.",
+    desc: "Personalized bulk email dispatch pipeline reading live Google Sheets rows with dynamic variable interpolation.",
     tools: ["n8n", "Gmail", "Google Sheets", "Automation"],
-    gradient: "linear-gradient(135deg, hsl(0,84%,60%), hsl(142,71%,45%))",
+    gradient: "linear-gradient(135deg, #22D3EE, #7C5CFF)",
     image: gmailSheetsImg,
     github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
   {
     title: "RAG Chatbot with Google Drive + Gemini",
-    desc: "Retrieval-augmented chatbot for company documents stored on Google Drive, powered by Gemini.",
+    desc: "Enterprise document RAG indexing Google Drive directories for rapid semantic question-answering with Gemini.",
     tools: ["n8n", "Google Drive", "Gemini", "RAG"],
-    gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(45,93%,47%))",
+    gradient: "linear-gradient(135deg, #7C5CFF, #22D3EE)",
     image: ragDriveImg,
     github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
   {
     title: "WhatsApp AI Chatbot (Multimodal RAG)",
-    desc: "AI-powered WhatsApp chatbot supporting text, voice, images and PDFs with retrieval-augmented generation.",
+    desc: "Multimodal customer assistant handling voice, images, PDFs, and conversational text over WhatsApp.",
     tools: ["n8n", "WhatsApp", "OpenAI", "RAG"],
-    gradient: "linear-gradient(135deg, hsl(142,71%,45%), hsl(186,94%,42%))",
+    gradient: "linear-gradient(135deg, #B6F24A, #22D3EE)",
     image: whatsappRagImg,
     github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
   {
     title: "RAG Starter Template",
-    desc: "Reusable RAG starter using simple vector stores, a form trigger and OpenAI for fast prototyping.",
+    desc: "Modular starter architecture using high-speed vector embeddings and form-based query triggers.",
     tools: ["n8n", "Vector Store", "OpenAI", "Forms"],
-    gradient: "linear-gradient(135deg, hsl(265,89%,50%), hsl(186,94%,42%))",
+    gradient: "linear-gradient(135deg, #7C5CFF, #22D3EE)",
     image: ragStarterImg,
     github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
   {
     title: "Full Authentication System",
-    desc: "End-to-end authentication workflow with sign up, login, email verification and logout built using n8n automation.",
+    desc: "Complete user authentication lifecycle with token handling, verification webhooks, and secure sessions in n8n.",
     tools: ["n8n", "Auth", "Email", "Webhooks"],
-    gradient: "linear-gradient(135deg, hsl(217,91%,60%), hsl(265,89%,50%))",
+    gradient: "linear-gradient(135deg, #22D3EE, #7C5CFF)",
     image: authSystemImg,
     github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
 ];
 
-const blogProjects: Project[] = [
-  {
-    title: "Generative AI — The Complete Guide",
-    desc: "A comprehensive Notion blog covering the journey from data to creation with generative AI: concepts, tools, and real-world applications.",
-    tools: ["Generative AI", "Notion", "AI Writing", "LLMs"],
-    gradient: "linear-gradient(135deg, hsl(200,85%,50%), hsl(260,85%,60%))",
-    image: generativeAIBlogAsset.url,
-    link: "https://app.notion.com/p/Generative-AI-3a7bb6b3c45c81a593ade28ad408502f?source=copy_link",
-  },
-];
+const ProjectCard: React.FC<{ project: Project; i: number }> = ({ project, i }) => {
+  return (
+    <ScrollReveal delay={i * 0.05}>
+      <div className="bento-card group flex flex-col justify-between h-full overflow-hidden p-3.5 sm:p-4 transition-all duration-300">
+        <div>
+          {/* 16:10 Image container on top with 8px inner radius */}
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[8px] bg-surface border border-border/60 mb-4 group/img">
+            <img
+              src={project.image}
+              alt={project.title}
+              loading="lazy"
+              width={640}
+              height={400}
+              className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"
+            />
+            {/* Soft dark vignette */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
+            {/* Hover overlay with 'View Project ->' */}
+            <div className="absolute inset-0 bg-black/45 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <span className="mono-tag text-xs text-white bg-black/70 px-4 py-2 rounded-full border border-white/20 shadow-xl flex items-center gap-1.5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                View Project <ArrowUpRight size={13} className="text-aurora-cyan" />
+              </span>
+            </div>
+          </div>
 
-const ProjectCard = ({ project, i }: { project: Project; i: number }) => (
-  <ScrollReveal key={project.title} delay={i * 0.05}>
-    <div className="bg-card border border-border rounded-xl overflow-hidden hover-card-lift group h-full">
-      <div className="h-1.5" style={{ background: project.gradient }} />
-      <div className="relative overflow-hidden aspect-[16/9] bg-secondary">
-        <img
-          src={project.image}
-          alt={`${project.title} thumbnail`}
-          loading="lazy"
-          width={1024}
-          height={576}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
-      </div>
-      <div className="p-6">
-        <h3 className="font-heading text-xl font-bold text-foreground mb-2">{project.title}</h3>
-        <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.desc}</p>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.tools.map((t) => (
-            <span key={t} className="px-2 py-1 text-xs border border-border rounded-md text-muted-foreground bg-secondary hover-badge">{t}</span>
-          ))}
+          {/* Tags as mono pills */}
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            {project.tools.slice(0, 4).map((tool) => (
+              <span
+                key={tool}
+                className="mono-tag text-[10px] px-2.5 py-0.5 rounded-full border border-border/80 bg-surface/80 text-muted-foreground transition-all duration-200 group-hover:border-aurora-violet/40 group-hover:text-foreground"
+              >
+                {tool}
+              </span>
+            ))}
+            {project.tools.length > 4 && (
+              <span className="mono-tag text-[10px] px-2 py-0.5 rounded-full border border-border/50 text-muted-foreground/75">
+                +{project.tools.length - 4}
+              </span>
+            )}
+          </div>
+
+          {/* Title in Sora */}
+          <h3 className="font-heading font-bold text-lg text-foreground mb-2 group-hover:text-aurora-cyan transition-colors line-clamp-1">
+            {project.title}
+          </h3>
+
+          {/* 2-line description */}
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-2 mb-4">
+            {project.desc}
+          </p>
         </div>
-        <div className="flex flex-wrap gap-3">
-          {project.link && (
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg gradient-purple-bg text-primary-foreground hover:opacity-90 transition-opacity hover:scale-105">
-              <ExternalLink size={14} /> {project.link.includes("notion") ? "Read on Notion" : project.link.includes("drive.google.com") ? "Demo Video" : "Live Demo"}
+
+        {/* 2 Buttons: Live Demo (primary) + GitHub (ghost) */}
+        <div className="pt-3 border-t border-border/60 flex items-center gap-2.5">
+          {project.link ? (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gradient text-xs py-2 px-3.5 rounded-full flex-1 justify-center"
+            >
+              <ExternalLink size={13} />
+              <span>{project.link.includes("drive.google.com") ? "Watch Demo" : "Live Demo"}</span>
+            </a>
+          ) : (
+            <a
+              href={project.github || "https://github.com/MuhammadDastgeer"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gradient text-xs py-2 px-3.5 rounded-full flex-1 justify-center"
+            >
+              <ExternalLink size={13} />
+              <span>Explore Code</span>
             </a>
           )}
+
           {project.github && (
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg border border-border text-foreground hover:bg-secondary transition-colors hover:scale-105">
-              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> GitHub
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost text-xs py-2 px-3.5 rounded-full"
+              title="GitHub Repository"
+            >
+              <GithubIcon size={14} />
+              <span className="hidden sm:inline">Code</span>
             </a>
           )}
         </div>
       </div>
-    </div>
-  </ScrollReveal>
-);
+    </ScrollReveal>
+  );
+};
 
-const Projects = () => {
+export const Projects: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"agentic" | "ml" | "automation">("agentic");
 
+  const tabs = [
+    { id: "agentic" as const, label: "Agentic AI & RAG", icon: <Bot size={14} />, count: latestAgenticProjects.length + oldAgenticProjects.length },
+    { id: "ml" as const, label: "Machine Learning", icon: <Brain size={14} />, count: mlProjects.length },
+    { id: "automation" as const, label: "AI Automation", icon: <Workflow size={14} />, count: automationProjects.length },
+  ];
+
   return (
-    <section id="projects" className="py-20 bg-background">
-      <div className="container mx-auto px-4 md:px-8">
-        <ScrollReveal>
-          <div className="text-center mb-8">
-            <p className="section-subtitle mb-2">PORTFOLIO</p>
-            <h2 className="section-title"><span className="highlight-text">Projects</span></h2>
-            <p className="text-muted-foreground mt-2">Real-world AI & ML solutions that deliver measurable results</p>
-          </div>
-        </ScrollReveal>
+    <section id="projects" className="py-24 relative">
+      <div className="container max-w-[1200px] mx-auto px-6">
+        {/* Left-aligned Section Header */}
+        <div className="text-left mb-10">
+          <span className="section-label mb-2 block">// 03 — PROJECTS</span>
+          <h2 className="fluid-h2 font-heading font-bold text-foreground mb-3">
+            Selected AI Systems & Deployments
+          </h2>
+          <p className="text-muted-foreground text-base max-w-[65ch]">
+            Production AI agents, retrieval-augmented generation architectures, real-time computer vision, and high-throughput automations.
+          </p>
+        </div>
 
-        <ScrollReveal>
-          <div className="flex justify-center mb-10">
-            <div className="inline-flex flex-wrap justify-center p-1 bg-secondary border border-border rounded-full">
-              <button
-                onClick={() => setActiveTab("agentic")}
-                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all hover:scale-105 ${
-                  activeTab === "agentic"
-                    ? "gradient-purple-bg text-primary-foreground shadow-md"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                Gen AI and Agentic AI
-              </button>
-              <button
-                onClick={() => setActiveTab("ml")}
-                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all hover:scale-105 ${
-                  activeTab === "ml"
-                    ? "gradient-purple-bg text-primary-foreground shadow-md"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                Machine Learning
-              </button>
-              <button
-                onClick={() => setActiveTab("automation")}
-                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all hover:scale-105 ${
-                  activeTab === "automation"
-                    ? "gradient-purple-bg text-primary-foreground shadow-md"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                AI Automation
-              </button>
-            </div>
+        {/* Filter tabs with animated pill indicator */}
+        <div className="flex items-center gap-2 mb-12 overflow-x-auto pb-2 scrollbar-none">
+          <div className="glass-pill p-1.5 rounded-full inline-flex items-center gap-1">
+            {tabs.map((tab) => {
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`relative px-4 py-2 rounded-full font-heading text-xs font-semibold flex items-center gap-2 transition-colors cursor-pointer ${
+                    isActive ? "text-white" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="projectActiveTab"
+                      className="absolute inset-0 rounded-full bg-gradient-to-r from-aurora-violet to-aurora-cyan shadow-md -z-10"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  <span>{tab.icon}</span>
+                  <span>{tab.label}</span>
+                  <span
+                    className={`mono-tag text-[10px] px-1.5 py-0.2 rounded-full ${
+                      isActive ? "bg-white/20 text-white" : "bg-muted text-muted-foreground"
+                    }`}
+                  >
+                    {tab.count}
+                  </span>
+                </button>
+              );
+            })}
           </div>
-        </ScrollReveal>
+        </div>
 
-        {activeTab === "agentic" ? (
-          <div className="max-w-5xl mx-auto space-y-14">
-            <div key="latest">
-              <ScrollReveal>
-                <h3 className="font-heading text-2xl font-bold text-foreground mb-6 border-l-4 border-primary pl-4">
-                  Latest
-                </h3>
-              </ScrollReveal>
-              <div className="grid md:grid-cols-2 gap-6">
-                {latestAgenticProjects.map((project, i) => (
-                  <ProjectCard key={project.title} project={project} i={i} />
-                ))}
+        {/* Content based on selected tab */}
+        <AnimatePresence mode="wait">
+          {activeTab === "agentic" && (
+            <motion.div
+              key="agentic-tab"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-16"
+            >
+              {/* Flagship Tier */}
+              <div>
+                <div className="flex items-center gap-2.5 mb-6">
+                  <span className="w-2 h-2 rounded-full bg-aurora-cyan" />
+                  <span className="mono-tag text-xs text-foreground font-bold">// FLAGSHIP & RECENT DEPLOYMENTS</span>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {latestAgenticProjects.map((p, i) => (
+                    <ProjectCard key={p.title} project={p} i={i} />
+                  ))}
+                </div>
               </div>
-            </div>
-            <div key="old">
-              <ScrollReveal>
-                <h3 className="font-heading text-2xl font-bold text-foreground mb-6 border-l-4 border-muted-foreground pl-4">
-                  Old
-                </h3>
-              </ScrollReveal>
-              <div className="grid md:grid-cols-2 gap-6">
-                {oldAgenticProjects.map((project, i) => (
-                  <ProjectCard key={project.title} project={project} i={i} />
-                ))}
+
+              {/* Additional Agentic Applications */}
+              <div>
+                <div className="flex items-center gap-2.5 mb-6">
+                  <span className="w-2 h-2 rounded-full bg-aurora-violet" />
+                  <span className="mono-tag text-xs text-foreground font-bold">// AUTONOMOUS AGENTS & MCP PROTOCOLS</span>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {oldAgenticProjects.map((p, i) => (
+                    <ProjectCard key={p.title} project={p} i={i} />
+                  ))}
+                </div>
               </div>
-            </div>
-          </div>
-        ) : (
-          <div key={activeTab} className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {(activeTab === "ml" ? mlProjects : automationProjects).map((project, i) => (
-              <ProjectCard key={project.title} project={project} i={i} />
-            ))}
-          </div>
-        )}
+            </motion.div>
+          )}
+
+          {activeTab === "ml" && (
+            <motion.div
+              key="ml-tab"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {mlProjects.map((p, i) => (
+                <ProjectCard key={p.title} project={p} i={i} />
+              ))}
+            </motion.div>
+          )}
+
+          {activeTab === "automation" && (
+            <motion.div
+              key="automation-tab"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {automationProjects.map((p, i) => (
+                <ProjectCard key={p.title} project={p} i={i} />
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

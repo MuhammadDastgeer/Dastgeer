@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Skills from "@/components/Skills";
@@ -9,60 +10,57 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight, Code2, Mail } from "lucide-react";
 
-const SkillsPage = () => {
+export const SkillsPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent relative z-10">
       <Navbar />
 
       {/* Page Header */}
-      <div className="pt-28 pb-10 bg-card/50 border-b border-border">
-        <div className="container mx-auto px-4 md:px-8 text-center max-w-3xl">
+      <div className="pt-32 pb-14 border-b border-border bg-surface/30 backdrop-blur-md relative overflow-hidden">
+        <div className="container max-w-[1200px] mx-auto px-6 text-left relative z-10">
           <ScrollReveal>
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-card text-sm font-medium text-muted-foreground mb-4">
-              <span className="w-2 h-2 rounded-full bg-primary" />
-              Technical Stack & Arsenal
-            </span>
-            <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">
-              Skills, Frameworks & <span className="highlight-text">Competencies</span>
+            <span className="section-label mb-2 block">// TECHNICAL STACK</span>
+            <h1 className="fluid-h1 font-heading font-extrabold text-foreground mb-4">
+              Skills, Frameworks & <span className="text-gradient">Competencies</span>
             </h1>
-            <p className="text-muted-foreground leading-relaxed text-base">
-              A detailed breakdown of my technical proficiencies across Python, PyTorch, TensorFlow, LLMs, Agentic AI architectures, and production MLOps workflows.
+            <p className="text-muted-foreground text-base md:text-lg max-w-[65ch] leading-relaxed">
+              A comprehensive breakdown of technical proficiencies across Python, PyTorch, TensorFlow, LLMs, Multi-Agent Systems, and Cloud Platforms (AWS & Azure).
             </p>
           </ScrollReveal>
         </div>
       </div>
 
-      <Skills />
-      <Expertise />
-      <Certifications />
+      <main>
+        <Skills />
+        <Expertise />
+        <Certifications />
 
-      {/* Next Step Call to Action */}
-      <section className="py-16 bg-card border-t border-border">
-        <div className="container mx-auto px-4 md:px-8 text-center max-w-2xl">
-          <ScrollReveal>
-            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">
-              See these skills put into action
-            </h2>
-            <p className="text-muted-foreground mb-8 text-sm md:text-base">
-              Check out real-world projects featuring advanced LangChain, LangGraph multi-agent systems, computer vision, and NLP implementations.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                to="/projects"
-                className="gradient-purple-bg text-primary-foreground px-6 py-3 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity flex items-center gap-2"
-              >
-                <Code2 size={16} /> Explore Projects <ArrowRight size={16} />
-              </Link>
-              <Link
-                to="/contact"
-                className="border border-border text-foreground px-6 py-3 rounded-lg font-semibold text-sm hover:bg-secondary transition-colors flex items-center gap-2"
-              >
-                <Mail size={16} /> Get In Touch
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+        {/* CTA */}
+        <section className="py-20 border-t border-border bg-surface/40 relative">
+          <div className="container max-w-[1200px] mx-auto px-6 text-center max-w-2xl relative z-10">
+            <ScrollReveal>
+              <span className="section-label mb-2 block">// SEE IN ACTION</span>
+              <h2 className="fluid-h2 font-heading font-bold text-foreground mb-4">
+                See these capabilities in production
+              </h2>
+              <p className="text-muted-foreground mb-8 text-base leading-relaxed">
+                Check out real-world projects featuring advanced LangChain, LangGraph multi-agent systems, computer vision, and NLP implementations.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link to="/projects" className="btn-gradient">
+                  <Code2 size={15} />
+                  <span>Explore Projects</span>
+                  <ArrowRight size={14} />
+                </Link>
+                <Link to="/contact" className="btn-ghost">
+                  <Mail size={15} />
+                  <span>Get In Touch</span>
+                </Link>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+      </main>
 
       <Footer />
       <Chatbot />
