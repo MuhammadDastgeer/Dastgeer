@@ -15,31 +15,19 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["'Inter'", "sans-serif"],
-        heading: ["'Sora'", "sans-serif"],
+        sans: ["'Plus Jakarta Sans'", "sans-serif"],
+        heading: ["'Outfit'", "sans-serif"],
         mono: ["'JetBrains Mono'", "monospace"],
       },
       colors: {
-        aurora: {
-          violet: "#7C5CFF",
-          cyan: "#22D3EE",
-          lime: "#B6F24A",
+        midnight: "#0B0F19",
+        cyan: {
+          electric: "#00F2FE",
+          DEFAULT: "#00F2FE",
         },
-        dark: {
-          bg: "#0A0B10",
-          surface: "#12141C",
-          card: "#161923",
-          border: "rgba(255, 255, 255, 0.08)",
-          text: "#F4F5F9",
-          muted: "#9AA0B4",
-        },
-        light: {
-          bg: "#FAFAFC",
-          surface: "#FFFFFF",
-          card: "#FFFFFF",
-          border: "rgba(0, 0, 0, 0.08)",
-          text: "#0E1020",
-          muted: "#5B6178",
+        purple: {
+          soft: "#4FACFE",
+          DEFAULT: "#4FACFE",
         },
         border: "var(--border)",
         input: "var(--input)",
@@ -48,16 +36,16 @@ export default {
         foreground: "var(--foreground)",
         surface: "var(--surface)",
         primary: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--primary-foreground)",
+          DEFAULT: "#00F2FE",
+          foreground: "#0B0F19",
         },
         secondary: {
-          DEFAULT: "var(--secondary)",
-          foreground: "var(--secondary-foreground)",
+          DEFAULT: "#4FACFE",
+          foreground: "#FFFFFF",
         },
         accent: {
-          DEFAULT: "var(--accent)",
-          foreground: "var(--accent-foreground)",
+          DEFAULT: "#00F2FE",
+          foreground: "#0B0F19",
         },
         card: {
           DEFAULT: "var(--card)",
@@ -69,30 +57,17 @@ export default {
         },
       },
       borderRadius: {
-        bento: "20px",
+        card: "16px",
         pill: "999px",
-        lg: "20px",
-        md: "14px",
-        sm: "8px",
       },
       keyframes: {
-        "aurora-drift-1": {
-          "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
-          "50%": { transform: "translate(60px, -40px) scale(1.15)" },
-        },
-        "aurora-drift-2": {
-          "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
-          "50%": { transform: "translate(-50px, 35px) scale(0.9)" },
-        },
         "marquee": {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" },
         },
       },
       animation: {
-        "aurora-1": "aurora-drift-1 26s infinite ease-in-out alternate",
-        "aurora-2": "aurora-drift-2 32s infinite ease-in-out alternate",
-        "marquee": "marquee 35s linear infinite",
+        "marquee": "marquee 32s linear infinite",
       },
     },
   },

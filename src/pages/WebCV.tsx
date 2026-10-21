@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Mail, ExternalLink, ArrowLeft, Phone, Download, Sparkles, Building2, Calendar, Award } from "lucide-react";
+import { MapPin, Mail, ArrowLeft, Phone, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import profileImg from "@/assets/profile.png";
 
@@ -8,26 +8,26 @@ export const WebCV: React.FC = () => {
   return (
     <div className="min-h-screen bg-transparent relative z-10 py-10 px-4">
       <div className="max-w-4xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
           {/* Top navigation row */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <Link to="/" className="btn-ghost text-xs py-2 px-4">
+            <Link to="/" className="btn-ghost text-xs py-2 px-4 rounded-lg">
               <ArrowLeft size={14} /> Back to Portfolio
             </Link>
             <a
               href="/Muhammad_Dastgeer_CV.pdf"
               download
-              className="btn-gradient text-xs py-2 px-5"
+              className="btn-primary text-xs py-2 px-5 rounded-lg"
             >
               <Download size={14} /> Download Official PDF
             </a>
           </div>
 
           {/* Main CV Card */}
-          <div className="bento-card p-6 sm:p-10 border border-border shadow-2xl mb-8">
+          <div className="bento-card p-6 sm:p-10 border border-border shadow-md mb-8">
             {/* Header / Bio */}
             <div className="flex flex-col md:flex-row items-center gap-6 mb-8 pb-8 border-b border-border">
-              <div className="relative w-28 h-28 rounded-2xl overflow-hidden ring-2 ring-aurora-violet/50 shadow-xl flex-shrink-0">
+              <div className="relative w-28 h-28 rounded-2xl overflow-hidden border border-border shadow-sm flex-shrink-0">
                 <img
                   src={profileImg}
                   alt="Muhammad Dastgeer"
@@ -36,40 +36,40 @@ export const WebCV: React.FC = () => {
               </div>
 
               <div className="text-center md:text-left flex-1">
-                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 mb-1">
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 mb-1.5">
                   <h1 className="font-heading text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-                    Muhammad <span className="text-gradient">Dastgeer</span>
+                    Muhammad Dastgeer
                   </h1>
-                  <span className="mono-tag text-[10px] px-2.5 py-0.5 rounded-full bg-accent/15 text-accent border border-accent/30 font-bold">
-                    AVAILABLE Q4 2026
+                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 font-semibold border border-blue-500/20">
+                    AVAILABLE FOR ROLES
                   </span>
                 </div>
 
-                <p className="text-aurora-cyan font-heading font-semibold text-xs sm:text-sm tracking-wide mb-3">
-                  AI/ML Engineer • Generative AI & Multi-Agent Architect
+                <p className="text-[#00F2FE] font-heading font-semibold text-xs sm:text-sm tracking-wide mb-3">
+                  AI/ML Systems Engineer • Autonomous Multi-Agent Architect
                 </p>
 
-                <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs text-muted-foreground mb-3">
-                  <span className="flex items-center gap-1.5"><Phone size={13} className="text-aurora-cyan" /> +92 318 2460719</span>
-                  <span className="flex items-center gap-1.5"><Mail size={13} className="text-aurora-violet" /> dastgeerjutt8888@gmail.com</span>
-                  <span className="flex items-center gap-1.5"><MapPin size={13} className="text-aurora-cyan" /> Pir Mahal, Punjab, Pakistan</span>
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs text-[#94A3B8] mb-3">
+                  <a href="tel:+923182460719" className="flex items-center gap-1.5 hover:text-[#00F2FE] transition-colors"><Phone size={13} className="text-[#00F2FE]" /> +92 318 2460719</a>
+                  <a href="mailto:dastgeerjutt8888@gmail.com" className="flex items-center gap-1.5 hover:text-[#00F2FE] transition-colors"><Mail size={13} className="text-[#00F2FE]" /> dastgeerjutt8888@gmail.com</a>
+                  <span className="flex items-center gap-1.5"><MapPin size={13} className="text-[#00F2FE]" /> Punjab, Pakistan (Remote Worldwide)</span>
                 </div>
 
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
                   <a
-                    href="https://linkedin.com/in/muhammad-dastgeer"
+                    href="https://www.linkedin.com/in/muhammad-dastgeer"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mono-tag text-[11px] text-aurora-cyan hover:underline"
+                    className="text-xs font-medium text-[#00F2FE] hover:underline"
                   >
                     LinkedIn ↗
                   </a>
-                  <span className="text-border">•</span>
+                  <span className="text-white/20">·</span>
                   <a
                     href="https://github.com/MuhammadDastgeer"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mono-tag text-[11px] text-aurora-violet hover:underline"
+                    className="text-xs font-medium text-[#00F2FE] hover:underline"
                   >
                     GitHub ↗
                   </a>
@@ -80,7 +80,7 @@ export const WebCV: React.FC = () => {
             {/* Professional Summary */}
             <Section title="Professional Summary">
               <p className="text-muted-foreground text-sm leading-relaxed">
-                AI/ML Engineer with deep hands-on expertise across the complete AI/ML lifecycle — from classical predictive modeling to cutting-edge Generative AI, RAG, and autonomous agent orchestration. Proficient in Python, PyTorch, TensorFlow, and full-stack MLOps containerization. Experienced delivering production systems with verifiable guardrails across multiple ML contract engagements.
+                AI/ML Engineer with hands-on expertise building production systems across the machine learning lifecycle: from classical tabular algorithms and PyTorch deep learning models to cutting-edge Generative AI, RAG architectures, and autonomous multi-agent systems with LangGraph. Experienced in cloud microservices and Docker containerization across AWS and Microsoft Azure.
               </p>
             </Section>
 
@@ -88,19 +88,18 @@ export const WebCV: React.FC = () => {
             <Section title="Core AI/ML Competencies">
               <div className="space-y-2.5">
                 {[
-                  { area: "Programming & Math", skills: "Python (Advanced), Applied Mathematics & Statistics for AI, Linear Algebra, Calculus, Probability" },
-                  { area: "Data Science & Viz", skills: "Data Processing, Feature Engineering, Pandas, NumPy, Matplotlib, Seaborn, Plotly" },
-                  { area: "Machine Learning", skills: "Supervised & Unsupervised Learning, Cross-Validation, Scikit-learn, XGBoost, LightGBM, CatBoost" },
-                  { area: "Deep Learning", skills: "Neural Architectures, CNNs, RNNs, Transformers, PyTorch, TensorFlow/Keras, Transfer Learning" },
-                  { area: "Generative AI & RAG", skills: "LLMs, Hybrid RAG, Prompt Engineering, LangChain, ChromaDB, OpenAI, Gemini 2.5, Claude 3.7" },
+                  { area: "Programming & Math", skills: "Python 3.12, Applied Mathematics, Probability, Linear Algebra, AsyncIO, FastAPI" },
+                  { area: "Data Science & Viz", skills: "Feature Engineering, Data Cleaning, Pandas, NumPy, Matplotlib, Seaborn, Plotly" },
+                  { area: "Machine Learning", skills: "Supervised & Unsupervised Learning, Cross-Validation, Scikit-learn, XGBoost, LightGBM" },
+                  { area: "Deep Learning", skills: "Neural Architectures, CNNs, RNNs, Transformers, PyTorch, TensorFlow, Transfer Learning" },
+                  { area: "Generative AI & RAG", skills: "LLMs, Hybrid RAG, Prompt Engineering, LangChain, ChromaDB, OpenAI, Gemini 2.5, Claude" },
                   { area: "Agentic AI", skills: "Multi-Agent Workflows, LangGraph State Machines, CrewAI, MCP Architecture, Human-in-the-Loop" },
-                  { area: "AI Automation", skills: "n8n Enterprise Pipelines, FastAPI, Microservices, Webhooks, API Integrations" },
-                  { area: "Cloud & MLOps", skills: "AWS (EC2, S3, IAM), Microsoft Azure, Docker Containers, Inference Telemetry, CI/CD" },
+                  { area: "AI Automation", skills: "n8n Enterprise Pipelines, FastAPI Microservices, REST Webhooks, Workflow Nodes" },
+                  { area: "Cloud & MLOps", skills: "AWS (EC2, S3, IAM), Microsoft Azure, Docker Containers, Telemetry, CI/CD" },
                   { area: "Computer Vision", skills: "YOLO Object Detection, Segmentation, OCR, Image Processing, OpenCV" },
-                  { area: "NLP", skills: "Text Classification, NER, Sentiment Analysis, Tokenization, Hugging Face Hub" },
                 ].map((item, i) => (
-                  <div key={i} className="flex flex-col sm:flex-row gap-1 sm:gap-3 text-xs sm:text-sm py-1 border-b border-border/40 last:border-none">
-                    <span className="font-heading font-semibold text-foreground sm:min-w-[160px] flex-shrink-0 text-aurora-cyan">
+                  <div key={i} className="flex flex-col sm:flex-row gap-1 sm:gap-3 text-xs sm:text-sm py-1.5 border-b border-border/40 last:border-none">
+                    <span className="font-heading font-semibold text-foreground sm:min-w-[160px] flex-shrink-0">
                       {item.area}
                     </span>
                     <span className="text-muted-foreground leading-relaxed">{item.skills}</span>
@@ -173,24 +172,24 @@ export const WebCV: React.FC = () => {
                     <h4 className="font-heading font-semibold text-foreground">Intermediate (ICS) — Computer Science</h4>
                     <p className="text-xs text-muted-foreground">BISE Faisalabad</p>
                   </div>
-                  <span className="mono-tag text-xs text-muted-foreground">2020 – 2022</span>
+                  <span className="text-xs text-muted-foreground tabular-nums">2020 – 2022</span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
                   <div>
                     <h4 className="font-heading font-semibold text-foreground">Matriculation — Computer Science</h4>
                     <p className="text-xs text-muted-foreground">BISE Faisalabad</p>
                   </div>
-                  <span className="mono-tag text-xs text-muted-foreground">2018 – 2020</span>
+                  <span className="text-xs text-muted-foreground tabular-nums">2018 – 2020</span>
                 </div>
               </div>
             </Section>
 
             {/* Certifications */}
             <Section title="Certifications & Accreditations">
-              <div className="grid md:grid-cols-2 gap-2 text-xs sm:text-sm text-muted-foreground">
+              <div className="grid md:grid-cols-2 gap-2.5 text-xs sm:text-sm text-muted-foreground">
                 {[
-                  "Artificial Intelligence using Python — DigiSkills",
-                  "Cloud Computing (AWS) — DigiSkills",
+                  "Artificial Intelligence using Python — DigiSkills.pk",
+                  "Cloud Computing (AWS) — DigiSkills.pk",
                   "Six-Month AI & Data Science Mentorship — Codanics",
                   "Python ka Chilla for Data Science — Codanics",
                   "Tableau for Data Analytics — Codanics",
@@ -198,9 +197,9 @@ export const WebCV: React.FC = () => {
                   "Python Programming Course — InnoVista Learn Easy",
                   "Model Context Protocol (MCP) — Hugging Face",
                 ].map((c, i) => (
-                  <p key={i} className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-aurora-cyan" />
-                    {c}
+                  <p key={i} className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
+                    <span>{c}</span>
                   </p>
                 ))}
               </div>
@@ -209,13 +208,13 @@ export const WebCV: React.FC = () => {
             {/* Languages */}
             <Section title="Languages">
               <div className="flex gap-6 text-xs sm:text-sm">
-                <span className="text-foreground"><strong className="text-aurora-cyan">English</strong> (Professional Working)</span>
-                <span className="text-foreground"><strong className="text-aurora-violet">Urdu</strong> (Native)</span>
-                <span className="text-foreground"><strong className="text-accent">Punjabi</strong> (Native)</span>
+                <span className="text-foreground"><strong className="text-blue-600 dark:text-blue-400">English</strong> (Professional Working)</span>
+                <span className="text-foreground"><strong className="text-foreground">Urdu</strong> (Native)</span>
+                <span className="text-foreground"><strong className="text-foreground">Punjabi</strong> (Native)</span>
               </div>
             </Section>
 
-            <p className="mono-tag text-[10px] text-muted-foreground text-center mt-8 pt-4 border-t border-border/50">
+            <p className="text-[11px] text-muted-foreground text-center mt-8 pt-4 border-t border-border">
               REFERENCES & CERTIFICATE VERIFICATION CODES AVAILABLE UPON REQUEST
             </p>
           </div>
@@ -227,8 +226,8 @@ export const WebCV: React.FC = () => {
 
 const Section: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
   <div className="mb-8">
-    <div className="flex items-center gap-2.5 mb-3.5 pb-2 border-b border-border">
-      <div className="w-1.5 h-4 bg-gradient-to-b from-aurora-violet to-aurora-cyan rounded-full" />
+    <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-border">
+      <div className="w-1.5 h-4 bg-blue-600 dark:bg-blue-400 rounded-full" />
       <h3 className="font-heading text-base sm:text-lg font-bold text-foreground tracking-tight">{title}</h3>
     </div>
     {children}
@@ -246,9 +245,9 @@ const ExperienceItem: React.FC<{
     <div className="flex flex-wrap items-start justify-between gap-1 mb-1.5">
       <div>
         <h4 className="font-heading font-bold text-foreground text-sm sm:text-base">{title}</h4>
-        <p className="text-xs text-aurora-cyan font-medium">{company} • <span className="text-muted-foreground">{location}</span></p>
+        <p className="text-xs text-blue-600 dark:text-blue-400 font-medium">{company} · <span className="text-muted-foreground">{location}</span></p>
       </div>
-      <span className="mono-tag text-[10px] px-2.5 py-0.5 rounded-full bg-surface border border-border text-muted-foreground">
+      <span className="text-xs text-muted-foreground tabular-nums">
         {period}
       </span>
     </div>

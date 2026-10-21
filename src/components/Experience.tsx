@@ -1,45 +1,59 @@
 import React from "react";
-import { Briefcase, Building2, MapPin, Sparkles, CheckCircle2 } from "lucide-react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { Building2, MapPin, CheckCircle2, Award, Zap } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const experiences = [
   {
     title: "AI / Machine Learning Intern",
     company: "Zeltrion Solutions",
-    period: "15 AUG 2026 – 15 OCT 2026",
-    location: "Pakistan (Internship • Certificate ID: ZS-0004)",
-    badge: "Certified • ZS-0004",
-    tagline: "Where Strategy Meets Intelligence",
-    desc: "Successfully completed an intensive industrial internship focused on practical AI/ML solutions. Demonstrated dedication, leadership, teamwork, innovation, and impact while building predictive models and intelligent automation pipelines.",
+    period: "15 Aug 2026 – 15 Oct 2026",
+    location: "Pakistan",
+    badge: "Industrial Internship · ID: ZS-0004",
+    highlights: [
+      "Engineered automated predictive modeling pipelines and end-to-end data preprocessing workflows.",
+      "Delivered production evaluation metrics with cross-validation and feature importance analysis.",
+      "Awarded official Certificate of Completion (Certificate ID: ZS-0004) for dedication and innovative impact.",
+    ],
     skills: ["AI Pipelines", "Machine Learning", "Workflow Automation", "Model Evaluation"],
     highlight: true,
   },
   {
     title: "Machine Learning Engineer",
     company: "Codveda Technologies",
-    period: "APR 2025 – PRESENT",
+    period: "Apr 2025 – Present",
     location: "Pakistan (Part-Time / Contract)",
-    desc: "Architecting and deploying end-to-end ML pipelines, deep learning models with PyTorch and TensorFlow, and LLM integrations utilizing LangGraph multi-agent orchestration and RAG.",
+    badge: "Production ML",
+    highlights: [
+      "Deploying deep learning architectures with PyTorch & TensorFlow for commercial clients.",
+      "Architecting LangGraph multi-agent orchestration for enterprise knowledge retrieval.",
+    ],
     skills: ["PyTorch", "TensorFlow", "LangGraph", "MLOps", "FastAPI"],
     highlight: false,
   },
   {
     title: "Machine Learning Specialist",
     company: "Arch Technologies",
-    period: "APR 2025 – PRESENT",
+    period: "Apr 2025 – Present",
     location: "Pakistan (Part-Time / Contract)",
-    desc: "Developed predictive modeling algorithms achieving benchmark F1 scores exceeding 0.88. Executed comprehensive feature engineering and cloud deployment protocols.",
-    skills: ["Predictive Modeling", "Feature Engineering", "Scikit-Learn", "Model Monitoring"],
+    badge: "Predictive Analytics",
+    highlights: [
+      "Engineered tabular classification & regression models achieving benchmark F1 > 0.88.",
+      "Built automated feature selection pipelines deployed as low-latency REST endpoints.",
+    ],
+    skills: ["Predictive ML", "Feature Engineering", "Scikit-Learn", "FastAPI"],
     highlight: false,
   },
   {
     title: "Machine Learning Specialist",
     company: "CodaAlpha",
-    period: "MAR 2025 – PRESENT",
+    period: "Mar 2025 – Present",
     location: "Pakistan (Freelance / Contract)",
-    desc: "Engineered structured tabular prediction pipelines and deployed containerized inference endpoints with live telemetry.",
-    skills: ["Tabular Models", "Docker", "REST APIs", "Model Serving"],
+    badge: "Model Serving",
+    highlights: [
+      "Deployed containerized Docker inference microservices with live health checks.",
+      "Optimized model inference latency by 35% through structured batching.",
+    ],
+    skills: ["Docker", "REST APIs", "Model Serving", "Inference Tuning"],
     highlight: false,
   },
   {
@@ -47,96 +61,95 @@ const experiences = [
     company: "Johar Centre Pir Mahal",
     period: "2022 – 2023",
     location: "Pir Mahal, Pakistan",
-    desc: "Managed high-volume data operations, system automation, document integrity, and administrative software workflows.",
-    skills: ["Data Operations", "Systems Administration", "Office Automation"],
+    badge: "Operations",
+    highlights: [
+      "Supervised large-scale data integrity, system records, and office workflow automations.",
+    ],
+    skills: ["Data Integrity", "Systems Administration", "Operations"],
     highlight: false,
   },
 ];
 
 export const Experience: React.FC = () => {
   return (
-    <section id="experience" className="py-24 relative">
+    <section id="experience" className="py-20 md:py-28 relative">
       <div className="container max-w-[1200px] mx-auto px-6">
-        {/* Left-aligned Section Header */}
+        {/* Section Header */}
         <div className="text-left mb-14">
-          <span className="section-label mb-2 block">// 04 — EXPERIENCE</span>
-          <h2 className="fluid-h2 font-heading font-bold text-foreground mb-3">
-            Professional Track Record
+          <span className="section-label mb-2 block">05. Career Track</span>
+          <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
+            Industrial & Engineering Experience
           </h2>
-          <p className="text-muted-foreground text-base max-w-[65ch]">
+          <p className="text-[#94A3B8] text-sm sm:text-base max-w-[65ch]">
             Production engineering roles, research internships, and commercial AI deployments built with rigorous standards.
           </p>
         </div>
 
-        {/* Timeline container */}
-        <div className="relative max-w-4xl mx-auto pl-6 sm:pl-10">
-          {/* Animated vertical timeline line */}
-          <div className="absolute left-0 sm:left-2 top-3 bottom-3 w-[2px] bg-gradient-to-b from-aurora-violet via-aurora-cyan to-transparent opacity-60" />
+        {/* Timeline */}
+        <div className="relative max-w-4xl mx-auto pl-6 sm:pl-8">
+          {/* Vertical hairline line with Cyan accent */}
+          <div className="absolute left-0 sm:left-2 top-3 bottom-3 w-[1px] bg-gradient-to-b from-[#00F2FE]/40 via-white/10 to-transparent" />
 
           <div className="space-y-8">
             {experiences.map((item, i) => (
-              <ScrollReveal key={item.company + item.period} delay={i * 0.08}>
+              <ScrollReveal key={item.company + item.period} delay={i * 0.05}>
                 <div className="relative group">
-                  {/* Glowing timeline node dot */}
-                  <div className="absolute -left-[31px] sm:-left-[39px] top-6 w-4 h-4 rounded-full bg-surface border-2 border-aurora-violet shadow-[0_0_12px_rgba(124,92,255,0.6)] group-hover:scale-125 group-hover:border-aurora-cyan group-hover:shadow-[0_0_18px_rgba(34,211,238,0.8)] transition-all duration-300" />
-
-                  {/* Card per role */}
+                  {/* Glowing timeline node */}
                   <div
-                    className={`bento-card p-6 sm:p-7 relative ${
+                    className={`absolute -left-[28px] sm:-left-[30px] top-6 w-3.5 h-3.5 rounded-full border-2 transition-transform group-hover:scale-125 ${
                       item.highlight
-                        ? "border-aurora-violet/40 bg-gradient-to-br from-card via-card to-aurora-violet/5 shadow-[0_10px_35px_-10px_rgba(124,92,255,0.2)]"
+                        ? "bg-[#00F2FE] border-[#00F2FE] shadow-[0_0_12px_#00F2FE]"
+                        : "bg-[#0B0F19] border-cyan-400/50"
+                    }`}
+                  />
+
+                  {/* Role Card */}
+                  <div
+                    className={`glass-card p-6 sm:p-7 relative transition-all duration-300 ${
+                      item.highlight
+                        ? "border-[#00F2FE]/40 shadow-[0_0_20px_rgba(0,242,254,0.1)]"
                         : ""
                     }`}
                   >
-                    {/* Header Row: Title + Date in Mono Font */}
+                    {/* Header: Title + Date */}
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                      <h3 className="font-heading font-bold text-lg sm:text-xl text-foreground group-hover:text-aurora-cyan transition-colors">
-                        {item.title}
-                      </h3>
-                      <span className="mono-tag text-xs text-aurora-cyan px-3 py-1 rounded-full bg-aurora-cyan/10 border border-aurora-cyan/30 self-start sm:self-auto">
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <h3 className="font-heading font-bold text-lg text-white">
+                          {item.title}
+                        </h3>
+                        <span className="text-xs text-[#00F2FE] font-semibold px-2.5 py-0.5 rounded-full bg-cyan-400/10 border border-cyan-400/30">
+                          {item.badge}
+                        </span>
+                      </div>
+                      <span className="meta-mono text-xs text-[#94A3B8] tabular-nums">
                         {item.period}
                       </span>
                     </div>
 
-                    {/* Company Badge + Location */}
-                    <div className="flex flex-wrap items-center gap-2.5 mb-4">
-                      <span className="font-heading font-semibold text-sm text-foreground flex items-center gap-1.5">
-                        <Building2 size={14} className="text-aurora-violet" />
-                        {item.company}
-                      </span>
-
-                      {item.badge && (
-                        <span className="mono-tag text-[10px] px-2.5 py-0.5 rounded-full bg-accent/15 text-accent border border-accent/30 font-bold flex items-center gap-1">
-                          <Sparkles size={10} /> {item.badge}
-                        </span>
-                      )}
-
-                      <span className="text-xs text-muted-foreground flex items-center gap-1">
-                        <MapPin size={12} className="text-muted-foreground/70" />
-                        {item.location}
-                      </span>
+                    {/* Company + Location */}
+                    <div className="flex flex-wrap items-center gap-2 text-xs text-[#94A3B8] mb-4">
+                      <span className="font-semibold text-white">{item.company}</span>
+                      <span aria-hidden="true" className="text-white/20">·</span>
+                      <span>{item.location}</span>
                     </div>
 
-                    {item.tagline && (
-                      <p className="text-xs italic text-aurora-cyan/90 mb-3 font-mono">
-                        "{item.tagline}"
-                      </p>
-                    )}
+                    {/* Punchy bullet points */}
+                    <div className="space-y-2 mb-4">
+                      {item.highlights.map((h, hIdx) => (
+                        <div key={hIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#94A3B8] leading-relaxed">
+                          <CheckCircle2 size={14} className="text-[#00F2FE] flex-shrink-0 mt-0.5" />
+                          <span>{h}</span>
+                        </div>
+                      ))}
+                    </div>
 
-                    {/* Description */}
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                      {item.desc}
-                    </p>
-
-                    {/* Tech Chips */}
-                    <div className="flex flex-wrap gap-2 pt-3 border-t border-border/60">
-                      {item.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="mono-tag text-[10px] px-2.5 py-1 rounded-lg border border-border/70 bg-surface/80 text-foreground/80"
-                        >
-                          {skill}
-                        </span>
+                    {/* Clean unboxed tools text */}
+                    <div className="pt-3 border-t border-white/10 flex flex-wrap items-center gap-2 text-xs text-[#94A3B8]">
+                      {item.skills.map((skill, sIdx) => (
+                        <React.Fragment key={skill}>
+                          <span className="font-medium text-white/90">{skill}</span>
+                          {sIdx < item.skills.length - 1 && <span aria-hidden="true" className="text-white/20">·</span>}
+                        </React.Fragment>
                       ))}
                     </div>
                   </div>

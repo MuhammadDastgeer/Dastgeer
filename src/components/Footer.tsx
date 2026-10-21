@@ -1,93 +1,112 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Sparkles, ArrowUpRight, Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "./SocialIcons";
+import { ArrowUpRight, Mail } from "lucide-react";
 import profileImg from "@/assets/profile.png";
+import { GithubIcon, LinkedinIcon } from "./SocialIcons";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="py-16 border-t border-border bg-surface/60 backdrop-blur-md relative overflow-hidden">
+    <footer className="py-12 border-t border-white/10 bg-[#0B0F19]/80 backdrop-blur-xl relative">
       <div className="container max-w-[1200px] mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-10 pb-10 border-b border-border/60">
-          {/* Brand */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-aurora-violet/50">
-              <img
-                src={profileImg}
-                alt="Muhammad Dastgeer"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-            </div>
-            <div>
-              <span className="font-heading font-bold text-lg text-foreground tracking-tight block">
-                Muhammad Dastgeer
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start mb-10">
+          {/* Brand Col */}
+          <div className="md:col-span-5">
+            <Link to="/" className="flex items-center gap-2.5 mb-3 group">
+              <div className="w-8 h-8 rounded-full overflow-hidden border border-cyan-400/40 shadow-[0_0_10px_rgba(0,242,254,0.3)] flex-shrink-0 transition-transform group-hover:scale-105">
+                <img
+                  src={profileImg}
+                  alt="Muhammad Dastgeer"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <span className="font-heading font-bold text-base tracking-tight text-white">
+                Muhammad <span className="text-cyan-purple-gradient">Dastgeer</span>
               </span>
-              <span className="mono-tag text-[10px] text-aurora-cyan flex items-center gap-1 font-semibold">
-                <Sparkles size={11} className="text-aurora-violet" /> AI / ML Systems Engineer
-              </span>
-            </div>
-          </Link>
-
-          {/* Nav Links */}
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            <Link to="/" className="text-xs font-heading font-semibold text-muted-foreground hover:text-foreground transition-colors">
-              Home
             </Link>
-            <Link to="/about" className="text-xs font-heading font-semibold text-muted-foreground hover:text-foreground transition-colors">
-              About
-            </Link>
-            <Link to="/skills" className="text-xs font-heading font-semibold text-muted-foreground hover:text-foreground transition-colors">
-              Skills
-            </Link>
-            <Link to="/projects" className="text-xs font-heading font-semibold text-muted-foreground hover:text-foreground transition-colors">
-              Projects
-            </Link>
-            <Link to="/blog" className="text-xs font-heading font-semibold text-muted-foreground hover:text-foreground transition-colors">
-              Blog
-            </Link>
-            <Link to="/web-cv" className="text-xs font-heading font-semibold text-muted-foreground hover:text-foreground transition-colors">
-              Web CV
-            </Link>
-            <Link to="/contact" className="text-xs font-heading font-semibold text-muted-foreground hover:text-foreground transition-colors">
-              Contact
-            </Link>
+            <p className="text-xs text-[#94A3B8] leading-relaxed max-w-[42ch] mb-4">
+              AI / ML Systems Engineer specializing in Autonomous Multi-Agent Workflows (LangGraph, CrewAI), Enterprise RAG, and Cloud Infrastructure (AWS & Azure).
+            </p>
+            <p className="text-xs text-[#94A3B8] flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse" />
+              <span>Available for Global Remote Roles & Consulting</span>
+            </p>
           </div>
 
-          {/* Socials */}
-          <div className="flex items-center gap-3">
-            <a
-              href="https://github.com/MuhammadDastgeer"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full border border-border bg-surface flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-aurora-cyan transition-all"
-              aria-label="GitHub"
-            >
-              <GithubIcon size={15} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/muhammad-dastgeer/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full border border-border bg-surface flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-aurora-violet transition-all"
-              aria-label="LinkedIn"
-            >
-              <LinkedinIcon size={15} />
-            </a>
-            <a
-              href="mailto:dastgeerjutt8888@gmail.com"
-              className="w-9 h-9 rounded-full border border-border bg-surface flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-aurora-cyan transition-all"
-              aria-label="Email"
-            >
-              <Mail size={15} />
-            </a>
+          {/* Quick Nav */}
+          <div className="md:col-span-4 grid grid-cols-2 gap-4 text-xs">
+            <div>
+              <span className="text-xs font-semibold text-white block mb-3">
+                Navigation
+              </span>
+              <ul className="space-y-2 text-[#94A3B8]">
+                <li><Link to="/" className="hover:text-[#00F2FE] transition-colors">Home</Link></li>
+                <li><Link to="/about" className="hover:text-[#00F2FE] transition-colors">About</Link></li>
+                <li><Link to="/projects" className="hover:text-[#00F2FE] transition-colors">Projects</Link></li>
+                <li><Link to="/skills" className="hover:text-[#00F2FE] transition-colors">Skills</Link></li>
+              </ul>
+            </div>
+            <div>
+              <span className="text-xs font-semibold text-white block mb-3">
+                Resources
+              </span>
+              <ul className="space-y-2 text-[#94A3B8]">
+                <li><Link to="/web-cv" className="hover:text-[#00F2FE] transition-colors">Web CV</Link></li>
+                <li><Link to="/blog" className="hover:text-[#00F2FE] transition-colors">AI Blog</Link></li>
+                <li><Link to="/contact" className="hover:text-[#00F2FE] transition-colors">Contact</Link></li>
+                <li>
+                  <a href="/Muhammad_Dastgeer_CV.pdf" download className="hover:text-[#00F2FE] transition-colors flex items-center gap-1">
+                    <span>PDF Resume</span>
+                    <ArrowUpRight size={11} />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="md:col-span-3">
+            <span className="text-xs font-semibold text-white block mb-3">
+              Connect With Me
+            </span>
+            <div className="flex items-center gap-2.5">
+              <a
+                href="https://github.com/MuhammadDastgeer"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                className="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 text-[#94A3B8] hover:text-[#00F2FE] hover:border-[#00F2FE]/50 hover:shadow-[0_0_12px_rgba(0,242,254,0.25)] flex items-center justify-center transition-all"
+              >
+                <GithubIcon size={16} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/muhammad-dastgeer"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                className="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 text-[#94A3B8] hover:text-[#00F2FE] hover:border-[#00F2FE]/50 hover:shadow-[0_0_12px_rgba(0,242,254,0.25)] flex items-center justify-center transition-all"
+              >
+                <LinkedinIcon size={16} />
+              </a>
+              <a
+                href="mailto:dastgeerjutt8888@gmail.com"
+                aria-label="Send Email"
+                className="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 text-[#94A3B8] hover:text-[#00F2FE] hover:border-[#00F2FE]/50 hover:shadow-[0_0_12px_rgba(0,242,254,0.25)] flex items-center justify-center transition-all"
+              >
+                <Mail size={16} />
+              </a>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+        {/* Bottom Bar */}
+        <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#94A3B8]">
           <p>© {new Date().getFullYear()} Muhammad Dastgeer. All rights reserved.</p>
-          <p className="mono-tag text-[10px] text-muted-foreground/80">
-            ENGINEERED FOR <span className="text-aurora-cyan font-bold">AUTONOMOUS INTELLIGENCE</span> & MLOPS
-          </p>
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1.5 text-white/80">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00F2FE]" />
+              <span>Engineered with React 18 & Tailwind</span>
+            </span>
+          </div>
         </div>
       </div>
     </footer>

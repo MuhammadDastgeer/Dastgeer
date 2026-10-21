@@ -7,7 +7,6 @@ export const CustomCursor: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Only enable custom cursor for non-touch devices
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const onMouseMove = (e: MouseEvent) => {
@@ -24,6 +23,7 @@ export const CustomCursor: React.FC = () => {
       if (
         target.closest("a") ||
         target.closest("button") ||
+        target.closest(".glass-card") ||
         target.closest(".bento-card") ||
         target.closest("[role='button']") ||
         target.tagName === "INPUT" ||
@@ -52,9 +52,9 @@ export const CustomCursor: React.FC = () => {
 
   return (
     <div className="hidden md:block pointer-events-none fixed inset-0 z-50 overflow-hidden">
-      {/* Center dot */}
+      {/* Precision cursor dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-aurora-cyan"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#00F2FE] shadow-[0_0_10px_#00F2FE]"
         animate={{
           x: mousePosition.x - 4,
           y: mousePosition.y - 4,
@@ -63,19 +63,21 @@ export const CustomCursor: React.FC = () => {
         transition={{ type: "spring", stiffness: 1000, damping: 50 }}
       />
 
-      {/* Outer interactive ring */}
+      {/* Outer cyan-purple ring */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full border border-aurora-violet pointer-events-none"
+        className="fixed top-0 left-0 rounded-full border border-cyan-400/60 pointer-events-none"
         animate={{
-          x: mousePosition.x - (isHovered ? 24 : 14),
-          y: mousePosition.y - (isHovered ? 24 : 14),
-          width: isHovered ? 48 : 28,
-          height: isHovered ? 48 : 28,
-          borderColor: isHovered ? "#22D3EE" : "#7C5CFF",
-          backgroundColor: isHovered ? "rgba(124, 92, 255, 0.12)" : "rgba(124, 92, 255, 0)",
+          x: mousePosition.x - (isHovered ? 22 : 12),
+          y: mousePosition.y - (isHovered ? 22 : 12),
+          width: isHovered ? 44 : 24,
+          height: isHovered ? 44 : 24,
+          borderColor: isHovered ? "rgba(0, 242, 254, 0.85)" : "rgba(79, 172, 254, 0.45)",
+          backgroundColor: isHovered ? "rgba(0, 242, 254, 0.08)" : "transparent",
         }}
-        transition={{ type: "spring", stiffness: 450, damping: 28 }}
+        transition={{ type: "spring", stiffness: 600, damping: 35 }}
       />
     </div>
   );
 };
+
+export default CustomCursor;

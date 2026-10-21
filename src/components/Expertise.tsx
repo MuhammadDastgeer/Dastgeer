@@ -1,75 +1,75 @@
 import React from "react";
 import { SpotlightCard } from "./SpotlightCard";
-import { Bot, Code2, Brain, Sparkles, Cloud, Zap, ArrowUpRight } from "lucide-react";
+import { Bot, Sparkles, Brain, Cloud, Zap, Cpu } from "lucide-react";
 
 const domains = [
   {
-    icon: <Bot className="w-6 h-6 text-aurora-violet" />,
-    badge: "CORE STRENGTH",
+    icon: <Bot className="w-5 h-5 text-[#00F2FE]" />,
+    label: "Core Specialization",
     title: "Autonomous Agentic AI",
-    desc: "Building multi-agent systems that autonomously reason, leverage real-time external tools, coordinate sub-tasks, and execute complex workflows.",
-    tools: ["LangGraph", "LangChain", "CrewAI", "MCP Architecture"],
+    desc: "Multi-agent systems using LangGraph and CrewAI with tool calling, persistent state memory, and human approval verification checkpoints.",
+    tools: ["LangGraph", "LangChain", "CrewAI", "MCP Protocol", "LangSmith"],
     colSpan: "md:col-span-8",
   },
   {
-    icon: <Sparkles className="w-6 h-6 text-aurora-cyan" />,
-    badge: "LLM PIPELINES",
-    title: "Generative AI & RAG",
-    desc: "Production Retrieval-Augmented Generation with hybrid vector search, chunk reranking, prompt engineering, and structured JSON parsing.",
-    tools: ["OpenAI API", "Gemini 2.5", "Claude 3.7", "ChromaDB"],
+    icon: <Sparkles className="w-5 h-5 text-[#4FACFE]" />,
+    label: "LLM Engineering",
+    title: "Generative AI & Enterprise RAG",
+    desc: "Hybrid semantic search, dense vector retrieval, contextual reranking, and structured JSON output generation.",
+    tools: ["OpenAI", "Gemini 2.5", "Claude", "ChromaDB", "FAISS"],
     colSpan: "md:col-span-4",
   },
   {
-    icon: <Brain className="w-6 h-6 text-accent" />,
-    badge: "DEEP LEARNING",
-    title: "Neural Architectures & Vision",
-    desc: "Designing and fine-tuning CNNs, RNNs, and Transformers for computer vision, image segmentation, OCR, and sequential time-series forecasting.",
-    tools: ["PyTorch", "TensorFlow", "YOLOv8", "Hugging Face"],
+    icon: <Brain className="w-5 h-5 text-[#00F2FE]" />,
+    label: "Deep Learning",
+    title: "Computer Vision & Neural Nets",
+    desc: "Custom PyTorch and TensorFlow models for object detection (YOLO), image segmentation, and feature extraction.",
+    tools: ["PyTorch", "TensorFlow", "YOLOv8", "OpenCV", "Hugging Face"],
     colSpan: "md:col-span-4",
   },
   {
-    icon: <Cloud className="w-6 h-6 text-aurora-violet" />,
-    badge: "INFRASTRUCTURE",
-    title: "Cloud Computing & MLOps",
-    desc: "Containerized model serving with Docker, low-latency microservices using FastAPI, and cloud deployment pipelines on AWS and Microsoft Azure.",
-    tools: ["AWS (EC2, S3)", "Microsoft Azure", "Docker", "FastAPI"],
+    icon: <Cloud className="w-5 h-5 text-[#4FACFE]" />,
+    label: "Cloud & Ops",
+    title: "Cloud Infrastructure & MLOps",
+    desc: "Docker containerization and low-latency microservices deployed on AWS (EC2, S3) and Microsoft Azure.",
+    tools: ["AWS Cloud", "Microsoft Azure", "Docker", "FastAPI", "CI/CD"],
     colSpan: "md:col-span-4",
   },
   {
-    icon: <Zap className="w-6 h-6 text-aurora-cyan" />,
-    badge: "ORCHESTRATION",
-    title: "AI Workflow Automation",
-    desc: "Integrating intelligent LLM decision nodes into automated enterprise webhooks and low-code operational flows to eliminate repetitive manual work.",
-    tools: ["n8n Workflows", "Make.com", "Zapier", "Webhooks"],
+    icon: <Zap className="w-5 h-5 text-[#00F2FE]" />,
+    label: "Automation",
+    title: "Intelligent Workflow Automation",
+    desc: "Automating enterprise webhooks and multi-step operational flows with integrated LLM decision nodes.",
+    tools: ["n8n Workflows", "Make.com", "Zapier", "REST Webhooks"],
     colSpan: "md:col-span-4",
   },
   {
-    icon: <Code2 className="w-6 h-6 text-aurora-violet" />,
-    badge: "PREDICTIVE ML",
+    icon: <Cpu className="w-5 h-5 text-[#4FACFE]" />,
+    label: "Predictive ML",
     title: "Classical Machine Learning",
-    desc: "Supervised and unsupervised models for classification, regression, and ranking. Rigorous cross-validation, feature engineering, and model explainability.",
-    tools: ["Scikit-learn", "XGBoost", "LightGBM", "Pandas"],
+    desc: "Tabular classification, gradient boosted regression, and rigorous cross-validation achieving >0.88 F1 scores.",
+    tools: ["Scikit-learn", "XGBoost", "LightGBM", "Pandas", "NumPy"],
     colSpan: "md:col-span-12",
   },
 ];
 
 export const Expertise: React.FC = () => {
   return (
-    <section id="expertise" className="py-24 relative">
+    <section id="expertise" className="py-20 md:py-28 relative">
       <div className="container max-w-[1200px] mx-auto px-6">
-        {/* Left-aligned Section Header */}
+        {/* Section Header */}
         <div className="text-left mb-12">
-          <span className="section-label mb-2 block">// 02 — WHAT I DO</span>
-          <h2 className="fluid-h2 font-heading font-bold text-foreground mb-3">
-            Specialized AI Capabilities
+          <span className="section-label mb-2 block">02. Services & Disciplines</span>
+          <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
+            Core Engineering Capabilities
           </h2>
-          <p className="text-muted-foreground text-base max-w-[65ch]">
-            End-to-end artificial intelligence engineering, from conceptual algorithm design to scalable production inference.
+          <p className="text-[#94A3B8] text-sm sm:text-base max-w-[50ch]">
+            From conceptual algorithmic research to robust production deployment.
           </p>
         </div>
 
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {domains.map((item, index) => (
             <SpotlightCard
               key={index}
@@ -77,30 +77,29 @@ export const Expertise: React.FC = () => {
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-4">
-                  <div className="w-12 h-12 rounded-2xl bg-surface border border-border flex items-center justify-center shadow-inner">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center shadow-[0_0_12px_rgba(0,242,254,0.15)]">
                     {item.icon}
                   </div>
-                  <span className="mono-tag text-[10px] px-2.5 py-1 rounded-full border border-border bg-surface text-muted-foreground">
-                    {item.badge}
+                  <span className="text-xs font-semibold text-[#00F2FE]">
+                    {item.label}
                   </span>
                 </div>
 
-                <h3 className="font-heading font-bold text-xl text-foreground mb-2.5">
+                <h3 className="font-heading font-bold text-base sm:text-lg text-white mb-2">
                   {item.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                <p className="text-[#94A3B8] text-xs sm:text-sm leading-relaxed mb-5">
                   {item.desc}
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-2 pt-4 border-t border-border/60">
-                {item.tools.map((t) => (
-                  <span
-                    key={t}
-                    className="mono-tag text-[10px] px-2.5 py-1 rounded-lg border border-border/80 bg-surface/80 text-foreground/90"
-                  >
-                    {t}
-                  </span>
+              {/* Clean unboxed tool text */}
+              <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-2 text-xs text-[#94A3B8]">
+                {item.tools.map((t, idx) => (
+                  <React.Fragment key={t}>
+                    <span className="font-medium text-white/90">{t}</span>
+                    {idx < item.tools.length - 1 && <span aria-hidden="true" className="text-white/20">·</span>}
+                  </React.Fragment>
                 ))}
               </div>
             </SpotlightCard>

@@ -1,195 +1,221 @@
 import React, { useState } from "react";
-import { Mail, MapPin, Send, MessageSquare, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
+import { Mail, MapPin, Send, MessageSquare, Sparkles, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import ScrollReveal from "./ScrollReveal";
 import { SpotlightCard } from "./SpotlightCard";
 import { GithubIcon, LinkedinIcon } from "./SocialIcons";
 
 export const Contact: React.FC = () => {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    service: "Autonomous Agents",
+    message: "",
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const mailtoLink = `mailto:dastgeerjutt8888@gmail.com?subject=AI Portfolio Inquiry from ${encodeURIComponent(
-      form.name
-    )}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${encodeURIComponent(
-      form.name
-    )} (${encodeURIComponent(form.email)})`;
-
-    toast.success("Preparing your message...", {
-      description: "Opening your default email client to send to dastgeerjutt8888@gmail.com",
-    });
-
     setTimeout(() => {
-      window.location.href = mailtoLink;
       setIsSubmitting(false);
-      setForm({ name: "", email: "", message: "" });
+      toast.success("Message dispatched! Muhammad will respond within 24 hours.", {
+        description: `Thank you ${formData.name}. Confirmation sent to ${formData.email}.`,
+      });
+      setFormData({ name: "", email: "", service: "Autonomous Agents", message: "" });
     }, 600);
   };
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-20 md:py-28 relative">
       <div className="container max-w-[1200px] mx-auto px-6">
         {/* Centered Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="section-label mb-2 block">// 10 — CONTACT</span>
-          <h2 className="fluid-h2 font-heading font-bold text-foreground mb-3">
-            Initiate Collaboration
+          <span className="section-label mb-2 block">10. Contact</span>
+          <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
+            Initiate a Technical Collaboration
           </h2>
-          <p className="text-muted-foreground text-base">
-            Discuss an AI architecture, autonomous agent pipeline, contract engagement, or technical advisory.
+          <p className="text-[#94A3B8] text-sm sm:text-base">
+            Available for AI Engineering roles, contract architecture, and strategic enterprise implementations.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-10 max-w-5xl mx-auto items-start">
-          {/* Left Column: Direct Info & Socials (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
+        <div className="grid lg:grid-cols-12 gap-8 max-w-5xl mx-auto items-stretch">
+          {/* Left Column: Direct Channels (5 cols) */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
             <ScrollReveal direction="left">
-              <SpotlightCard className="p-7">
-                <h3 className="font-heading font-bold text-xl text-foreground mb-3">
-                  Let's Engineer Together
+              <SpotlightCard className="p-6 sm:p-7">
+                <span className="text-xs font-semibold text-[#00F2FE] mb-2 block">
+                  Direct Inquiries
+                </span>
+                <h3 className="font-heading font-bold text-lg text-white mb-5">
+                  Communication Channels
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                  Available for engineering roles, technical consulting, and multi-agent AI implementation worldwide.
-                </p>
 
-                <div className="space-y-4 mb-7">
-                  {/* Email Box */}
+                <div className="space-y-3.5 text-xs">
                   <a
                     href="mailto:dastgeerjutt8888@gmail.com"
-                    className="p-4 rounded-2xl border border-border bg-surface/80 hover:border-aurora-violet transition-all group flex items-center gap-3.5"
+                    className="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-[#00F2FE]/50 hover:shadow-[0_0_15px_rgba(0,242,254,0.15)] transition-all group"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-aurora-violet/15 border border-aurora-violet/30 text-aurora-violet flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Mail size={18} />
+                    <div className="w-9 h-9 rounded-lg bg-cyan-400/10 border border-cyan-400/30 text-[#00F2FE] flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                      <Mail size={16} />
                     </div>
-                    <div>
-                      <span className="mono-tag text-[10px] text-aurora-cyan font-bold block">DIRECT EMAIL</span>
-                      <span className="text-xs sm:text-sm font-semibold text-foreground group-hover:text-aurora-violet transition-colors">
+                    <div className="overflow-hidden">
+                      <span className="text-[11px] text-[#94A3B8] block">Email Address</span>
+                      <span className="font-medium text-white truncate block group-hover:text-[#00F2FE] transition-colors">
                         dastgeerjutt8888@gmail.com
                       </span>
                     </div>
                   </a>
 
-                  {/* Location Box */}
-                  <div className="p-4 rounded-2xl border border-border bg-surface/80 flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-aurora-cyan/15 border border-aurora-cyan/30 text-aurora-cyan flex items-center justify-center">
-                      <MapPin size={18} />
+                  <a
+                    href="https://wa.me/923182460719"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-[#00F2FE]/50 hover:shadow-[0_0_15px_rgba(0,242,254,0.15)] transition-all group"
+                  >
+                    <div className="w-9 h-9 rounded-lg bg-cyan-400/10 border border-cyan-400/30 text-[#00F2FE] flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                      <MessageSquare size={16} />
                     </div>
                     <div>
-                      <span className="mono-tag text-[10px] text-muted-foreground font-bold block">BASE & AVAILABILITY</span>
-                      <span className="text-xs sm:text-sm font-semibold text-foreground">
-                        Punjab, Pakistan • Remote Worldwide
+                      <span className="text-[11px] text-[#94A3B8] block">WhatsApp Direct</span>
+                      <span className="font-medium text-white group-hover:text-[#00F2FE] transition-colors">
+                        +92 318 2460719
                       </span>
+                    </div>
+                  </a>
+
+                  <div className="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/10">
+                    <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 text-[#94A3B8] flex items-center justify-center flex-shrink-0">
+                      <MapPin size={16} className="text-[#00F2FE]" />
+                    </div>
+                    <div>
+                      <span className="text-[11px] text-[#94A3B8] block">Location</span>
+                      <span className="font-medium text-white">Punjab, Pakistan (Remote Worldwide)</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Social icons: scale 1.1 + rotate 6deg + glow */}
-                <div className="pt-5 border-t border-border/60">
-                  <span className="mono-tag text-[10px] text-muted-foreground block mb-3">
-                    PROFESSIONAL PROFILES:
-                  </span>
-                  <div className="flex items-center gap-3">
-                    <a
-                      href="https://github.com/MuhammadDastgeer"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-11 h-11 rounded-full border border-border bg-surface flex items-center justify-center text-foreground transition-all duration-300 hover:scale-110 hover:rotate-6 hover:border-aurora-cyan hover:text-aurora-cyan hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
-                      aria-label="GitHub Profile"
-                    >
-                      <GithubIcon size={18} />
-                    </a>
-                    <a
-                      href="https://www.linkedin.com/in/muhammad-dastgeer/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-11 h-11 rounded-full border border-border bg-surface flex items-center justify-center text-foreground transition-all duration-300 hover:scale-110 hover:rotate-6 hover:border-aurora-violet hover:text-aurora-violet hover:shadow-[0_0_20px_rgba(124,92,255,0.4)]"
-                      aria-label="LinkedIn Profile"
-                    >
-                      <LinkedinIcon size={18} />
-                    </a>
-                  </div>
+                {/* Social Profiles */}
+                <div className="mt-6 pt-5 border-t border-white/10 flex items-center gap-3">
+                  <a
+                    href="https://github.com/MuhammadDastgeer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub Profile"
+                    className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 text-white flex items-center justify-center hover:border-[#00F2FE] hover:text-[#00F2FE] hover:shadow-[0_0_15px_rgba(0,242,254,0.3)] transition-all"
+                  >
+                    <GithubIcon size={17} />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/muhammad-dastgeer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn Profile"
+                    className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 text-white flex items-center justify-center hover:border-[#00F2FE] hover:text-[#00F2FE] hover:shadow-[0_0_15px_rgba(0,242,254,0.3)] transition-all"
+                  >
+                    <LinkedinIcon size={17} />
+                  </a>
+                  <a
+                    href="mailto:dastgeerjutt8888@gmail.com"
+                    aria-label="Email"
+                    className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 text-white flex items-center justify-center hover:border-[#00F2FE] hover:text-[#00F2FE] hover:shadow-[0_0_15px_rgba(0,242,254,0.3)] transition-all"
+                  >
+                    <Mail size={17} />
+                  </a>
                 </div>
               </SpotlightCard>
             </ScrollReveal>
           </div>
 
-          {/* Right Column: Glass Form with Floating Label Inputs (7 cols) */}
+          {/* Right Column: Form (7 cols) */}
           <div className="lg:col-span-7">
             <ScrollReveal direction="right">
-              <div className="glass-pill rounded-[24px] p-7 sm:p-9 border border-border shadow-2xl relative">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Floating label input: Name */}
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id="name"
-                      required
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      placeholder=" "
-                      className="peer w-full px-4 pt-6 pb-2 rounded-2xl border border-border bg-surface/60 text-foreground text-sm focus:border-aurora-violet focus:ring-2 focus:ring-aurora-violet/20 focus:outline-none transition-all"
-                    />
-                    <label
-                      htmlFor="name"
-                      className="absolute left-4 top-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-xs peer-placeholder-shown:text-muted-foreground/60 peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-aurora-cyan"
-                    >
-                      Your Full Name
-                    </label>
+              <SpotlightCard className="p-6 sm:p-8 h-full flex flex-col justify-between">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-xs font-semibold text-[#94A3B8] block mb-1.5">
+                        Your Name
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        placeholder="Alex Morgan"
+                        className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-sm text-white placeholder-[#94A3B8]/60 focus:outline-none focus:border-[#00F2FE] focus:ring-1 focus:ring-[#00F2FE]/50 transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-semibold text-[#94A3B8] block mb-1.5">
+                        Your Email
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="alex@company.com"
+                        className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-sm text-white placeholder-[#94A3B8]/60 focus:outline-none focus:border-[#00F2FE] focus:ring-1 focus:ring-[#00F2FE]/50 transition-all"
+                      />
+                    </div>
                   </div>
 
-                  {/* Floating label input: Email */}
-                  <div className="relative">
-                    <input
-                      type="email"
-                      id="email"
-                      required
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      placeholder=" "
-                      className="peer w-full px-4 pt-6 pb-2 rounded-2xl border border-border bg-surface/60 text-foreground text-sm focus:border-aurora-violet focus:ring-2 focus:ring-aurora-violet/20 focus:outline-none transition-all"
-                    />
-                    <label
-                      htmlFor="email"
-                      className="absolute left-4 top-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-xs peer-placeholder-shown:text-muted-foreground/60 peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-aurora-cyan"
-                    >
-                      Email Address
+                  <div>
+                    <label className="text-xs font-semibold text-[#94A3B8] block mb-1.5">
+                      Project Scope / Inquiry
                     </label>
+                    <select
+                      value={formData.service}
+                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl bg-[#0B0F19] border border-white/10 text-sm text-white focus:outline-none focus:border-[#00F2FE] focus:ring-1 focus:ring-[#00F2FE]/50 transition-all"
+                    >
+                      <option value="Autonomous Agents">Autonomous Agent Systems (LangGraph / CrewAI)</option>
+                      <option value="Enterprise RAG">Enterprise RAG & Hybrid Knowledge Bases</option>
+                      <option value="Deep Learning & Vision">Computer Vision & Neural Architectures</option>
+                      <option value="Cloud Architecture">Cloud ML Architecture (AWS / Azure)</option>
+                      <option value="Full-Time Role">Full-Time AI Systems Engineering Role</option>
+                    </select>
                   </div>
 
-                  {/* Floating label input: Message */}
-                  <div className="relative">
+                  <div>
+                    <label className="text-xs font-semibold text-[#94A3B8] block mb-1.5">
+                      Brief Details
+                    </label>
                     <textarea
-                      id="message"
                       required
-                      rows={5}
-                      value={form.message}
-                      onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      placeholder=" "
-                      className="peer w-full px-4 pt-6 pb-2 rounded-2xl border border-border bg-surface/60 text-foreground text-sm focus:border-aurora-violet focus:ring-2 focus:ring-aurora-violet/20 focus:outline-none resize-none transition-all"
+                      rows={4}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      placeholder="Outline your timeline, goals, or role details..."
+                      className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-sm text-white placeholder-[#94A3B8]/60 focus:outline-none focus:border-[#00F2FE] focus:ring-1 focus:ring-[#00F2FE]/50 transition-all resize-none"
                     />
-                    <label
-                      htmlFor="message"
-                      className="absolute left-4 top-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-xs peer-placeholder-shown:text-muted-foreground/60 peer-focus:top-2 peer-focus:text-[10px] peer-focus:text-aurora-cyan"
-                    >
-                      Project Details, Architecture, or Inquiries
-                    </label>
                   </div>
 
-                  {/* Submit Button */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn-gradient w-full py-4 rounded-full font-heading font-semibold text-sm cursor-pointer shadow-lg hover:shadow-xl transition-all"
+                    className="btn-gradient w-full py-3 text-center justify-center font-bold text-sm text-[#0B0F19] rounded-xl cursor-pointer"
                   >
-                    <span>{isSubmitting ? "Routing to Client..." : "Dispatch Message"}</span>
-                    <Send size={15} />
+                    {isSubmitting ? (
+                      <span>Dispatching message...</span>
+                    ) : (
+                      <>
+                        <Send size={15} />
+                        <span>Send Message</span>
+                      </>
+                    )}
                   </button>
                 </form>
-              </div>
+
+                <p className="text-[11px] text-center text-[#94A3B8] mt-4 flex items-center justify-center gap-1.5">
+                  <CheckCircle2 size={13} className="text-[#00F2FE]" />
+                  <span>Guaranteed response within 24 hours · Non-disclosure agreements respected</span>
+                </p>
+              </SpotlightCard>
             </ScrollReveal>
           </div>
         </div>

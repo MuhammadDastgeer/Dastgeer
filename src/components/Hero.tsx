@@ -1,194 +1,123 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, MapPin, Mail, Sparkles, Terminal, Download } from "lucide-react";
+import { ArrowRight, MapPin, Download, Sparkles, Zap, ShieldCheck } from "lucide-react";
 import profileImg from "@/assets/profile.png";
 import { CountUp } from "./CountUp";
 
-const rotatingRoles = [
-  "Agentic AI Architect",
-  "Generative AI & LLMs",
-  "Deep Learning Specialist",
-  "Computer Vision Expert",
-  "Production MLOps Engineer",
-];
-
 export const Hero: React.FC = () => {
-  const [roleIndex, setRoleIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % rotatingRoles.length);
-    }, 2800);
-    return () => clearInterval(timer);
-  }, []);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
-  };
-
   return (
-    <section className="relative min-h-[92vh] flex items-center pt-28 pb-16 overflow-hidden">
+    <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
       <div className="container max-w-[1200px] mx-auto px-6 relative z-10">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center"
-        >
-          {/* Left Column: Left-aligned Hero text */}
+        {/* Hero Split Layout */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center mb-16">
+          {/* Left Column */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
-            {/* Monospace Section Tag */}
-            <motion.div variants={itemVariants} className="mb-4">
-              <span className="section-label flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-aurora-cyan animate-pulse" />
-                // 00 — AI/ML SPECIALIST
-              </span>
-            </motion.div>
+            {/* Interactive Badge */}
+            <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 backdrop-blur-md text-xs font-semibold text-[#00F2FE] shadow-[0_0_15px_rgba(0,242,254,0.2)]">
+              <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse shadow-[0_0_8px_#00F2FE]" />
+              <span className="text-white/90">Available for AI Engineering Roles</span>
+            </div>
 
-            {/* Fluid Hero Name: One word with gradient text fill */}
-            <motion.h1 variants={itemVariants} className="fluid-h1 font-heading font-extrabold text-foreground mb-4">
-              <span className="text-gradient">Muhammad</span>
-              <br />
-              Dastgeer
-            </motion.h1>
+            {/* Dynamic Headline with Smooth Text Gradient */}
+            <h1 className="fluid-h1 font-heading font-extrabold tracking-tight mb-5 text-balance">
+              Architecting <span className="text-cyan-purple-gradient">Autonomous AI Systems</span> & Cloud ML.
+            </h1>
 
-            {/* Rotating Role Pill */}
-            <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6 h-9">
-              <span className="mono-tag text-xs text-muted-foreground">// FOCUS:</span>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={rotatingRoles[roleIndex]}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="px-3.5 py-1 rounded-full border border-aurora-violet/40 bg-aurora-violet/10 text-aurora-cyan font-mono text-xs font-semibold tracking-wide flex items-center gap-1.5"
-                >
-                  <Sparkles size={12} className="text-aurora-violet" />
-                  {rotatingRoles[roleIndex]}
-                </motion.div>
-              </AnimatePresence>
-            </motion.div>
+            {/* Subtext */}
+            <p className="text-[#94A3B8] text-base sm:text-lg leading-relaxed max-w-[52ch] mb-8">
+              Specialized in multi-agent orchestration with LangGraph, deterministic enterprise RAG pipelines, and scalable cloud solutions on AWS & Azure.
+            </p>
 
-            {/* Brief Introduction max-w-[65ch] */}
-            <motion.p
-              variants={itemVariants}
-              className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-[65ch] mb-8"
-            >
-              AI/ML Engineer with hands-on expertise building production-grade autonomous agent systems,
-              fine-tuned LLM architectures, real-time computer vision pipelines, and scalable cloud solutions on AWS & Azure.
-            </motion.p>
-
-            {/* CTAs with magnetic hover styling */}
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 mb-8">
-              <Link to="/contact" className="btn-gradient group">
-                <span>Start a Project</span>
-                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+            {/* CTA Buttons with Hover Glow Effect */}
+            <div className="flex flex-wrap items-center gap-3 mb-8">
+              <Link to="/projects" className="btn-gradient">
+                <span>Explore Projects</span>
+                <ArrowRight size={14} />
               </Link>
-              <Link to="/projects" className="btn-ghost">
-                <span>View Selected Work</span>
+              <Link to="/contact" className="btn-ghost">
+                <span>Get In Touch</span>
               </Link>
               <a
                 href="/Muhammad_Dastgeer_CV.pdf"
                 download
-                className="btn-ghost text-xs py-2.5 px-4"
+                className="btn-ghost text-xs"
               >
-                <Download size={14} />
-                <span>Download CV</span>
+                <Download size={14} className="text-[#00F2FE]" />
+                <span>Resume (PDF)</span>
               </a>
-            </motion.div>
+            </div>
 
-            {/* Meta tags */}
-            <motion.div variants={itemVariants} className="flex items-center gap-5 text-xs text-muted-foreground pt-4 border-t border-border/50">
-              <span className="flex items-center gap-1.5">
-                <MapPin size={13} className="text-aurora-cyan" />
-                Punjab, Pakistan (Remote Global)
-              </span>
-              <span className="w-1 h-1 rounded-full bg-border" />
-              <span className="flex items-center gap-1.5 text-accent font-mono">
-                <span className="w-2 h-2 rounded-full bg-accent" />
-                Available Q4 2026
-              </span>
-            </motion.div>
+            {/* Location */}
+            <div className="flex items-center gap-2 text-xs text-[#94A3B8]">
+              <MapPin size={13} className="text-[#00F2FE]" />
+              <span>Punjab, Pakistan</span>
+              <span aria-hidden="true" className="text-white/20">·</span>
+              <span>Remote Worldwide Collaboration</span>
+            </div>
           </div>
 
-          {/* Right Column: Profile Photo inside Gradient-Ring with Floating Chips */}
-          <motion.div
-            variants={itemVariants}
-            className="lg:col-span-5 flex justify-center lg:justify-end"
-          >
-            <div className="relative">
-              {/* Soft Aurora Glow Ring */}
-              <div className="absolute -inset-2.5 rounded-[32px] bg-gradient-to-tr from-aurora-violet via-aurora-cyan to-aurora-lime opacity-75 blur-md -z-10 animate-aurora-1" />
+          {/* Right Column: Clean Glass Portrait */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-sm">
+              {/* Subtle ambient cyan/purple aura behind portrait */}
+              <div className="absolute -inset-2 rounded-[24px] bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 blur-xl pointer-events-none" />
 
-              {/* Main Portrait Container */}
-              <div className="relative w-64 h-80 sm:w-80 sm:h-[400px] rounded-[28px] overflow-hidden bg-surface border border-white/10 shadow-2xl">
+              <div className="relative rounded-2xl overflow-hidden glass-card aspect-[4/5] shadow-2xl border border-white/10 group">
                 <img
                   src={profileImg}
                   alt="Muhammad Dastgeer"
-                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
                   width={512}
-                  height={512}
+                  height={640}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/60 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19]/80 via-transparent to-transparent pointer-events-none" />
+
+                {/* Bottom glass tag */}
+                <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-[#0B0F19]/80 backdrop-blur-md border border-white/10 flex items-center justify-between">
+                  <div>
+                    <span className="font-heading font-bold text-xs text-white block">
+                      Muhammad Dastgeer
+                    </span>
+                    <span className="text-[11px] text-[#94A3B8]">
+                      AI / ML Systems Engineer
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-semibold text-[#00F2FE] px-2 py-0.5 rounded-full bg-cyan-400/10 border border-cyan-400/30">
+                    Production
+                  </span>
+                </div>
               </div>
-
-              {/* Floating Stat Chip 1 */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -left-6 sm:-left-10 glass-pill px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-border"
-              >
-                <div className="w-9 h-9 rounded-xl bg-aurora-violet/20 border border-aurora-violet/40 flex items-center justify-center text-aurora-violet font-mono font-bold text-sm">
-                  ⚡
-                </div>
-                <div>
-                  <div className="font-heading font-extrabold text-lg text-foreground leading-none">
-                    <CountUp end={30} suffix="+" />
-                  </div>
-                  <span className="mono-tag text-[10px] text-muted-foreground">AI Agents Shipped</span>
-                </div>
-              </motion.div>
-
-              {/* Floating Stat Chip 2 */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="absolute -bottom-4 -right-4 sm:-right-8 glass-pill px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-border"
-              >
-                <div className="w-9 h-9 rounded-xl bg-aurora-cyan/20 border border-aurora-cyan/40 flex items-center justify-center text-aurora-cyan font-mono font-bold text-sm">
-                  🤖
-                </div>
-                <div>
-                  <div className="font-heading font-extrabold text-lg text-foreground leading-none">
-                    <CountUp end={20} suffix="+" />
-                  </div>
-                  <span className="mono-tag text-[10px] text-muted-foreground">Production ML Projects</span>
-                </div>
-              </motion.div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
+
+        {/* 4-Column KPI Grid Row with Glassmorphism Frost */}
+        <div className="pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+          <div className="p-4 rounded-xl glass-card">
+            <div className="font-heading font-bold text-2xl sm:text-3xl text-white tabular-nums">
+              <CountUp end={30} suffix="+" />
+            </div>
+            <p className="text-xs text-[#94A3B8] mt-1">Autonomous AI Agents</p>
+          </div>
+          <div className="p-4 rounded-xl glass-card">
+            <div className="font-heading font-bold text-2xl sm:text-3xl text-cyan-purple-gradient tabular-nums">
+              <CountUp end={20} suffix="+" />
+            </div>
+            <p className="text-xs text-[#94A3B8] mt-1">Production ML Deployments</p>
+          </div>
+          <div className="p-4 rounded-xl glass-card">
+            <div className="font-heading font-bold text-2xl sm:text-3xl text-white tabular-nums">
+              <CountUp end={88} suffix="%+" />
+            </div>
+            <p className="text-xs text-[#94A3B8] mt-1">Benchmark F1 Score</p>
+          </div>
+          <div className="p-4 rounded-xl glass-card">
+            <div className="font-heading font-bold text-2xl sm:text-3xl text-cyan-purple-gradient tabular-nums">
+              <CountUp end={100} suffix="%" />
+            </div>
+            <p className="text-xs text-[#94A3B8] mt-1">Delivery Success Rate</p>
+          </div>
+        </div>
       </div>
     </section>
   );

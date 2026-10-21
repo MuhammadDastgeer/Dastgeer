@@ -3,41 +3,34 @@ import React from "react";
 export const AuroraBackground: React.FC = () => {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Soft Aurora Violet Blob */}
+      {/* Soft Electric Cyan ambient light top */}
       <div
-        className="absolute -top-[15%] left-[10%] w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full animate-aurora-1 opacity-20 dark:opacity-25"
+        className="absolute -top-[15%] left-[20%] w-[650px] h-[650px] rounded-full opacity-20 pointer-events-none"
         style={{
-          background: "radial-gradient(circle, #7C5CFF 0%, rgba(124, 92, 255, 0) 70%)",
-          filter: "blur(120px)",
+          background: "radial-gradient(circle, #00F2FE 0%, rgba(0, 242, 254, 0) 70%)",
+          filter: "blur(140px)",
         }}
       />
 
-      {/* Soft Aurora Cyan Blob */}
+      {/* Soft Purple ambient light right */}
       <div
-        className="absolute top-[20%] -right-[10%] w-[450px] h-[450px] md:w-[650px] md:h-[650px] rounded-full animate-aurora-2 opacity-15 dark:opacity-20"
+        className="absolute top-[25%] -right-[10%] w-[600px] h-[600px] rounded-full opacity-15 pointer-events-none"
         style={{
-          background: "radial-gradient(circle, #22D3EE 0%, rgba(34, 211, 238, 0) 70%)",
-          filter: "blur(120px)",
+          background: "radial-gradient(circle, #4FACFE 0%, rgba(79, 172, 254, 0) 70%)",
+          filter: "blur(150px)",
         }}
       />
 
-      {/* Mid-page Divider Aurora Bloom */}
+      {/* Subtle mid-page glow */}
       <div
-        className="absolute top-[55%] left-[20%] w-[550px] h-[550px] rounded-full animate-aurora-1 opacity-10 dark:opacity-15"
+        className="absolute top-[65%] left-[10%] w-[500px] h-[500px] rounded-full opacity-10 pointer-events-none"
         style={{
-          background: "radial-gradient(circle, #7C5CFF 0%, rgba(124, 92, 255, 0) 70%)",
-          filter: "blur(130px)",
-        }}
-      />
-
-      {/* Lower page Aurora Bloom */}
-      <div
-        className="absolute bottom-[10%] right-[15%] w-[500px] h-[500px] rounded-full animate-aurora-2 opacity-15 dark:opacity-20"
-        style={{
-          background: "radial-gradient(circle, #22D3EE 0%, rgba(34, 211, 238, 0) 70%)",
-          filter: "blur(120px)",
+          background: "radial-gradient(circle, #00F2FE 0%, rgba(0, 242, 254, 0) 70%)",
+          filter: "blur(160px)",
         }}
       />
     </div>
   );
 };
+
+export default AuroraBackground;

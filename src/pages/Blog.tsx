@@ -139,7 +139,7 @@ export const Blog: React.FC = () => {
               </Link>
             </div>
 
-            <span className="section-label mb-2 block">// WRITINGS & RESEARCH</span>
+            <span className="section-label mb-2 block">Technical Writings & Research</span>
             <h1 className="fluid-h1 font-heading font-extrabold text-foreground mb-4">
               AI Engineering <span className="text-gradient">Chronicles</span>
             </h1>
@@ -158,38 +158,35 @@ export const Blog: React.FC = () => {
                 <div className="bento-card group flex flex-col justify-between h-full p-4 transition-all duration-300">
                   <div>
                     {/* 16:10 Thumbnail */}
-                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[8px] bg-surface border border-border/60 mb-4">
+                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-surface border border-border mb-4">
                       {b.image ? (
                         <img
                           src={b.image}
                           alt={b.title}
                           loading="lazy"
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                         />
                       ) : (
                         <div
-                          className="w-full h-full flex items-center justify-center"
-                          style={{ background: b.gradient }}
+                          className="w-full h-full flex items-center justify-center bg-surface"
                         >
-                          <BookOpen className="text-white/80" size={36} />
+                          <BookOpen className="text-blue-600 dark:text-blue-400" size={36} />
                         </div>
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
                     </div>
 
-                    {/* Tools as mono tags */}
-                    <div className="flex flex-wrap gap-1.5 mb-3">
-                      {b.tools.map((t) => (
-                        <span
-                          key={t}
-                          className="mono-tag text-[10px] px-2.5 py-0.5 rounded-full border border-border/80 bg-surface/80 text-muted-foreground"
-                        >
-                          {t}
-                        </span>
+                    {/* Unboxed tools with separators */}
+                    <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground mb-2.5">
+                      {b.tools.map((t, idx) => (
+                        <React.Fragment key={t}>
+                          <span>{t}</span>
+                          {idx < b.tools.length - 1 && <span aria-hidden="true">·</span>}
+                        </React.Fragment>
                       ))}
                     </div>
 
-                    <h3 className="font-heading font-bold text-base text-foreground mb-2 group-hover:text-aurora-cyan transition-colors line-clamp-2">
+                    <h3 className="font-heading font-bold text-base text-foreground mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
                       {b.title}
                     </h3>
 
@@ -203,7 +200,7 @@ export const Blog: React.FC = () => {
                       href={b.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-gradient text-xs py-2 px-4 w-full justify-center"
+                      className="btn-primary text-xs py-2 px-4 w-full justify-center rounded-lg"
                     >
                       <ExternalLink size={13} /> Read on Notion
                     </a>

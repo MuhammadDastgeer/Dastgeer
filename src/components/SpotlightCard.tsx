@@ -9,7 +9,7 @@ interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export const SpotlightCard: React.FC<SpotlightCardProps> = ({
   children,
   className = "",
-  spotlightColor = "rgba(124, 92, 255, 0.18)",
+  spotlightColor = "rgba(0, 242, 254, 0.12)",
   ...props
 }) => {
   const divRef = useRef<HTMLDivElement>(null);
@@ -31,18 +31,19 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`bento-card overflow-hidden relative ${className}`}
+      className={`glass-card relative overflow-hidden transition-all duration-300 ${className}`}
       {...props}
     >
-      {/* Spotlight Radial Follower */}
       <div
         className="pointer-events-none absolute -inset-px transition-opacity duration-300"
         style={{
           opacity,
-          background: `radial-gradient(400px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 75%)`,
+          background: `radial-gradient(350px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 75%)`,
         }}
       />
       <div className="relative z-10 h-full">{children}</div>
     </div>
   );
 };
+
+export default SpotlightCard;
