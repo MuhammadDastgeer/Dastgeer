@@ -32,6 +32,13 @@ const quickQuestions: QuickQuestion[] = [
       "**Industrial Track Record:**\n• AI/ML Intern @ **Zeltrion Solutions** (Certificate ID: ZS-0004)\n• ML Engineer @ **Codveda Technologies**\n• ML Specialist @ **Arch Technologies**\n• ML Specialist @ **CodaAlpha**\n\n**Academic Foundation:**\n• Intermediate ICS (Computer Science) — BISE Faisalabad\n• DigiSkills AI with Python & AWS Cloud Certified",
   },
   {
+    id: "certifications",
+    label: "Certifications",
+    question: "What certifications & courses do you hold?",
+    answer:
+      "**23+ Formally Verified Credentials:**\n\n• **Anthropic:** Claude Code in Action (ID: rq3po9kci9cz) & Intro to Agent Skills (ID: 468m7vdx4qec)\n• **Google & Kaggle:** 5-Day AI Agents Intensive Course\n• **Hugging Face:** Model Context Protocol (MCP) Fundamentals\n• **Codanics:** 6-Month AI & Data Science Mentorship, 40-Day Python ka Chilla, Tableau for Data Analytics\n• **Kaggle:** Deep Learning, ML Explainability, Computer Vision, Advanced SQL, Data Viz & Cleaning\n• **InnoVista:** Machine Learning & Python\n• **Industrial:** Zeltrion Solutions AI Internship (ID: ZS-0004), DigiSkills AI & AWS Cloud",
+  },
+  {
     id: "hire",
     label: "Hire Muhammad",
     question: "Are you available for contract or full-time roles?",
@@ -41,7 +48,7 @@ const quickQuestions: QuickQuestion[] = [
 ];
 
 const fallback =
-  "Ask me anything about Muhammad Dastgeer's **Stack**, **Projects**, **Experience**, or **Hiring**. Select a suggestion or reach Muhammad directly at **dastgeerjutt8888@gmail.com**.";
+  "Ask me anything about Muhammad Dastgeer's **Stack**, **Projects**, **Experience**, **Certifications**, or **Hiring**. Select a suggestion or reach Muhammad directly at **dastgeerjutt8888@gmail.com**.";
 
 const getResponse = (msg: string): string => {
   const lower = msg.toLowerCase();
@@ -49,9 +56,11 @@ const getResponse = (msg: string): string => {
     return "Hello! 👋 I'm Muhammad Dastgeer's Portfolio Assistant. Select a topic below or ask about Muhammad's engineering stack!";
   if (/(skill|about|who|kaun|stack)/.test(lower)) return quickQuestions[0].answer;
   if (/(project|portfolio|work|demo)/.test(lower)) return quickQuestions[1].answer;
-  if (/(experience|education|qualif|degree|certif|zeltrion|internship)/.test(lower))
+  if (/(certif|course|anthropic|kaggle|codanics|accreditation|credential|mcp|claude code)/.test(lower))
+    return quickQuestions[3].answer;
+  if (/(experience|education|qualif|degree|zeltrion|internship)/.test(lower))
     return quickQuestions[2].answer;
-  if (/(contact|email|reach|hire|whatsapp|linkedin|role)/.test(lower)) return quickQuestions[3].answer;
+  if (/(contact|email|reach|hire|whatsapp|linkedin|role)/.test(lower)) return quickQuestions[4].answer;
   return fallback;
 };
 

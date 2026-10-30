@@ -109,7 +109,6 @@ const oldAgenticProjects: Project[] = [
     desc: "Autonomous code assistant that debugs, refactors, and explains complex codebases.",
     tools: ["LangChain", "LangGraph", "OpenAI", "Streamlit"],
     image: codaImg,
-    link: "https://drive.google.com/file/d/1H6R29Poe0mZWGJ7y80UaWpyKaOuWf1Y3/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/CODA-Ai-APP.git",
   },
   {
@@ -118,7 +117,6 @@ const oldAgenticProjects: Project[] = [
     desc: "Autonomous video ingestion pipeline generating structured timestamped study guides.",
     tools: ["LangGraph", "Gemini Multi-modal", "Streamlit"],
     image: explainerImg,
-    link: "https://drive.google.com/file/d/1c5BffU8s5k2NlqLyg3cT67p-mP2W23Kj/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Explain-Video-ai-Agent.git",
   },
   {
@@ -127,7 +125,6 @@ const oldAgenticProjects: Project[] = [
     desc: "Multi-agent trip planner generating bespoke travel schedules with budget optimizations.",
     tools: ["LangGraph", "CrewAI", "Google Gemini"],
     image: travelImg,
-    link: "https://drive.google.com/file/d/1Bf2R7zO8V4W0G2v1_s9Y4C9K8z0X3L8J/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/smart-travel-agent.git",
   },
   {
@@ -136,7 +133,6 @@ const oldAgenticProjects: Project[] = [
     desc: "Clinical evaluation agent reviewing symptom history and recommending next medical steps.",
     tools: ["LangGraph", "PyTorch", "FastAPI"],
     image: doctorImg,
-    link: "https://drive.google.com/file/d/1E8A3Z9K2L4M7N5P8Q1R9S0T3U6V8W2X5/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/doctor-appointment-agent.git",
   },
   {
@@ -145,7 +141,6 @@ const oldAgenticProjects: Project[] = [
     desc: "Autonomous tier-1 support agent resolving tickets with automated CRM updates.",
     tools: ["CrewAI", "OpenAI", "FastAPI"],
     image: supportImg,
-    link: "https://drive.google.com/file/d/1G7H4J9K2L5M8N1P3Q6R9S2T5U8V1W4X7/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/customer-support-agent.git",
   },
   {
@@ -154,7 +149,6 @@ const oldAgenticProjects: Project[] = [
     desc: "Autonomous multi-stage editorial agent conducting research and writing long-form articles.",
     tools: ["LangChain", "OpenAI", "Streamlit"],
     image: blogImg,
-    link: "https://drive.google.com/file/d/1J9K2L5M8N1P4Q7R0S3T6U9V2W5X8Y1Z4/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/blog-writing-agent.git",
   },
   {
@@ -182,7 +176,6 @@ const mlProjects: Project[] = [
     desc: "Gradient boosted property valuation model with 92% R² accuracy on multi-feature housing datasets.",
     tools: ["Scikit-learn", "XGBoost", "Streamlit", "Pandas"],
     image: realestateImg,
-    link: "https://drive.google.com/file/d/1K2L5M8N1P4Q7R0S3T6U9V2W5X8Y1Z4A7/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/House-Price-Prediction-App.git",
   },
   {
@@ -191,7 +184,6 @@ const mlProjects: Project[] = [
     desc: "Predictive meteorological forecasting engine utilizing historical atmospheric sensor feeds.",
     tools: ["Python", "TensorFlow", "Pandas", "Matplotlib"],
     image: weatherImg,
-    link: "https://drive.google.com/file/d/1M3N6P9Q2R5S8T1U4V7W0X3Y6Z9A2B5C8/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Weather-Forecasting-App.git",
   },
   {
@@ -200,7 +192,6 @@ const mlProjects: Project[] = [
     desc: "Hybrid content and collaborative recommendation system based on user similarity matrices.",
     tools: ["Scikit-learn", "Cosine Similarity", "Streamlit"],
     image: moviesImg,
-    link: "https://drive.google.com/file/d/1P4Q7R0S3T6U9V2W5X8Y1Z4A7B0C3D6E9/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Movie-Recommendation-System.git",
   },
   {
@@ -209,7 +200,6 @@ const mlProjects: Project[] = [
     desc: "Supervised classification model analyzing study patterns to identify early academic risk.",
     tools: ["Scikit-learn", "Random Forest", "Streamlit"],
     image: studentImg,
-    link: "https://drive.google.com/file/d/1R5S8T1U4V7W0X3Y6Z9A2B5C8D1E4F7G0/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Student-Performance-Prediction.git",
   },
   {
@@ -218,7 +208,6 @@ const mlProjects: Project[] = [
     desc: "Automated Whisper pipeline generating high-accuracy transcriptions and extractive summaries.",
     tools: ["OpenAI Whisper", "Gemini API", "Streamlit"],
     image: youtubeImg,
-    link: "https://drive.google.com/file/d/1T6U9V2W5X8Y1Z4A7B0C3D6E9F2G5H8I1/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Youtube-Video-Transcribe-Summarizer.git",
   },
   {
@@ -227,7 +216,6 @@ const mlProjects: Project[] = [
     desc: "Transformer-based conversational analyzer detecting depressive and anxiety distress markers.",
     tools: ["Hugging Face", "PyTorch", "Streamlit"],
     image: mentalImg,
-    link: "https://drive.google.com/file/d/1V7W0X3Y6Z9A2B5C8D1E4F7G0H3I6J9K2/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Mental-Health-Fitness-Tracker.git",
   },
   {
@@ -236,7 +224,6 @@ const mlProjects: Project[] = [
     desc: "Static AST analyzer trained to detect anti-patterns, code smells, and cyclomatic bloat.",
     tools: ["AST Parser", "Python", "Scikit-learn", "Streamlit"],
     image: codeSmellsImg,
-    link: "https://drive.google.com/file/d/1X8Y1Z4A7B0C3D6E9F2G5H8I1J4K7L0M3/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Code-Smells-Detection-System.git",
   },
   {
@@ -245,7 +232,6 @@ const mlProjects: Project[] = [
     desc: "LSTM recurrent neural network predicting equity closing prices with confidence intervals.",
     tools: ["LSTM", "TensorFlow", "Keras", "Streamlit"],
     image: stockImg,
-    link: "https://drive.google.com/file/d/1Z9A2B5C8D1E4F7G0H3I6J9K2L5M8N1P4/view?usp=sharing",
     github: "https://github.com/MuhammadDastgeer/Stock-Market-Prediction-App.git",
   },
 ];
@@ -257,7 +243,7 @@ const automationProjects: Project[] = [
     desc: "Automated webhook converting newly published articles into branded downloadable PDF manuals.",
     tools: ["n8n", "WordPress Webhook", "Puppeteer PDF"],
     image: wpPdfImg,
-    link: "https://drive.google.com/file/d/1B0C3D6E9F2G5H8I1J4K7L0M3N6P9Q2R5/view?usp=sharing",
+    github: "https://github.com/MuhammadDastgeer",
   },
   {
     title: "Discord AI Support Bot",
@@ -265,7 +251,7 @@ const automationProjects: Project[] = [
     desc: "Automated community moderator answering technical questions and routing escalation tickets.",
     tools: ["Discord API", "OpenAI", "n8n Webhook"],
     image: discordBotImg,
-    link: "https://drive.google.com/file/d/1D1E4F7G0H3I6J9K2L5M8N1P4Q7R0S3T6/view?usp=sharing",
+    github: "https://github.com/MuhammadDastgeer",
   },
   {
     title: "Email Drafter with Human-in-the-Loop",
@@ -273,7 +259,7 @@ const automationProjects: Project[] = [
     desc: "Automated inbox monitoring generating smart reply drafts pending user approval.",
     tools: ["Gmail API", "OpenAI", "Slack Approval Node"],
     image: emailHitlImg,
-    link: "https://drive.google.com/file/d/1F2G5H8I1J4K7L0M3N6P9Q2R5S8T1U4V7/view?usp=sharing",
+    github: "https://github.com/MuhammadDastgeer",
   },
   {
     title: "Gmail to Sheets Ingestion Flow",
@@ -281,7 +267,7 @@ const automationProjects: Project[] = [
     desc: "ETL pipeline extracting structured invoice data from incoming emails directly to Google Sheets.",
     tools: ["Gmail API", "Google Sheets API", "n8n"],
     image: gmailSheetsImg,
-    link: "https://drive.google.com/file/d/1H3I6J9K2L5M8N1P4Q7R0S3T6U9V2W5X8/view?usp=sharing",
+    github: "https://github.com/MuhammadDastgeer",
   },
   {
     title: "Google Drive Enterprise RAG",
@@ -289,7 +275,7 @@ const automationProjects: Project[] = [
     desc: "Vector ingestion pipeline updating knowledge embeddings whenever Drive files change.",
     tools: ["Google Drive API", "LangChain", "ChromaDB"],
     image: ragDriveImg,
-    link: "https://drive.google.com/file/d/1J4K7L0M3N6P9Q2R5S8T1U4V7W0X3Y6Z9/view?usp=sharing",
+    github: "https://github.com/MuhammadDastgeer",
   },
   {
     title: "WhatsApp Knowledge Base RAG",
@@ -297,7 +283,7 @@ const automationProjects: Project[] = [
     desc: "Direct WhatsApp conversational interface connected to company document repositories.",
     tools: ["WhatsApp Cloud API", "FastAPI", "LangChain"],
     image: whatsappRagImg,
-    link: "https://drive.google.com/file/d/1L5M8N1P4Q7R0S3T6U9V2W5X8Y1Z4A7B0/view?usp=sharing",
+    github: "https://github.com/MuhammadDastgeer",
   },
   {
     title: "Production RAG Starter Architecture",
@@ -305,7 +291,7 @@ const automationProjects: Project[] = [
     desc: "Production-ready boilerplate for multi-document RAG with hybrid search and streaming responses.",
     tools: ["LangChain", "FastAPI", "React", "Docker"],
     image: ragStarterImg,
-    link: "https://drive.google.com/file/d/1N6P9Q2R5S8T1U4V7W0X3Y6Z9A2B5C8D1/view?usp=sharing",
+    github: "https://github.com/MuhammadDastgeer",
   },
 ];
 
@@ -386,7 +372,7 @@ export const Projects: React.FC = () => {
               className="btn-gradient text-xs py-1.5 px-3.5 flex-1 justify-center"
             >
               <ExternalLink size={12} />
-              <span>{project.link.includes("drive.google.com") ? "Video Demo" : "Live Demo"}</span>
+              <span>Live Demo</span>
             </a>
           ) : (
             <a
@@ -400,7 +386,7 @@ export const Projects: React.FC = () => {
             </a>
           )}
 
-          {project.github && (
+          {project.github && project.link && (
             <a
               href={project.github}
               target="_blank"
@@ -607,7 +593,7 @@ export const Projects: React.FC = () => {
                     href={selectedProject.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-ghost flex-1 justify-center py-2.5 text-xs"
+                    className={`${selectedProject.link ? "btn-ghost" : "btn-gradient"} flex-1 justify-center py-2.5 text-xs`}
                   >
                     <GithubIcon size={14} />
                     <span>View Source Code</span>

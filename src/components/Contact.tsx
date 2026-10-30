@@ -32,7 +32,7 @@ export const Contact: React.FC = () => {
       <div className="container max-w-[1200px] mx-auto px-6">
         {/* Centered Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="section-label mb-2 block">10. Contact</span>
+          <span className="section-label mb-2 block">09. Contact</span>
           <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
             Initiate a Technical Collaboration
           </h2>

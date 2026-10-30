@@ -184,23 +184,72 @@ export const WebCV: React.FC = () => {
               </div>
             </Section>
 
-            {/* Certifications */}
+            {/* Certifications & Accreditations */}
             <Section title="Certifications & Accreditations">
-              <div className="grid md:grid-cols-2 gap-2.5 text-xs sm:text-sm text-muted-foreground">
+              <div className="space-y-4">
                 {[
-                  "Artificial Intelligence using Python — DigiSkills.pk",
-                  "Cloud Computing (AWS) — DigiSkills.pk",
-                  "Six-Month AI & Data Science Mentorship — Codanics",
-                  "Python ka Chilla for Data Science — Codanics",
-                  "Tableau for Data Analytics — Codanics",
-                  "Applied Machine Learning — InnoVista Learn Easy",
-                  "Python Programming Course — InnoVista Learn Easy",
-                  "Model Context Protocol (MCP) — Hugging Face",
-                ].map((c, i) => (
-                  <p key={i} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
-                    <span>{c}</span>
-                  </p>
+                  {
+                    category: "Agentic AI & LLMs",
+                    items: [
+                      "Claude Code in Action — Anthropic (March 2026 • Credential ID: rq3po9kci9cz)",
+                      "Introduction to Agent Skills — Anthropic (March 2026 • Credential ID: 468m7vdx4qec)",
+                      "5-Day AI Agents Intensive Course with Google — Kaggle & Google (Dec 2025)",
+                      "The MCP Course: Unit 1 Fundamentals of MCP — Hugging Face (July 2025)",
+                    ],
+                  },
+                  {
+                    category: "Machine Learning & Deep Learning",
+                    items: [
+                      "Intro to Deep Learning — Kaggle (July 2025)",
+                      "Machine Learning Explainability (SHAP/LIME) — Kaggle (Aug 2025)",
+                      "Computer Vision (CNNs & Transfer Learning) — Kaggle (Aug 2025)",
+                      "Intermediate Machine Learning (XGBoost & Pipelines) — Kaggle (Aug 2025)",
+                      "Intro to Machine Learning — Kaggle (July 2025)",
+                      "Machine Learning Course — InnoVista Learn Easy (Sept 2025 • Code: 589-5943-98335)",
+                    ],
+                  },
+                  {
+                    category: "Data Science & Analytics",
+                    items: [
+                      "Six-Month AI & Data Science Mentorship — Codanics (July 2025 • ID: 7c0b5ee721163f62)",
+                      "Tableau for Data Analytics — Codanics (July 2025 • ID: 061273d4959c5ccb)",
+                      "Advanced SQL (Window Functions & BigQuery) — Kaggle (Aug 2025)",
+                      "Data Visualization (Seaborn & Matplotlib) — Kaggle (Aug 2025)",
+                      "Data Cleaning & Feature Engineering — Kaggle (Aug 2025)",
+                      "Pandas Data Analysis — Kaggle (July 2025)",
+                    ],
+                  },
+                  {
+                    category: "Python & Core Programming",
+                    items: [
+                      "Python ka Chilla for Data Science (40 Days) — Codanics (July 2025 • ID: ee2cb003d9d2a8e2)",
+                      "Python Programming Course — InnoVista Learn Easy (Sept 2025 • Code: 589-2222-98335)",
+                      "Python Core Language — Kaggle (July 2025)",
+                      "Intro to Programming & Algorithms — Kaggle (July 2025)",
+                    ],
+                  },
+                  {
+                    category: "Industrial Internship & Cloud",
+                    items: [
+                      "AI / Machine Learning Engineering Internship — Zeltrion Solutions (Oct 2026 • ID: ZS-0004)",
+                      "Artificial Intelligence using Python — DigiSkills.pk (Govt of Pakistan / Ignite)",
+                      "Cloud Computing (AWS) — DigiSkills.pk (Govt of Pakistan / Ignite)",
+                    ],
+                  },
+                ].map((group, idx) => (
+                  <div key={idx} className="pb-3 border-b border-border/30 last:border-none last:pb-0">
+                    <h4 className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 uppercase tracking-wider">
+                      {group.category}
+                    </h4>
+                    <div className="grid md:grid-cols-2 gap-2 text-xs text-muted-foreground">
+                      {group.items.map((item, itemIdx) => (
+                        <p key={itemIdx} className="flex items-start gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 mt-1.5 flex-shrink-0" />
+                          <span>{item}</span>
+                        </p>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </Section>

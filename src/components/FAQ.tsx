@@ -36,7 +36,7 @@ export const FAQ: React.FC = () => {
       <div className="container max-w-[1200px] mx-auto px-6">
         {/* Centered Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="section-label mb-2 block">09. Common Inquiries</span>
+          <span className="section-label mb-2 block">08. Common Inquiries</span>
           <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
             Frequently Asked Questions
           </h2>

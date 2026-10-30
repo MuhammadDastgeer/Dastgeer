@@ -28,7 +28,7 @@ export const Education: React.FC = () => {
       <div className="container max-w-[1200px] mx-auto px-6">
         {/* Section Header */}
         <div className="text-left mb-12">
-          <span className="section-label mb-2 block">07. Academic Background</span>
+          <span className="section-label mb-2 block">06. Academic Background</span>
           <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
             Education & Academic Foundations
           </h2>

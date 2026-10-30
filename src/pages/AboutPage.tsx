@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar";
 import About from "@/components/About";
 import Expertise from "@/components/Expertise";
 import Experience from "@/components/Experience";
-import Journey from "@/components/Journey";
 import Education from "@/components/Education";
 import Certifications from "@/components/Certifications";
 import Footer from "@/components/Footer";
@@ -37,7 +36,6 @@ export const AboutPage: React.FC = () => {
         <About />
         <Expertise />
         <Experience />
-        <Journey />
         <Education />
         <Certifications />
 
