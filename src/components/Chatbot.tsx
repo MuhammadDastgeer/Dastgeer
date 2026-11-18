@@ -36,7 +36,7 @@ const quickQuestions: QuickQuestion[] = [
     label: "Certifications",
     question: "What certifications & courses do you hold?",
     answer:
-      "**23+ Verifiable Certifications & Courses:**\n\n• **Anthropic:** Claude Code in Action (ID: `rq3po9kci9cz`) & Intro to Agent Skills (ID: `468m7vdx4qec`)\n• **Google & Kaggle:** 5-Day AI Agents Intensive Course with Google\n• **Hugging Face:** The MCP Course (Unit 1: Fundamentals of MCP)\n• **Codanics (Dr. Aammar Tufail):** 6-Month AI & Data Science Mentorship (`7c0b5ee721163f62`), 40-Day Python ka Chilla (`ee2cb003d9d2a8e2`), Tableau for Data Analytics (`061273d4959c5ccb`)\n• **Kaggle (11 Courses):** Intro to Deep Learning, ML Explainability, Computer Vision, Intermediate ML, Intro to ML, Advanced SQL, Data Viz, Data Cleaning, Pandas, Python, Intro to Programming\n• **InnoVista Learn Easy:** Machine Learning (`589-5943-98335`) & Python (`589-2222-98335`)\n• **Industry & Govt:** Zeltrion Solutions (`ZS-0004`), DigiSkills AI with Python & AWS Cloud Computing\n\nYou can view/preview all PDFs & Images directly in the **Certifications** section!",
+      "**23+ Verifiable Certifications & Courses:**\n\n• **Anthropic:** Claude Code in Action (ID: `rq3po9kci9cz`) & Intro to Agent Skills (ID: `468m7vdx4qec`)\n• **Google & Kaggle:** 5-Day AI Agents Intensive Course with Google\n• **Hugging Face:** The MCP Course (Unit 1: Fundamentals of MCP)\n• **Codanics (Dr. Aammar Tufail):** 6-Month AI & Data Science Mentorship (`7c0b5ee721163f62`), 40-Day Python ka Chilla (`ee2cb003d9d2a8e2`), Tableau for Data Analytics (`061273d4959c5ccb`)\n• **Kaggle (11 Courses):** Intro to Deep Learning, ML Explainability, Computer Vision, Intermediate ML, Intro to ML, Advanced SQL, Data Viz, Data Cleaning, Pandas, Python, Intro to Programming\n• **InnoVista Learn Easy:** Machine Learning (`589-5943-98335`) & Python (`589-2222-98335`)\n• **Industry & Govt:** Zeltrion Solutions (`ZS-0004`), DigiSkills AI Using Python (`GUK3WTMMK`) & Cloud Computing (`GXAAAXHMK`)\n\nYou can view/preview all 23 PDFs & Images directly in the **Certifications** section!",
   },
   {
     id: "education",
@@ -81,9 +81,9 @@ const knowledgeRules: KnowledgeRule[] = [
       "**Kaggle & Google Accreditations (12 Verified Certificates):**\n• **5-Day AI Agents Intensive Course with Google** (Dec 2025)\n• **ML & Deep Learning:** Intro to Deep Learning, Machine Learning Explainability (SHAP), Computer Vision (CNNs), Intermediate ML (XGBoost), Intro to ML\n• **Data & Programming:** Advanced SQL, Data Visualization, Data Cleaning, Pandas, Python, Intro to Programming\n\nAll images can be viewed full-size in the **Certifications** section!",
   },
   {
-    keywords: /(innovista|digiskills|ignite|hugging face|mcp)/,
+    keywords: /(innovista|digiskills|ignite|hugging face|mcp|guk3wtmmk|gxaaaxhmk)/,
     answer:
-      "**Additional Accredited Courses:**\n• **Hugging Face:** The MCP Course: Unit 1 — Fundamentals of Model Context Protocol (July 31, 2025)\n• **InnoVista Learn Easy:** Machine Learning Course (`589-5943-98335`) & Python Course (`589-2222-98335`)\n• **DigiSkills.pk (Govt of Pakistan / Ignite):** Artificial Intelligence with Python & AWS Cloud Computing",
+      "**Additional Accredited Courses:**\n• **Hugging Face:** The MCP Course: Unit 1 — Fundamentals of Model Context Protocol (July 31, 2025)\n• **InnoVista Learn Easy:** Machine Learning Course (`589-5943-98335`) & Python Course (`589-2222-98335`)\n• **DigiSkills.pk (Ignite & Virtual University):** Artificial Intelligence Using Python (ID: `GUK3WTMMK`, July 2026) & Cloud Computing (ID: `GXAAAXHMK`, Nov 2026) — verify at https://digiskills.pk/verify",
   },
   {
     keywords: /(zeltrion|zs-0004|intern|internship)/,
