@@ -324,7 +324,9 @@ const certificationsData: Certification[] = [
     year: "2026",
     credentialId: "ZS-0004",
     category: "industry",
-    skills: "Enterprise AI Development, Data Pipelines, Production Model Evaluations, Strategy",
+    skills: "Enterprise AI Development, Data Pipelines, Innovation, Leadership, Teamwork, Impact",
+    assetType: "image",
+    assetUrl: "/assets/aistudio/WhatsApp_Image_2026-10-01_at_2.36.17_PM_7bc30895.jpeg",
     featured: true,
   },
   {
