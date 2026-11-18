@@ -9,6 +9,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { CustomCursor } from "@/components/CustomCursor";
 import { AuroraBackground } from "@/components/AuroraBackground";
+import { NameIntroPreloader } from "@/components/NameIntroPreloader";
 
 import Index from "./pages/Index.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
@@ -28,6 +29,9 @@ const App = () => (
         <Sonner position="top-right" richColors />
         <SmoothScroll>
           <div className="relative min-h-screen bg-background text-foreground transition-colors duration-300">
+            {/* Name Intro Preloader on initial visit & page reload */}
+            <NameIntroPreloader />
+
             {/* Subtle film-grain/noise overlay */}
             <div className="noise-overlay" aria-hidden="true" />
 

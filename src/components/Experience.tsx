@@ -75,7 +75,7 @@ export const Experience: React.FC = () => {
     <section id="experience" className="py-20 md:py-28 relative">
       <div className="container max-w-[1200px] mx-auto px-6">
         {/* Section Header */}
-        <div className="text-left mb-14">
+        <ScrollReveal className="text-left mb-14">
           <span className="section-label mb-2 block">05. Career Track</span>
           <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
             Industrial & Engineering Experience
@@ -83,7 +83,7 @@ export const Experience: React.FC = () => {
           <p className="text-[#94A3B8] text-sm sm:text-base max-w-[65ch]">
             Production engineering roles, research internships, and commercial AI deployments built with rigorous standards.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Timeline */}
         <div className="relative max-w-4xl mx-auto pl-6 sm:pl-8">

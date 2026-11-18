@@ -25,8 +25,15 @@ export const PdfViewer: React.FC<PdfViewerProps> = ({ url, title }) => {
       setLoading(true);
       setError(null);
 
+      if (!url) {
+        setError("No PDF URL provided.");
+        setLoading(false);
+        return;
+      }
+
       try {
-        const loadingTask = pdfjsLib.getDocument(url);
+        const resolvedUrl = new URL(url, window.location.href).href;
+        const loadingTask = pdfjsLib.getDocument({ url: resolvedUrl });
         pdfDoc = await loadingTask.promise;
         if (cancelled) return;
 

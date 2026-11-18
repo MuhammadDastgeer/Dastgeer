@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, MapPin, Download, Sparkles, Zap, ShieldCheck } from "lucide-react";
+import { ArrowRight, MapPin, Download } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import profileImg from "@/assets/images/profile_studio_midnight_1794993185171.jpg";
 import { CountUp } from "./CountUp";
+import { ScrollReveal } from "./ScrollReveal";
 
 export const Hero: React.FC = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const portraitY = useTransform(scrollYProgress, [0, 1], [0, -35]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, 18]);
+
   return (
-    <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+    <section ref={sectionRef} className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
       <div className="container max-w-[1200px] mx-auto px-6 relative z-10">
         {/* Hero Split Layout */}
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center mb-16">
           {/* Left Column */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
+          <motion.div
+            style={{ y: textY }}
+            className="lg:col-span-7 flex flex-col items-start text-left"
+          >
             {/* Interactive Badge */}
             <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 backdrop-blur-md text-xs font-semibold text-[#00F2FE] shadow-[0_0_15px_rgba(0,242,254,0.2)]">
               <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse shadow-[0_0_8px_#00F2FE]" />
@@ -54,10 +67,13 @@ export const Hero: React.FC = () => {
               <span aria-hidden="true" className="text-white/20">·</span>
               <span>Remote Worldwide Collaboration</span>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Column: Clean Glass Portrait */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+          {/* Right Column: Clean Glass Portrait with Subtle Scroll Parallax */}
+          <motion.div
+            style={{ y: portraitY }}
+            className="lg:col-span-5 flex justify-center lg:justify-end"
+          >
             <div className="relative w-full max-w-sm">
               {/* Subtle ambient cyan/purple aura behind portrait */}
               <div className="absolute -inset-2 rounded-[24px] bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 blur-xl pointer-events-none" />
@@ -89,35 +105,43 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* 4-Column KPI Grid Row with Glassmorphism Frost */}
         <div className="pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
-          <div className="p-4 rounded-xl glass-card">
-            <div className="font-heading font-bold text-2xl sm:text-3xl text-white tabular-nums">
-              <CountUp end={30} suffix="+" />
+          <ScrollReveal delay={0.04}>
+            <div className="p-4 rounded-xl glass-card h-full">
+              <div className="font-heading font-bold text-2xl sm:text-3xl text-white tabular-nums">
+                <CountUp end={30} suffix="+" />
+              </div>
+              <p className="text-xs text-[#94A3B8] mt-1">Autonomous AI Agents</p>
             </div>
-            <p className="text-xs text-[#94A3B8] mt-1">Autonomous AI Agents</p>
-          </div>
-          <div className="p-4 rounded-xl glass-card">
-            <div className="font-heading font-bold text-2xl sm:text-3xl text-cyan-purple-gradient tabular-nums">
-              <CountUp end={20} suffix="+" />
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <div className="p-4 rounded-xl glass-card h-full">
+              <div className="font-heading font-bold text-2xl sm:text-3xl text-cyan-purple-gradient tabular-nums">
+                <CountUp end={20} suffix="+" />
+              </div>
+              <p className="text-xs text-[#94A3B8] mt-1">Production ML Deployments</p>
             </div>
-            <p className="text-xs text-[#94A3B8] mt-1">Production ML Deployments</p>
-          </div>
-          <div className="p-4 rounded-xl glass-card">
-            <div className="font-heading font-bold text-2xl sm:text-3xl text-white tabular-nums">
-              <CountUp end={88} suffix="%+" />
+          </ScrollReveal>
+          <ScrollReveal delay={0.16}>
+            <div className="p-4 rounded-xl glass-card h-full">
+              <div className="font-heading font-bold text-2xl sm:text-3xl text-white tabular-nums">
+                <CountUp end={88} suffix="%+" />
+              </div>
+              <p className="text-xs text-[#94A3B8] mt-1">Benchmark F1 Score</p>
             </div>
-            <p className="text-xs text-[#94A3B8] mt-1">Benchmark F1 Score</p>
-          </div>
-          <div className="p-4 rounded-xl glass-card">
-            <div className="font-heading font-bold text-2xl sm:text-3xl text-cyan-purple-gradient tabular-nums">
-              <CountUp end={100} suffix="%" />
+          </ScrollReveal>
+          <ScrollReveal delay={0.22}>
+            <div className="p-4 rounded-xl glass-card h-full">
+              <div className="font-heading font-bold text-2xl sm:text-3xl text-cyan-purple-gradient tabular-nums">
+                <CountUp end={100} suffix="%" />
+              </div>
+              <p className="text-xs text-[#94A3B8] mt-1">Delivery Success Rate</p>
             </div>
-            <p className="text-xs text-[#94A3B8] mt-1">Delivery Success Rate</p>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

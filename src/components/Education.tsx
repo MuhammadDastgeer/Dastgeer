@@ -27,7 +27,7 @@ export const Education: React.FC = () => {
     <section id="education" className="py-20 md:py-28 relative">
       <div className="container max-w-[1200px] mx-auto px-6">
         {/* Section Header */}
-        <div className="text-left mb-12">
+        <ScrollReveal className="text-left mb-12">
           <span className="section-label mb-2 block">06. Academic Background</span>
           <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
             Education & Academic Foundations
@@ -35,7 +35,7 @@ export const Education: React.FC = () => {
           <p className="text-[#94A3B8] text-sm sm:text-base max-w-[65ch]">
             Formal foundations in computational sciences, mathematics, and analytical problem solving.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Education Grid */}
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl">

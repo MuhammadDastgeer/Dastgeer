@@ -1,5 +1,6 @@
 import React from "react";
 import { SpotlightCard } from "./SpotlightCard";
+import { ScrollReveal } from "./ScrollReveal";
 import { Bot, Sparkles, Brain, Cloud, Zap, Cpu } from "lucide-react";
 
 const domains = [
@@ -58,7 +59,7 @@ export const Expertise: React.FC = () => {
     <section id="expertise" className="py-20 md:py-28 relative">
       <div className="container max-w-[1200px] mx-auto px-6">
         {/* Section Header */}
-        <div className="text-left mb-12">
+        <ScrollReveal className="text-left mb-12">
           <span className="section-label mb-2 block">02. Services & Disciplines</span>
           <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
             Core Engineering Capabilities
@@ -66,15 +67,17 @@ export const Expertise: React.FC = () => {
           <p className="text-[#94A3B8] text-sm sm:text-base max-w-[50ch]">
             From conceptual algorithmic research to robust production deployment.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {domains.map((item, index) => (
-            <SpotlightCard
+            <ScrollReveal
               key={index}
-              className={`${item.colSpan} p-6 sm:p-7 flex flex-col justify-between`}
+              delay={index * 0.06}
+              className={item.colSpan}
             >
+              <SpotlightCard className="p-6 sm:p-7 flex flex-col justify-between h-full">
               <div>
                 <div className="flex items-center justify-between gap-2 mb-4">
                   <div className="w-10 h-10 rounded-xl bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center shadow-[0_0_12px_rgba(0,242,254,0.15)]">
@@ -102,7 +105,8 @@ export const Expertise: React.FC = () => {
                   </React.Fragment>
                 ))}
               </div>
-            </SpotlightCard>
+              </SpotlightCard>
+            </ScrollReveal>
           ))}
         </div>
       </div>

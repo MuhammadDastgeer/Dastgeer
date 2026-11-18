@@ -2,13 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, ShieldCheck, Bot, Cpu, Cloud } from "lucide-react";
 import { SpotlightCard } from "./SpotlightCard";
+import { ScrollReveal } from "./ScrollReveal";
 
 export const About: React.FC = () => {
   return (
     <section id="about" className="py-20 md:py-28 relative">
       <div className="container max-w-[1200px] mx-auto px-6">
         {/* Section Header */}
-        <div className="text-left mb-12">
+        <ScrollReveal className="text-left mb-12">
           <span className="section-label mb-2 block">01. Profile & Focus</span>
           <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
             Deterministic AI for Complex Production Workflows
@@ -16,12 +17,13 @@ export const About: React.FC = () => {
           <p className="text-[#94A3B8] text-sm sm:text-base max-w-[55ch]">
             Engineering autonomous multi-agent pipelines and scalable cloud ML models with strict reliability guardrails.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Bento Grid with Glassmorphism Frost */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {/* Main Profile Card (8 cols) */}
-          <SpotlightCard className="md:col-span-8 p-6 sm:p-8 flex flex-col justify-between">
+          <ScrollReveal delay={0.05} className="md:col-span-8">
+            <SpotlightCard className="p-6 sm:p-8 flex flex-col justify-between h-full">
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className="text-xs font-semibold text-[#00F2FE]">
@@ -63,10 +65,12 @@ export const About: React.FC = () => {
                 <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
             </div>
-          </SpotlightCard>
+            </SpotlightCard>
+          </ScrollReveal>
 
           {/* Impact Snapshot Card (4 cols) */}
-          <SpotlightCard className="md:col-span-4 p-6 sm:p-8 flex flex-col justify-between">
+          <ScrollReveal delay={0.12} className="md:col-span-4">
+            <SpotlightCard className="p-6 sm:p-8 flex flex-col justify-between h-full">
             <div>
               <span className="text-xs font-semibold text-[#00F2FE] block mb-4">
                 Industrial Impact
@@ -91,10 +95,12 @@ export const About: React.FC = () => {
               <ShieldCheck size={14} className="text-[#00F2FE]" />
               <span>Certified by DigiSkills & Zeltrion</span>
             </div>
-          </SpotlightCard>
+            </SpotlightCard>
+          </ScrollReveal>
 
           {/* 3 Architectural Pillars (12 cols) */}
-          <SpotlightCard className="md:col-span-12 p-6 sm:p-8">
+          <ScrollReveal delay={0.16} className="md:col-span-12">
+            <SpotlightCard className="p-6 sm:p-8">
             <div className="grid sm:grid-cols-3 gap-6 text-left">
               <div className="p-4 rounded-xl border border-white/10 bg-white/[0.02]">
                 <div className="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/30 text-[#00F2FE] flex items-center justify-center mb-3">
@@ -132,7 +138,8 @@ export const About: React.FC = () => {
                 </p>
               </div>
             </div>
-          </SpotlightCard>
+            </SpotlightCard>
+          </ScrollReveal>
         </div>
       </div>
     </section>

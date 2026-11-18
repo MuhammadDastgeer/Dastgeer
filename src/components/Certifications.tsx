@@ -426,32 +426,34 @@ export const Certifications: React.FC = () => {
     <section id="certifications" className="py-20 md:py-28 relative">
       <div className="container max-w-[1240px] mx-auto px-6">
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
-          <div>
-            <span className="section-label mb-2 block">07. Credentials & Accreditations</span>
-            <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
-              Certifications & Specialized Courses
-            </h2>
-            <p className="text-[#94A3B8] text-sm sm:text-base max-w-[68ch]">
-              Formally verified credentials across Autonomous Agents (Anthropic & Google), Deep Learning, Advanced SQL, Data Science Mentorship, and Industrial ML Engineering.
-            </p>
-          </div>
+        <ScrollReveal>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+            <div>
+              <span className="section-label mb-2 block">07. Credentials & Accreditations</span>
+              <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
+                Certifications & Specialized Courses
+              </h2>
+              <p className="text-[#94A3B8] text-sm sm:text-base max-w-[68ch]">
+                Formally verified credentials across Autonomous Agents (Anthropic & Google), Deep Learning, Advanced SQL, Data Science Mentorship, and Industrial ML Engineering.
+              </p>
+            </div>
 
-          {/* Quick Metrics Bar */}
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="px-3.5 py-2 rounded-xl bg-white/[0.04] border border-white/10 backdrop-blur-md flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse" />
-              <div className="text-left">
-                <span className="block text-xs font-heading font-bold text-white">23+ Accreditations</span>
-                <span className="block text-[10px] text-[#94A3B8]">100% Verifiable</span>
+            {/* Quick Metrics Bar */}
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="px-3.5 py-2 rounded-xl bg-white/[0.04] border border-white/10 backdrop-blur-md flex items-center gap-2.5">
+                <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse" />
+                <div className="text-left">
+                  <span className="block text-xs font-heading font-bold text-white">23+ Accreditations</span>
+                  <span className="block text-[10px] text-[#94A3B8]">100% Verifiable</span>
+                </div>
+              </div>
+              <div className="px-3.5 py-2 rounded-xl bg-cyan-400/10 border border-cyan-400/20 backdrop-blur-md flex items-center gap-2">
+                <Sparkles size={14} className="text-[#00F2FE]" />
+                <span className="text-xs font-heading font-semibold text-[#00F2FE]">Anthropic & Google Agents</span>
               </div>
             </div>
-            <div className="px-3.5 py-2 rounded-xl bg-cyan-400/10 border border-cyan-400/20 backdrop-blur-md flex items-center gap-2">
-              <Sparkles size={14} className="text-[#00F2FE]" />
-              <span className="text-xs font-heading font-semibold text-[#00F2FE]">Anthropic & Google Agents</span>
-            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Category Filter Buttons - Fully visible, wrapped, no scroll */}
         <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-10 pb-5 border-b border-white/10">

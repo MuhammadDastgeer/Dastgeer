@@ -35,7 +35,7 @@ export const FAQ: React.FC = () => {
     <section id="faq" className="py-20 md:py-28 relative">
       <div className="container max-w-[1200px] mx-auto px-6">
         {/* Centered Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <ScrollReveal className="text-center max-w-2xl mx-auto mb-14">
           <span className="section-label mb-2 block">08. Common Inquiries</span>
           <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
             Frequently Asked Questions
@@ -43,7 +43,7 @@ export const FAQ: React.FC = () => {
           <p className="text-[#94A3B8] text-sm sm:text-base">
             Essential details regarding collaboration, engineering methodology, and technical delivery.
           </p>
-        </div>
+        </ScrollReveal>
 
         <div className="grid lg:grid-cols-12 gap-8 max-w-5xl mx-auto items-start">
           {/* FAQ Accordion List (8 cols) */}

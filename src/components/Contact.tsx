@@ -31,7 +31,7 @@ export const Contact: React.FC = () => {
     <section id="contact" className="py-20 md:py-28 relative">
       <div className="container max-w-[1200px] mx-auto px-6">
         {/* Centered Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <ScrollReveal className="text-center max-w-2xl mx-auto mb-14">
           <span className="section-label mb-2 block">09. Contact</span>
           <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
             Initiate a Technical Collaboration
@@ -39,7 +39,7 @@ export const Contact: React.FC = () => {
           <p className="text-[#94A3B8] text-sm sm:text-base">
             Available for AI Engineering roles, contract architecture, and strategic enterprise implementations.
           </p>
-        </div>
+        </ScrollReveal>
 
         <div className="grid lg:grid-cols-12 gap-8 max-w-5xl mx-auto items-stretch">
           {/* Left Column: Direct Channels (5 cols) */}

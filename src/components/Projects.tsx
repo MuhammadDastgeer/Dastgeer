@@ -416,15 +416,17 @@ export const Projects: React.FC = () => {
     <section id="projects" className="py-20 md:py-28 relative">
       <div className="container max-w-[1200px] mx-auto px-6">
         {/* Section Header */}
-        <div className="text-left mb-10">
-          <span className="section-label mb-2 block">04. Selected Work</span>
-          <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
-            Featured Systems & Deployments
-          </h2>
-          <p className="text-[#94A3B8] text-sm sm:text-base max-w-[65ch]">
-            Autonomous agents, high-throughput retrieval pipelines, computer vision models, and enterprise workflow automations.
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-left mb-10">
+            <span className="section-label mb-2 block">04. Selected Work</span>
+            <h2 className="fluid-h2 font-heading font-bold text-white mb-3">
+              Featured Systems & Deployments
+            </h2>
+            <p className="text-[#94A3B8] text-sm sm:text-base max-w-[65ch]">
+              Autonomous agents, high-throughput retrieval pipelines, computer vision models, and enterprise workflow automations.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Filter Controls with Glass Segment */}
         <div className="flex items-center gap-2 mb-10 overflow-x-auto pb-2 scrollbar-none">
