@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail } from "lucide-react";
-import profileImg from "@/assets/profile.png";
+import profileImg from "@/assets/images/profile_studio_midnight_1794993185171.jpg";
 import { GithubIcon, LinkedinIcon } from "./SocialIcons";
 
 export const Footer: React.FC = () => {
@@ -16,7 +16,8 @@ export const Footer: React.FC = () => {
                 <img
                   src={profileImg}
                   alt="Muhammad Dastgeer"
-                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
               <span className="font-heading font-bold text-base tracking-tight text-white">
@@ -51,10 +52,13 @@ export const Footer: React.FC = () => {
               </span>
               <ul className="space-y-2 text-[#94A3B8]">
                 <li><Link to="/web-cv" className="hover:text-[#00F2FE] transition-colors">Web CV</Link></li>
-                <li><Link to="/blog" className="hover:text-[#00F2FE] transition-colors">AI Blog</Link></li>
                 <li><Link to="/contact" className="hover:text-[#00F2FE] transition-colors">Contact</Link></li>
                 <li>
-                  <a href="/Muhammad_Dastgeer_CV.pdf" download className="hover:text-[#00F2FE] transition-colors flex items-center gap-1">
+                  <a
+                    href="/assets/aistudio/Muhammad_Dastgeer_CV_456271b5.pdf"
+                    download="Muhammad_Dastgeer_CV.pdf"
+                    className="hover:text-[#00F2FE] transition-colors flex items-center gap-1"
+                  >
                     <span>PDF Resume</span>
                     <ArrowUpRight size={11} />
                   </a>

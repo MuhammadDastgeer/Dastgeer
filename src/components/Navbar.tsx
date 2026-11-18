@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight, Sparkles } from "lucide-react";
-import profileImg from "@/assets/profile.png";
+import profileImg from "@/assets/images/profile_studio_midnight_1794993185171.jpg";
 
 const navLinks = [
   { name: "About", path: "/about" },
@@ -49,7 +49,8 @@ export const Navbar: React.FC = () => {
               <img
                 src={profileImg}
                 alt="Muhammad Dastgeer"
-                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover object-top"
               />
             </div>
             <div className="flex flex-col">
@@ -127,7 +128,8 @@ export const Navbar: React.FC = () => {
                 <img
                   src={profileImg}
                   alt="Muhammad Dastgeer"
-                  className="w-8 h-8 rounded-full object-cover border border-cyan-400/50"
+                  referrerPolicy="no-referrer"
+                  className="w-8 h-8 rounded-full object-cover object-top border border-cyan-400/50"
                 />
                 Muhammad Dastgeer
               </Link>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ExternalLink, ArrowUpRight, X } from "lucide-react";
+import { ArrowUpRight, X, Mic, FileText } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import { GithubIcon } from "./SocialIcons";
@@ -39,9 +39,10 @@ export type Project = {
   category: string;
   desc: string;
   tools: string[];
-  image: string;
+  image?: string;
+  fallbackIcon?: "mic" | "file";
   link?: string;
-  github?: string;
+  github: string;
   details?: string[];
 };
 
@@ -53,6 +54,7 @@ const latestAgenticProjects: Project[] = [
     tools: ["LangChain", "OpenAI", "Supabase", "Gemini 2.5", "FastAPI"],
     image: ragShowcaseImg,
     link: "https://rag-showcase-tawny.vercel.app/",
+    github: "https://github.com/MuhammadDastgeer/RAG-Showcase.git",
     details: ["45,000+ vector chunks indexed", "Sub-150ms semantic search latency", "Contextual re-ranking for strict precision"],
   },
   {
@@ -62,6 +64,7 @@ const latestAgenticProjects: Project[] = [
     tools: ["LangGraph", "OpenAI", "FastAPI", "React", "Docker"],
     image: medicallImg,
     link: "https://medicall-one.vercel.app/",
+    github: "https://github.com/MuhammadDastgeer/Medicall-.git",
     details: ["Clinical terminology parsing with medical ontology", "Human-in-the-loop referral triggers", "Deterministic confidence scoring"],
   },
   {
@@ -71,6 +74,7 @@ const latestAgenticProjects: Project[] = [
     tools: ["Gemini 2.5", "OpenAI", "Supabase", "TailwindCSS"],
     image: contentGeneratorImg,
     link: "https://ai-content-generator-five-sandy.vercel.app/",
+    github: "https://github.com/MuhammadDastgeer/AI-Content-Generator.git",
     details: ["Brand-voice persona adaptation", "Automated markdown export", "Token budget optimizer"],
   },
   {
@@ -80,6 +84,7 @@ const latestAgenticProjects: Project[] = [
     tools: ["LangGraph", "OpenAI", "Python", "Render"],
     image: leetmasterImg,
     link: "https://leetmaster.onrender.com",
+    github: "https://github.com/MuhammadDastgeer/LeetMaster-.git",
     details: ["Real-time syntax & edge case analysis", "Multi-turn Socratic tutoring prompts", "Automated code complexity analysis"],
   },
   {
@@ -89,6 +94,7 @@ const latestAgenticProjects: Project[] = [
     tools: ["OpenAI", "Supabase", "React", "TypeScript"],
     image: studentPlanImg,
     link: "https://student-plan-ai.vercel.app/",
+    github: "https://github.com/MuhammadDastgeer/Student-Plan-Ai.git",
     details: ["Dynamic workload balancing", "Exam countdown adaptive rescheduling", "Google Calendar synchronization"],
   },
   {
@@ -98,11 +104,20 @@ const latestAgenticProjects: Project[] = [
     tools: ["LangChain", "FastAPI", "OpenAI", "Docker"],
     image: medinexusImg,
     link: "https://medinexus-a6k9.onrender.com",
+    github: "https://github.com/MuhammadDastgeer/MediNexus.git",
     details: ["Symptom triage classifier", "Electronic Health Record (EHR) export ready", "Secure role-based access control"],
   },
 ];
 
 const oldAgenticProjects: Project[] = [
+  {
+    title: "Voice Desk AI",
+    category: "Voice Agent",
+    desc: "Real-time AI voice support desk handling inbound spoken queries, intent routing, and automated responses.",
+    tools: ["Voice AI", "Whisper", "LangGraph", "FastAPI"],
+    fallbackIcon: "mic",
+    github: "https://github.com/MuhammadDastgeer/Voice-Desk-Ai.git",
+  },
   {
     title: "CODA-Ai: Code Agent",
     category: "Developer Tool",
@@ -112,12 +127,20 @@ const oldAgenticProjects: Project[] = [
     github: "https://github.com/MuhammadDastgeer/CODA-Ai-APP.git",
   },
   {
-    title: "Video Explainer Agent",
-    category: "Multi-Modal",
-    desc: "Autonomous video ingestion pipeline generating structured timestamped study guides.",
-    tools: ["LangGraph", "Gemini Multi-modal", "Streamlit"],
+    title: "Code Explainer Agent",
+    category: "Developer Tool",
+    desc: "Intelligent code analysis agent generating clear, structured explanations and architectural breakdowns.",
+    tools: ["LangGraph", "Gemini", "Python", "Streamlit"],
     image: explainerImg,
-    github: "https://github.com/MuhammadDastgeer/Explain-Video-ai-Agent.git",
+    github: "https://github.com/MuhammadDastgeer/code-explainer-app.git",
+  },
+  {
+    title: "AI File Summarizer",
+    category: "Document AI",
+    desc: "Automated multi-format document ingestion agent extracting concise executive summaries and key insights.",
+    tools: ["LangChain", "OpenAI", "PyPDF", "Streamlit"],
+    fallbackIcon: "file",
+    github: "https://github.com/MuhammadDastgeer/AI-File-Summarizer.git",
   },
   {
     title: "Smart Travel Agent",
@@ -125,7 +148,7 @@ const oldAgenticProjects: Project[] = [
     desc: "Multi-agent trip planner generating bespoke travel schedules with budget optimizations.",
     tools: ["LangGraph", "CrewAI", "Google Gemini"],
     image: travelImg,
-    github: "https://github.com/MuhammadDastgeer/smart-travel-agent.git",
+    github: "https://github.com/MuhammadDastgeer/travel_agent_app.git",
   },
   {
     title: "Healthcare Diagnostic Agent",
@@ -133,7 +156,7 @@ const oldAgenticProjects: Project[] = [
     desc: "Clinical evaluation agent reviewing symptom history and recommending next medical steps.",
     tools: ["LangGraph", "PyTorch", "FastAPI"],
     image: doctorImg,
-    github: "https://github.com/MuhammadDastgeer/doctor-appointment-agent.git",
+    github: "https://github.com/MuhammadDastgeer/Health_Care_app.git",
   },
   {
     title: "Customer Support Agent",
@@ -141,7 +164,7 @@ const oldAgenticProjects: Project[] = [
     desc: "Autonomous tier-1 support agent resolving tickets with automated CRM updates.",
     tools: ["CrewAI", "OpenAI", "FastAPI"],
     image: supportImg,
-    github: "https://github.com/MuhammadDastgeer/customer-support-agent.git",
+    github: "https://github.com/MuhammadDastgeer/Customer_Support_chatbot_app.git",
   },
   {
     title: "Blog Writing Agent",
@@ -149,15 +172,15 @@ const oldAgenticProjects: Project[] = [
     desc: "Autonomous multi-stage editorial agent conducting research and writing long-form articles.",
     tools: ["LangChain", "OpenAI", "Streamlit"],
     image: blogImg,
-    github: "https://github.com/MuhammadDastgeer/blog-writing-agent.git",
+    github: "https://github.com/MuhammadDastgeer/Writes-Blogs-Automatically-Agent.git",
   },
   {
-    title: "MCP Chatbot Architecture",
-    category: "Protocol AI",
-    desc: "Context-aware conversational system connected to external enterprise data sources via MCP.",
-    tools: ["MCP Protocol", "Python", "Claude API", "FastAPI"],
+    title: "Chatbot With Tools",
+    category: "Tool Calling AI",
+    desc: "Context-aware conversational agent connected to external APIs, web search, and enterprise tools.",
+    tools: ["LangGraph", "Tool Calling", "Python", "FastAPI"],
     image: mcpChatbotImg,
-    github: "https://github.com/MuhammadDastgeer",
+    github: "https://github.com/MuhammadDastgeer/Chatbot_With_Tools.git",
   },
   {
     title: "Enterprise Auth & Guardrails",
@@ -176,7 +199,7 @@ const mlProjects: Project[] = [
     desc: "Gradient boosted property valuation model with 92% R² accuracy on multi-feature housing datasets.",
     tools: ["Scikit-learn", "XGBoost", "Streamlit", "Pandas"],
     image: realestateImg,
-    github: "https://github.com/MuhammadDastgeer/House-Price-Prediction-App.git",
+    github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
     title: "Weather Forecasting Engine",
@@ -184,7 +207,7 @@ const mlProjects: Project[] = [
     desc: "Predictive meteorological forecasting engine utilizing historical atmospheric sensor feeds.",
     tools: ["Python", "TensorFlow", "Pandas", "Matplotlib"],
     image: weatherImg,
-    github: "https://github.com/MuhammadDastgeer/Weather-Forecasting-App.git",
+    github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
     title: "Movie Recommendation System",
@@ -192,7 +215,7 @@ const mlProjects: Project[] = [
     desc: "Hybrid content and collaborative recommendation system based on user similarity matrices.",
     tools: ["Scikit-learn", "Cosine Similarity", "Streamlit"],
     image: moviesImg,
-    github: "https://github.com/MuhammadDastgeer/Movie-Recommendation-System.git",
+    github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
     title: "Student Performance Predictor",
@@ -200,7 +223,7 @@ const mlProjects: Project[] = [
     desc: "Supervised classification model analyzing study patterns to identify early academic risk.",
     tools: ["Scikit-learn", "Random Forest", "Streamlit"],
     image: studentImg,
-    github: "https://github.com/MuhammadDastgeer/Student-Performance-Prediction.git",
+    github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
     title: "YouTube Video Transcriber",
@@ -208,7 +231,7 @@ const mlProjects: Project[] = [
     desc: "Automated Whisper pipeline generating high-accuracy transcriptions and extractive summaries.",
     tools: ["OpenAI Whisper", "Gemini API", "Streamlit"],
     image: youtubeImg,
-    github: "https://github.com/MuhammadDastgeer/Youtube-Video-Transcribe-Summarizer.git",
+    github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
     title: "Mental Health Sentiment AI",
@@ -216,7 +239,7 @@ const mlProjects: Project[] = [
     desc: "Transformer-based conversational analyzer detecting depressive and anxiety distress markers.",
     tools: ["Hugging Face", "PyTorch", "Streamlit"],
     image: mentalImg,
-    github: "https://github.com/MuhammadDastgeer/Mental-Health-Fitness-Tracker.git",
+    github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
     title: "Code Smell Detection System",
@@ -224,7 +247,7 @@ const mlProjects: Project[] = [
     desc: "Static AST analyzer trained to detect anti-patterns, code smells, and cyclomatic bloat.",
     tools: ["AST Parser", "Python", "Scikit-learn", "Streamlit"],
     image: codeSmellsImg,
-    github: "https://github.com/MuhammadDastgeer/Code-Smells-Detection-System.git",
+    github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
   {
     title: "Stock Price Forecaster",
@@ -232,7 +255,7 @@ const mlProjects: Project[] = [
     desc: "LSTM recurrent neural network predicting equity closing prices with confidence intervals.",
     tools: ["LSTM", "TensorFlow", "Keras", "Streamlit"],
     image: stockImg,
-    github: "https://github.com/MuhammadDastgeer/Stock-Market-Prediction-App.git",
+    github: "https://github.com/MuhammadDastgeer/Machine-Learning-Project.git",
   },
 ];
 
@@ -243,7 +266,7 @@ const automationProjects: Project[] = [
     desc: "Automated webhook converting newly published articles into branded downloadable PDF manuals.",
     tools: ["n8n", "WordPress Webhook", "Puppeteer PDF"],
     image: wpPdfImg,
-    github: "https://github.com/MuhammadDastgeer",
+    github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
   {
     title: "Discord AI Support Bot",
@@ -251,7 +274,7 @@ const automationProjects: Project[] = [
     desc: "Automated community moderator answering technical questions and routing escalation tickets.",
     tools: ["Discord API", "OpenAI", "n8n Webhook"],
     image: discordBotImg,
-    github: "https://github.com/MuhammadDastgeer",
+    github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
   {
     title: "Email Drafter with Human-in-the-Loop",
@@ -259,7 +282,7 @@ const automationProjects: Project[] = [
     desc: "Automated inbox monitoring generating smart reply drafts pending user approval.",
     tools: ["Gmail API", "OpenAI", "Slack Approval Node"],
     image: emailHitlImg,
-    github: "https://github.com/MuhammadDastgeer",
+    github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
   {
     title: "Gmail to Sheets Ingestion Flow",
@@ -267,7 +290,7 @@ const automationProjects: Project[] = [
     desc: "ETL pipeline extracting structured invoice data from incoming emails directly to Google Sheets.",
     tools: ["Gmail API", "Google Sheets API", "n8n"],
     image: gmailSheetsImg,
-    github: "https://github.com/MuhammadDastgeer",
+    github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
   {
     title: "Google Drive Enterprise RAG",
@@ -275,7 +298,7 @@ const automationProjects: Project[] = [
     desc: "Vector ingestion pipeline updating knowledge embeddings whenever Drive files change.",
     tools: ["Google Drive API", "LangChain", "ChromaDB"],
     image: ragDriveImg,
-    github: "https://github.com/MuhammadDastgeer",
+    github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
   {
     title: "WhatsApp Knowledge Base RAG",
@@ -283,7 +306,7 @@ const automationProjects: Project[] = [
     desc: "Direct WhatsApp conversational interface connected to company document repositories.",
     tools: ["WhatsApp Cloud API", "FastAPI", "LangChain"],
     image: whatsappRagImg,
-    github: "https://github.com/MuhammadDastgeer",
+    github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
   {
     title: "Production RAG Starter Architecture",
@@ -291,7 +314,7 @@ const automationProjects: Project[] = [
     desc: "Production-ready boilerplate for multi-document RAG with hybrid search and streaming responses.",
     tools: ["LangChain", "FastAPI", "React", "Docker"],
     image: ragStarterImg,
-    github: "https://github.com/MuhammadDastgeer",
+    github: "https://github.com/MuhammadDastgeer/N8N_WORKFLOW.git",
   },
 ];
 
@@ -314,12 +337,23 @@ export const Projects: React.FC = () => {
         <div>
           {/* 16:10 Image Container */}
           <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden mb-4 bg-white/5 border border-white/10">
-            <img
-              src={project.image}
-              alt={project.title}
-              loading="lazy"
-              className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-            />
+            {project.image ? (
+              <img
+                src={project.image}
+                alt={project.title}
+                loading="lazy"
+                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-[#0B0F19] via-[#111A2E] to-[#0E1E36] flex flex-col items-center justify-center gap-2.5 p-4 relative">
+                <div className="w-12 h-12 rounded-2xl bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-[#00F2FE] shadow-[0_0_20px_rgba(0,242,254,0.2)]">
+                  {project.fallbackIcon === "mic" ? <Mic size={22} /> : <FileText size={22} />}
+                </div>
+                <span className="font-heading font-semibold text-xs text-white/80 tracking-wide text-center">
+                  {project.title}
+                </span>
+              </div>
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19]/80 via-transparent to-transparent pointer-events-none" />
 
             {/* Hover overlay hint */}
@@ -364,40 +398,15 @@ export const Projects: React.FC = () => {
           onClick={(e) => e.stopPropagation()}
           className="pt-3 border-t border-white/10 flex items-center gap-2"
         >
-          {project.link ? (
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gradient text-xs py-1.5 px-3.5 flex-1 justify-center"
-            >
-              <ExternalLink size={12} />
-              <span>Live Demo</span>
-            </a>
-          ) : (
-            <a
-              href={project.github || "https://github.com/MuhammadDastgeer"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gradient text-xs py-1.5 px-3.5 flex-1 justify-center"
-            >
-              <ExternalLink size={12} />
-              <span>Explore Code</span>
-            </a>
-          )}
-
-          {project.github && project.link && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-ghost text-xs py-1.5 px-3 rounded-full"
-              title="GitHub Repo"
-            >
-              <GithubIcon size={13} />
-              <span className="hidden sm:inline">Repo</span>
-            </a>
-          )}
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-gradient text-xs py-1.5 px-3.5 flex-1 justify-center"
+          >
+            <GithubIcon size={13} />
+            <span>GitHub Repo</span>
+          </a>
         </div>
       </div>
     </ScrollReveal>
@@ -551,11 +560,22 @@ export const Projects: React.FC = () => {
               </h3>
 
               <div className="rounded-xl overflow-hidden aspect-[16/9] mb-5 bg-white/5 border border-white/10">
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
+                {selectedProject.image ? (
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-[#0B0F19] via-[#111A2E] to-[#0E1E36] flex flex-col items-center justify-center gap-3 p-6">
+                    <div className="w-16 h-16 rounded-2xl bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-[#00F2FE] shadow-[0_0_25px_rgba(0,242,254,0.25)]">
+                      {selectedProject.fallbackIcon === "mic" ? <Mic size={28} /> : <FileText size={28} />}
+                    </div>
+                    <span className="font-heading font-bold text-base text-white tracking-wide">
+                      {selectedProject.title}
+                    </span>
+                  </div>
+                )}
               </div>
 
               <p className="text-sm text-[#94A3B8] mb-5 leading-relaxed">
@@ -577,28 +597,15 @@ export const Projects: React.FC = () => {
 
               {/* Actions */}
               <div className="flex flex-wrap items-center gap-3 pt-5 border-t border-white/10">
-                {selectedProject.link && (
-                  <a
-                    href={selectedProject.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-gradient flex-1 justify-center py-2.5 text-xs"
-                  >
-                    <ExternalLink size={14} />
-                    <span>Open Live Application</span>
-                  </a>
-                )}
-                {selectedProject.github && (
-                  <a
-                    href={selectedProject.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${selectedProject.link ? "btn-ghost" : "btn-gradient"} flex-1 justify-center py-2.5 text-xs`}
-                  >
-                    <GithubIcon size={14} />
-                    <span>View Source Code</span>
-                  </a>
-                )}
+                <a
+                  href={selectedProject.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-gradient flex-1 justify-center py-2.5 text-xs"
+                >
+                  <GithubIcon size={14} />
+                  <span>View GitHub Repo</span>
+                </a>
               </div>
             </motion.div>
           </div>

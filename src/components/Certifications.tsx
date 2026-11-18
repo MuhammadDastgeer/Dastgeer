@@ -1,18 +1,18 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
   Award,
   CheckCircle,
   Cloud,
   Cpu,
-  Brain,
   Sparkles,
   ExternalLink,
   Eye,
   FileText,
+  Image as ImageIcon,
+  AlertCircle,
   X,
   Filter,
   Calendar,
-  Layers,
   Database,
   Terminal,
   ShieldCheck,
@@ -23,6 +23,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import { SpotlightCard } from "./SpotlightCard";
+import { PdfViewer } from "./PdfViewer";
 
 export interface Certification {
   id: string;
@@ -369,6 +370,15 @@ export const Certifications: React.FC = () => {
     return certificationsData.filter((cert) => cert.category === activeTab);
   }, [activeTab]);
 
+  useEffect(() => {
+    if (!selectedCert) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedCert(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [selectedCert]);
+
   const handleCopyId = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
     navigator.clipboard.writeText(id);
@@ -487,7 +497,10 @@ export const Certifications: React.FC = () => {
 
             return (
               <ScrollReveal key={cert.id} delay={(i % 6) * 0.04}>
-                <SpotlightCard className="p-6 flex flex-col justify-between h-full group hover:border-[#00F2FE]/40 transition-all duration-300">
+                <SpotlightCard
+                  onClick={() => setSelectedCert(cert)}
+                  className="p-6 flex flex-col justify-between h-full group hover:border-[#00F2FE]/40 transition-all duration-300 cursor-pointer"
+                >
                   <div>
                     {/* Top row: Category/Issuer and Date */}
                     <div className="flex items-start justify-between gap-3 mb-4">
@@ -534,6 +547,7 @@ export const Certifications: React.FC = () => {
                             ID: {cert.credentialId}
                           </span>
                           <button
+                            type="button"
                             onClick={(e) => handleCopyId(cert.credentialId!, e)}
                             title="Copy ID"
                             className="text-[#94A3B8] hover:text-[#00F2FE] transition-colors p-0.5"
@@ -549,15 +563,33 @@ export const Certifications: React.FC = () => {
                         <span className="text-[10px] text-white/40">Accredited</span>
                       )}
 
-                      <span className="text-[#00F2FE] font-medium text-[11px] flex items-center gap-1">
-                        <CheckCircle size={11} /> Verified
-                      </span>
+                      {cert.assetUrl ? (
+                        <span className="text-[#00F2FE] font-medium text-[11px] flex items-center gap-1">
+                          {cert.assetType === "pdf" ? (
+                            <>
+                              <FileText size={11} /> PDF Ready
+                            </>
+                          ) : (
+                            <>
+                              <ImageIcon size={11} /> Image Ready
+                            </>
+                          )}
+                        </span>
+                      ) : (
+                        <span className="text-amber-300/80 font-medium text-[11px] flex items-center gap-1">
+                          <AlertCircle size={11} /> No File
+                        </span>
+                      )}
                     </div>
 
                     {/* Action buttons */}
-                    <div className="flex items-center gap-2 pt-1">
+                    <div
+                      className="flex items-center gap-2 pt-1"
+                      onClick={(e) => e.stopPropagation()}
+                    >
                       {cert.assetUrl ? (
                         <button
+                          type="button"
                           onClick={() => setSelectedCert(cert)}
                           className="flex-1 py-1.5 px-3 rounded-lg bg-white/[0.04] hover:bg-[#00F2FE]/15 hover:border-[#00F2FE]/40 border border-white/10 text-xs font-heading font-medium text-white hover:text-[#00F2FE] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                         >
@@ -565,9 +597,14 @@ export const Certifications: React.FC = () => {
                           <span>View Certificate</span>
                         </button>
                       ) : (
-                        <span className="flex-1 py-1.5 px-3 rounded-lg bg-white/[0.02] border border-white/5 text-[11px] text-[#94A3B8]/60 text-center font-mono">
-                          Industrial Record
-                        </span>
+                        <button
+                          type="button"
+                          onClick={() => setSelectedCert(cert)}
+                          className="flex-1 py-1.5 px-3 rounded-lg bg-amber-400/5 hover:bg-amber-400/10 border border-amber-400/20 text-[11px] text-amber-200/80 text-center font-mono transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                        >
+                          <AlertCircle size={12} className="text-amber-300" />
+                          <span>File Not Uploaded Yet</span>
+                        </button>
                       )}
 
                       {cert.verificationUrl && (
@@ -609,14 +646,14 @@ export const Certifications: React.FC = () => {
       {/* Certificate Preview Modal */}
       <AnimatePresence>
         {selectedCert && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedCert(null)}
-              className="absolute inset-0 bg-black/80 backdrop-blur-md"
+              className="absolute inset-0 bg-black/85 backdrop-blur-md"
             />
 
             {/* Modal Dialog */}
@@ -625,6 +662,7 @@ export const Certifications: React.FC = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
               transition={{ duration: 0.25 }}
+              data-lenis-prevent
               className="relative w-full max-w-4xl max-h-[90vh] bg-[#0E1322] border border-white/15 rounded-2xl shadow-2xl overflow-hidden flex flex-col z-10"
             >
               {/* Modal Header */}
@@ -651,14 +689,16 @@ export const Certifications: React.FC = () => {
                       rel="noopener noreferrer"
                       download
                       className="p-2 rounded-lg bg-white/[0.05] hover:bg-[#00F2FE]/20 text-[#94A3B8] hover:text-[#00F2FE] transition-colors"
-                      title="Open full size / Download"
+                      title="Download Certificate"
                     >
                       <Download size={16} />
                     </a>
                   )}
                   <button
+                    type="button"
                     onClick={() => setSelectedCert(null)}
                     className="p-2 rounded-lg bg-white/[0.05] hover:bg-rose-500/20 text-[#94A3B8] hover:text-white transition-colors cursor-pointer"
+                    aria-label="Close modal"
                   >
                     <X size={16} />
                   </button>
@@ -666,24 +706,42 @@ export const Certifications: React.FC = () => {
               </div>
 
               {/* Modal Body / Viewer */}
-              <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-[#0B0F19] flex items-center justify-center min-h-[350px]">
+              <div
+                data-lenis-prevent
+                className="flex-1 overflow-y-auto p-4 sm:p-6 bg-[#0B0F19] flex flex-col items-center justify-start min-h-[340px]"
+              >
                 {selectedCert.assetType === "image" && selectedCert.assetUrl && (
-                  <div className="max-w-full rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black/40">
+                  <div className="max-w-full rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black/40 my-auto">
                     <img
                       src={selectedCert.assetUrl}
                       alt={selectedCert.name}
-                      className="max-h-[65vh] w-auto object-contain mx-auto"
+                      referrerPolicy="no-referrer"
+                      className="max-h-[68vh] w-auto object-contain mx-auto"
                     />
                   </div>
                 )}
 
                 {selectedCert.assetType === "pdf" && selectedCert.assetUrl && (
-                  <div className="w-full h-[65vh] rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#1e293b] flex flex-col">
-                    <iframe
-                      src={selectedCert.assetUrl}
-                      title={selectedCert.name}
-                      className="w-full flex-1 border-0"
-                    />
+                  <PdfViewer
+                    url={selectedCert.assetUrl}
+                    title={selectedCert.name}
+                  />
+                )}
+
+                {!selectedCert.assetUrl && (
+                  <div className="my-auto max-w-md w-full text-center p-8 rounded-2xl bg-white/[0.03] border border-amber-400/20">
+                    <AlertCircle size={36} className="mx-auto text-amber-300 mb-3" />
+                    <h4 className="font-heading font-bold text-white text-base mb-2">
+                      Certificate PDF / Image Not Uploaded Yet
+                    </h4>
+                    <p className="text-xs text-[#94A3B8] leading-relaxed mb-4">
+                      Is credential ka digital PDF ya image file abhi portfolio mein upload nahi hua. Aap iska official certificate file upload kar sakte hain.
+                    </p>
+                    <div className="text-xs text-white/80 bg-white/[0.04] rounded-xl p-3 border border-white/10 text-left space-y-1">
+                      <p><span className="text-[#94A3B8]">Issuer:</span> {selectedCert.issuer}</p>
+                      <p><span className="text-[#94A3B8]">Credential ID:</span> {selectedCert.credentialId || "N/A"}</p>
+                      <p><span className="text-[#94A3B8]">Skills:</span> {selectedCert.skills}</p>
+                    </div>
                   </div>
                 )}
               </div>
@@ -708,10 +766,10 @@ export const Certifications: React.FC = () => {
                       href={selectedCert.verificationUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-primary text-xs py-2 px-4 rounded-lg flex items-center gap-1.5"
+                      className="btn-gradient text-xs py-2 px-4 rounded-lg flex items-center gap-1.5"
                     >
                       <ExternalLink size={13} />
-                      Verify on {selectedCert.issuer}
+                      <span>Verify on {selectedCert.issuer}</span>
                     </a>
                   )}
                   {selectedCert.assetUrl && (
@@ -722,7 +780,7 @@ export const Certifications: React.FC = () => {
                       className="btn-ghost text-xs py-2 px-4 rounded-lg flex items-center gap-1.5"
                     >
                       <FileText size={13} />
-                      Open Full Document
+                      <span>Open Full Document</span>
                     </a>
                   )}
                 </div>

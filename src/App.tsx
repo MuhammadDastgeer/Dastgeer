@@ -16,7 +16,6 @@ import SkillsPage from "./pages/SkillsPage.tsx";
 import ProjectsPage from "./pages/ProjectsPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
 import WebCV from "./pages/WebCV.tsx";
-import Blog from "./pages/Blog.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -50,7 +49,6 @@ const App = () => (
                 <Route path="/skills" element={<SkillsPage />} />
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/contact" element={<ContactPage />} />
-                <Route path="/blog" element={<Blog />} />
                 <Route path="/web-cv" element={<WebCV />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>

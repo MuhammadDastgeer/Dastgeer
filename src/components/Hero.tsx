@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Download, Sparkles, Zap, ShieldCheck } from "lucide-react";
-import profileImg from "@/assets/profile.png";
+import profileImg from "@/assets/images/profile_studio_midnight_1794993185171.jpg";
 import { CountUp } from "./CountUp";
 
 export const Hero: React.FC = () => {
@@ -38,8 +38,8 @@ export const Hero: React.FC = () => {
                 <span>Get In Touch</span>
               </Link>
               <a
-                href="/Muhammad_Dastgeer_CV.pdf"
-                download
+                href="/assets/aistudio/Muhammad_Dastgeer_CV_456271b5.pdf"
+                download="Muhammad_Dastgeer_CV.pdf"
                 className="btn-ghost text-xs"
               >
                 <Download size={14} className="text-[#00F2FE]" />
@@ -66,6 +66,7 @@ export const Hero: React.FC = () => {
                 <img
                   src={profileImg}
                   alt="Muhammad Dastgeer"
+                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
                   width={512}
                   height={640}
