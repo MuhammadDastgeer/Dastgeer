@@ -19,6 +19,8 @@ import {
   Copy,
   Check,
   Download,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
@@ -372,11 +374,14 @@ export const Certifications: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("all");
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [showAll, setShowAll] = useState<boolean>(false);
 
   const filteredCerts = useMemo(() => {
     if (activeTab === "all") return certificationsData;
     return certificationsData.filter((cert) => cert.category === activeTab);
   }, [activeTab]);
+
+  const visibleCerts = showAll ? filteredCerts : filteredCerts.slice(0, 3);
 
   useEffect(() => {
     if (!selectedCert) return;
@@ -471,7 +476,10 @@ export const Certifications: React.FC = () => {
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => {
+                  setActiveTab(tab.id);
+                  setShowAll(false);
+                }}
                 className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-heading font-semibold transition-all duration-200 flex items-center gap-2 cursor-pointer ${
                   isActive
                     ? "bg-gradient-to-r from-[#00F2FE] to-[#4FACFE] text-[#0B0F19] shadow-[0_0_20px_rgba(0,242,254,0.35)] scale-[1.02]"
@@ -501,7 +509,7 @@ export const Certifications: React.FC = () => {
 
         {/* Certifications Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filteredCerts.map((cert, i) => {
+          {visibleCerts.map((cert, i) => {
             const Icon = getCategoryIcon(cert.category);
             const badgeClass = getIssuerBadgeStyle(cert.issuer);
 
@@ -635,6 +643,29 @@ export const Certifications: React.FC = () => {
             );
           })}
         </div>
+
+        {/* See More / Show Less Button */}
+        {filteredCerts.length > 3 && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAll((prev) => !prev)}
+              className="px-6 py-3 rounded-xl bg-white/[0.04] hover:bg-gradient-to-r hover:from-[#00F2FE] hover:to-[#4FACFE] text-white hover:text-[#0B0F19] border border-cyan-400/30 hover:border-transparent font-heading text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all duration-300 shadow-[0_0_20px_rgba(0,242,254,0.12)] hover:shadow-[0_0_25px_rgba(0,242,254,0.4)] cursor-pointer"
+            >
+              {showAll ? (
+                <>
+                  <span>Show Less Certifications</span>
+                  <ChevronUp size={16} />
+                </>
+              ) : (
+                <>
+                  <span>See More Certifications (+{filteredCerts.length - 3})</span>
+                  <ChevronDown size={16} />
+                </>
+              )}
+            </button>
+          </div>
+        )}
 
         {filteredCerts.length === 0 && (
           <div className="text-center py-16 bg-white/[0.02] rounded-2xl border border-white/5">

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowUpRight, X, Mic, FileText } from "lucide-react";
+import { ArrowUpRight, X, Mic, FileText, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import { GithubIcon } from "./SocialIcons";
@@ -321,6 +321,7 @@ const automationProjects: Project[] = [
 export const Projects: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"agentic" | "ml" | "automation">("agentic");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [showAll, setShowAll] = useState<boolean>(false);
 
   const tabs = [
     { id: "agentic" as const, label: "Agentic AI & RAG", count: latestAgenticProjects.length + oldAgenticProjects.length },
@@ -436,7 +437,10 @@ export const Projects: React.FC = () => {
               return (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={() => {
+                    setActiveTab(tab.id);
+                    setShowAll(false);
+                  }}
                   className={`px-4 py-2 rounded-lg font-heading text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${
                     isActive
                       ? "bg-gradient-to-r from-[#00F2FE] to-[#4FACFE] text-[#0B0F19] font-bold shadow-[0_0_15px_rgba(0,242,254,0.35)]"
@@ -473,22 +477,24 @@ export const Projects: React.FC = () => {
                   Flagship Live Platforms
                 </h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {latestAgenticProjects.map((p, i) => (
+                  {(showAll ? latestAgenticProjects : latestAgenticProjects.slice(0, 3)).map((p, i) => (
                     <ProjectCard key={p.title} project={p} i={i} />
                   ))}
                 </div>
               </div>
 
-              <div>
-                <h3 className="text-xs font-semibold text-[#00F2FE] uppercase tracking-wider mb-6">
-                  Autonomous Agents & Protocols
-                </h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {oldAgenticProjects.map((p, i) => (
-                    <ProjectCard key={p.title} project={p} i={i} />
-                  ))}
+              {showAll && (
+                <div>
+                  <h3 className="text-xs font-semibold text-[#00F2FE] uppercase tracking-wider mb-6">
+                    Autonomous Agents & Protocols
+                  </h3>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {oldAgenticProjects.map((p, i) => (
+                      <ProjectCard key={p.title} project={p} i={i} />
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </motion.div>
           )}
 
@@ -501,7 +507,7 @@ export const Projects: React.FC = () => {
               transition={{ duration: 0.22 }}
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {mlProjects.map((p, i) => (
+              {(showAll ? mlProjects : mlProjects.slice(0, 3)).map((p, i) => (
                 <ProjectCard key={p.title} project={p} i={i} />
               ))}
             </motion.div>
@@ -516,12 +522,46 @@ export const Projects: React.FC = () => {
               transition={{ duration: 0.22 }}
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {automationProjects.map((p, i) => (
+              {(showAll ? automationProjects : automationProjects.slice(0, 3)).map((p, i) => (
                 <ProjectCard key={p.title} project={p} i={i} />
               ))}
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* See More / Show Less Button */}
+        {(() => {
+          const totalInTab =
+            activeTab === "agentic"
+              ? latestAgenticProjects.length + oldAgenticProjects.length
+              : activeTab === "ml"
+              ? mlProjects.length
+              : automationProjects.length;
+          const remainingCount = totalInTab - 3;
+          if (remainingCount <= 0) return null;
+
+          return (
+            <div className="mt-10 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setShowAll((prev) => !prev)}
+                className="px-6 py-3 rounded-xl bg-white/[0.04] hover:bg-gradient-to-r hover:from-[#00F2FE] hover:to-[#4FACFE] text-white hover:text-[#0B0F19] border border-cyan-400/30 hover:border-transparent font-heading text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all duration-300 shadow-[0_0_20px_rgba(0,242,254,0.12)] hover:shadow-[0_0_25px_rgba(0,242,254,0.4)] cursor-pointer"
+              >
+                {showAll ? (
+                  <>
+                    <span>Show Less Projects</span>
+                    <ChevronUp size={16} />
+                  </>
+                ) : (
+                  <>
+                    <span>See More Projects (+{remainingCount})</span>
+                    <ChevronDown size={16} />
+                  </>
+                )}
+              </button>
+            </div>
+          );
+        })()}
       </div>
 
       {/* Clean Quick-View Lightbox Modal */}
